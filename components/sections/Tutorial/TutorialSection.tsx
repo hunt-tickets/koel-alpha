@@ -1,17 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { RotateCcw, PackageOpen, Sparkles } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 import Image from 'next/image';
 import Container from '@/components/ui/Container';
 import { TUTORIAL_STEPS } from '@/lib/constants';
-
-const stepIcons = [null, null, null]; // Todos los pasos usan SVGs personalizados
-const stepColors = [
-  'from-koel-aqua/20 to-koel-aqua/5',
-  'from-koel-teal/20 to-koel-teal/5',
-  'from-koel-olive/20 to-koel-olive/5',
-];
 
 export default function TutorialSection() {
   return (
@@ -36,8 +29,15 @@ export default function TutorialSection() {
         {/* Steps Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {TUTORIAL_STEPS.map((step, index) => {
-            const Icon = stepIcons[index];
-            const gradient = stepColors[index];
+            const iconSrc =
+              index === 0
+                ? '/icons/abre.svg'
+                : index === 1
+                ? '/icons/encaja.svg'
+                : '/icons/disfruta.svg';
+
+            const iconAlt =
+              index === 0 ? 'Abre' : index === 1 ? 'Encaja' : 'Disfruta';
 
             return (
               <motion.div
@@ -52,34 +52,20 @@ export default function TutorialSection() {
                 <div className="relative h-full rounded-2xl border border-koel-neutral-200 bg-white p-8 transition-all duration-300 hover:border-koel-aqua/40 hover:shadow-lg">
                   {/* Step Number Badge */}
                   <div className="absolute -top-3 -left-3 w-12 h-12 rounded-full bg-koel-teal flex items-center justify-center shadow-md">
-                    <span className="text-white font-bold text-lg font-display">{step.number}</span>
+                    <span className="text-white font-bold text-lg font-display">
+                      {step.number}
+                    </span>
                   </div>
 
                   {/* Icon */}
                   <div className="mb-6 mt-2">
-                    {Icon ? (
-                      <Icon className="w-16 h-16 text-koel-teal" strokeWidth={1} />
-                    ) : (
-                      <Image
-                        src={
-                          index === 0
-                            ? "/icons/abre.svg"
-                            : index === 1
-                            ? "/icons/encaja.svg"
-                            : "/icons/disfruta.svg"
-                        }
-                        alt={
-                          index === 0
-                            ? "Abre"
-                            : index === 1
-                            ? "Encaja"
-                            : "Disfruta"
-                        }
-                        width={64}
-                        height={64}
-                        className="w-16 h-16"
-                      />
-                    )}
+                    <Image
+                      src={iconSrc}
+                      alt={iconAlt}
+                      width={64}
+                      height={64}
+                      className="w-16 h-16"
+                    />
                   </div>
 
                   {/* Content */}
