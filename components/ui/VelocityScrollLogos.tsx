@@ -67,7 +67,7 @@ export function VelocityScrollLogos({
     ).current;
 
     // Crear transformaciones combinadas para cada logo fuera del render
-    const combinedRotations = useRef<ReturnType<typeof useTransform>[]>(
+    const combinedRotations = useRef(
       logos.map((_, index) =>
         useTransform(baseRotation, (value) => value + initialRotations[index])
       )
