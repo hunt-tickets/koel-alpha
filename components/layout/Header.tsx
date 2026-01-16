@@ -5,20 +5,40 @@ import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { NAV_LINKS } from '@/lib/constants';
 import Container from '@/components/ui/Container';
-import Button from '@/components/ui/Button';
+import { ShoppingCart, User } from 'lucide-react';
+import { motion } from 'framer-motion';
 
-export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
+interface HeaderProps {
+  forceScrolled?: boolean;
+}
+
+export default function Header({ forceScrolled = false }: HeaderProps) {
+  const [isScrolled, setIsScrolled] = useState(forceScrolled);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    // Show header after loader (2.5s loader + 0.8s exit animation)
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 3300);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (forceScrolled) {
+      setIsScrolled(true);
+      return;
+    }
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [forceScrolled]);
 
   const handleNavClick = (href: string) => {
     // Check if it's an anchor link or a page link
@@ -35,26 +55,29 @@ export default function Header() {
   };
 
   return (
-    <header
+    <motion.header
+      initial={{ opacity: 0 }}
+      animate={{ opacity: isVisible ? 1 : 0 }}
+      transition={{ duration: 1, ease: 'easeOut' }}
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         isScrolled
-          ? 'bg-koel-neutral-100/95 backdrop-blur-md shadow-sm'
+          ? 'bg-koel-neutral-100/95 backdrop-blur-md'
           : 'bg-transparent'
       )}
     >
       <Container>
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <div className="flex items-center">
+          <a href="/" className="flex items-center cursor-pointer group">
             <Image
               src="/logos/logo-teal.svg"
               alt="KOEL"
               width={80}
               height={32}
-              className="w-16 md:w-20 h-auto"
+              className="w-16 md:w-20 h-auto transition-transform duration-300 group-hover:scale-110"
             />
-          </div>
+          </a>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
@@ -63,22 +86,46 @@ export default function Header() {
                 key={link.href}
                 onClick={() => handleNavClick(link.href)}
                 className={cn(
-                  'transition-all duration-200 font-medium',
+                  'relative transition-all duration-300 font-display font-medium tracking-wide text-sm uppercase group',
                   isScrolled
                     ? 'text-koel-neutral-700 hover:text-koel-teal'
                     : 'text-white hover:text-koel-aqua drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]'
                 )}
               >
                 {link.label}
+                {/* Underline effect */}
+                <span className={cn(
+                  'absolute bottom-0 left-0 h-[2px] w-0 group-hover:w-full transition-all duration-300',
+                  isScrolled ? 'bg-koel-teal' : 'bg-koel-aqua'
+                )} />
               </button>
             ))}
           </nav>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
-            <Button size="sm" variant="primary">
-              Comprar Ahora
-            </Button>
+          {/* Action Icons */}
+          <div className="hidden md:flex items-center gap-4">
+            <button
+              className={cn(
+                'p-2 rounded-full transition-all duration-200',
+                isScrolled
+                  ? 'text-koel-neutral-700 hover:text-koel-teal hover:bg-koel-teal/10'
+                  : 'text-white hover:text-koel-aqua drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]'
+              )}
+              aria-label="Carrito"
+            >
+              <ShoppingCart className="w-5 h-5" />
+            </button>
+            <button
+              className={cn(
+                'p-2 rounded-full transition-all duration-200',
+                isScrolled
+                  ? 'text-koel-neutral-700 hover:text-koel-teal hover:bg-koel-teal/10'
+                  : 'text-white hover:text-koel-aqua drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]'
+              )}
+              aria-label="Iniciar sesión"
+            >
+              <User className="w-5 h-5" />
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -125,17 +172,24 @@ export default function Header() {
               <button
                 key={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className="text-left text-koel-neutral-700 hover:text-koel-teal transition-colors duration-200"
+                className="text-left text-koel-neutral-700 hover:text-koel-teal transition-colors duration-200 font-display font-medium tracking-wide text-sm uppercase"
               >
                 {link.label}
               </button>
             ))}
-            <Button size="sm" variant="primary" fullWidth>
-              Comprar Ahora
-            </Button>
+            <div className="flex gap-3 pt-2">
+              <button className="flex-1 flex items-center justify-center gap-2 py-3 bg-koel-teal text-white rounded-full hover:bg-koel-teal/90 transition-colors duration-200">
+                <ShoppingCart className="w-4 h-4" />
+                <span className="font-display text-sm uppercase tracking-wide">Carrito</span>
+              </button>
+              <button className="flex-1 flex items-center justify-center gap-2 py-3 border-2 border-koel-teal text-koel-teal rounded-full hover:bg-koel-teal/10 transition-colors duration-200">
+                <User className="w-4 h-4" />
+                <span className="font-display text-sm uppercase tracking-wide">Entrar</span>
+              </button>
+            </div>
           </nav>
         </div>
       </Container>
-    </header>
+    </motion.header>
   );
 }

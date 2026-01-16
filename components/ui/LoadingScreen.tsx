@@ -7,11 +7,15 @@ import Image from 'next/image';
 interface LoadingScreenProps {
   onLoadingComplete?: () => void;
   minDuration?: number;
+  bgColor?: string;
+  textColor?: string;
 }
 
 export default function LoadingScreen({
   onLoadingComplete,
   minDuration = 2000,
+  bgColor = 'bg-koel-aqua',
+  textColor = 'text-koel-teal',
 }: LoadingScreenProps) {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -40,7 +44,7 @@ export default function LoadingScreen({
             stiffness: 120,
             duration: 0.6,
           }}
-          className="fixed inset-0 w-screen h-screen bg-koel-aqua z-[9999] flex items-center justify-center overflow-hidden"
+          className={`fixed inset-0 w-screen h-screen ${bgColor} z-[9999] flex items-center justify-center overflow-hidden`}
         >
           {/* Logo container */}
           <motion.div
@@ -67,7 +71,7 @@ export default function LoadingScreen({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
-                className="text-koel-teal text-xs md:text-sm font-light tracking-[0.2em] uppercase"
+                className={`${textColor} text-xs md:text-sm font-light tracking-[0.2em] uppercase`}
               >
                 Refillable Deodorant
               </motion.p>
@@ -75,7 +79,7 @@ export default function LoadingScreen({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1, duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
-                className="text-koel-teal text-xs md:text-sm font-light tracking-widest uppercase"
+                className={`${textColor} text-xs md:text-sm font-light tracking-widest uppercase`}
               >
                 Premium Care
               </motion.p>
@@ -140,7 +144,7 @@ export default function LoadingScreen({
                     delay: index * 0.15,
                     ease: 'easeInOut',
                   }}
-                  className="w-3 h-3 rounded-full bg-koel-teal"
+                  className={`w-3 h-3 rounded-full ${textColor.replace('text-', 'bg-')}`}
                 />
               ))}
             </motion.div>
@@ -154,7 +158,7 @@ export default function LoadingScreen({
                 duration: 0.8,
                 ease: [0.34, 1.56, 0.64, 1],
               }}
-              className="text-koel-teal text-sm md:text-base font-heading tracking-wide uppercase"
+              className={`${textColor} text-sm md:text-base font-heading tracking-wide uppercase`}
             >
               A New Way to Care
             </motion.p>

@@ -58,36 +58,6 @@ export const PRODUCTS = [
     accentColor: 'from-koel-aqua/30 to-koel-olive/30',
     image: '/images/products/case.jpg',
   },
-  {
-    id: 'starter-kit',
-    name: 'Starter Kit',
-    subtitle: 'Tu primer paso hacia lo sostenible',
-    description: 'Pack completo: Case premium + 2 Pods biodegradables.',
-    features: [
-      { icon: 'Sparkles', title: 'Todo lo que necesitas', description: 'Case + 2 Pods biodegradables.' },
-      { icon: 'Shield', title: 'Mejor valor', description: 'Ahorra con este kit completo.' },
-      { icon: 'Gem', title: 'Premium', description: 'Diseño y calidad sin compromiso.' },
-      { icon: 'Flower2', title: 'Perfecto para empezar', description: 'Ideal para tu primera compra.' },
-    ],
-    price: 45000,
-    accentColor: 'from-koel-teal/30 to-koel-aqua/30',
-    image: '/images/products/starter-kit.jpg',
-  },
-  {
-    id: 'family-kit',
-    name: 'Family Kit',
-    subtitle: 'Para compartir en familia',
-    description: 'Kit familiar: 2 Cases + 4 Pods variados.',
-    features: [
-      { icon: 'Sparkles', title: 'Para toda la familia', description: '2 Cases + 4 Pods variados.' },
-      { icon: 'Shield', title: 'Máximo ahorro', description: 'Mejor precio por unidad.' },
-      { icon: 'Gem', title: 'Dos fragancias', description: 'Bamboo y Ginger Grape.' },
-      { icon: 'Leaf', title: 'Sostenible', description: 'Menos empaques, más conciencia.' },
-    ],
-    price: 79000,
-    accentColor: 'from-koel-aqua/30 to-koel-olive/30',
-    image: '/images/products/family-kit.jpg',
-  },
 ] as const;
 
 // Fragrances
@@ -203,8 +173,6 @@ export const SOCIAL_LINKS = {
 // Navigation
 export const NAV_LINKS = [
   { label: 'Productos', href: '#products' },
-  { label: 'Cómo Funciona', href: '#tutorial' },
-  { label: 'Fragancias', href: '#fragrances' },
   { label: 'Manifiesto', href: '/manifiesto' },
   { label: 'FAQ', href: '#faq' },
 ] as const;

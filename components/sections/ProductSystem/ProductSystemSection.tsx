@@ -53,9 +53,9 @@ export default function ProductSystemSection() {
         </motion.div>
       </Container>
 
-      {/* Horizontal Carousel - Full Width (All Screens) */}
-      <div className="overflow-x-auto scrollbar-hide snap-x pb-4">
-        <div className="flex gap-4 md:gap-6 lg:gap-8 px-4 md:px-8 lg:px-12">
+      {/* Three Column Grid */}
+      <Container>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {productsWithIcons.map((product, index) => (
             <motion.div
               key={product.id}
@@ -66,7 +66,6 @@ export default function ProductSystemSection() {
                 duration: 0.6,
                 delay: index * 0.12,
               }}
-              className="snap-center flex-shrink-0 w-[75vw] sm:w-[55vw] md:w-[42vw] lg:w-[28vw] xl:w-[24vw] min-w-0"
             >
               <ProductCard
                 {...product}
@@ -74,20 +73,6 @@ export default function ProductSystemSection() {
                 onToggleExpand={() => setExpandedIndex(expandedIndex === index ? null : index)}
               />
             </motion.div>
-          ))}
-          {/* Spacer */}
-          <div className="flex-shrink-0 w-[8vw] md:w-[15vw]" />
-        </div>
-      </div>
-
-      {/* Scroll Indicators */}
-      <Container>
-        <div className="flex gap-2 justify-center mt-6">
-          {productsWithIcons.map((_, index) => (
-            <div
-              key={index}
-              className="w-2 h-2 rounded-full bg-koel-neutral-300"
-            />
           ))}
         </div>
       </Container>

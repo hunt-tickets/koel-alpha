@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { Header, Footer } from '@/components/layout';
+import { HeaderWrapper, Footer } from '@/components/layout';
 import { spaceGrotesk, outfit, inter } from './fonts';
 
 export const metadata: Metadata = {
@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="es" className={`scroll-smooth ${spaceGrotesk.variable} ${outfit.variable} ${inter.variable}`}>
       <body className={inter.className}>
-        <Header />
+        <HeaderWrapper />
         {children}
         <Footer />
       </body>
