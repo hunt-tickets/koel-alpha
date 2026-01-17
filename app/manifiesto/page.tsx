@@ -530,123 +530,13 @@ El futuro del cuidado comienza aquí.`;
       {/* Vision Text Section */}
       <section className="relative pt-20 md:pt-32 overflow-hidden" style={{ backgroundColor: '#FCF7EE' }}>
         <Container>
-          {/* Logo Divider */}
+          {/* Sello Divider */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
             className="flex items-center justify-center gap-6 mb-12 md:mb-16"
-          >
-            <div className="h-[1px] flex-1 bg-koel-teal/30" />
-            <Image
-              src="/logos/logo-teal.svg"
-              alt="KOEL"
-              width={120}
-              height={48}
-              className="w-24 md:w-32 h-auto"
-            />
-            <div className="h-[1px] flex-1 bg-koel-teal/30" />
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="text-left space-y-6 md:space-y-8"
-          >
-            <p className="text-base md:text-lg lg:text-xl xl:text-2xl tracking-[0.1em] md:tracking-[0.15em] uppercase text-koel-neutral-600 leading-relaxed md:leading-loose">
-              Hay una nueva forma de cuidar que no se impone, se siente. Se revela en los detalles, en lo que dejamos atrás y en lo que elegimos volver esencial.
-            </p>
-            <p className="text-base md:text-lg lg:text-xl xl:text-2xl tracking-[0.1em] md:tracking-[0.15em] uppercase text-koel-neutral-600 leading-relaxed md:leading-loose">
-              No responde a tendencias ni promesas. Responde a una necesidad silenciosa de pensar distinto.
-            </p>
-            <p className="text-base md:text-lg lg:text-xl xl:text-2xl tracking-[0.1em] md:tracking-[0.15em] uppercase text-koel-neutral-600 leading-relaxed md:leading-loose">
-              Somos un universo que respira claridad. Fusionamos lo natural con lo inteligente, transformando lo cotidiano en una experiencia suave, minimal y consciente.
-            </p>
-            <p className="text-base md:text-lg lg:text-xl xl:text-2xl tracking-[0.1em] md:tracking-[0.15em] uppercase text-koel-neutral-600 leading-relaxed md:leading-loose">
-              El diseño nos permite simplificar, resolver y elevar. Los hábitos se vuelven rituales más claros, más propios, más pensados.
-            </p>
-            <p className="text-base md:text-lg lg:text-xl xl:text-2xl tracking-[0.1em] md:tracking-[0.15em] uppercase text-koel-neutral-600 leading-relaxed md:leading-loose">
-              Cuidar no es un acto de consumo — Es coherencia en movimiento.
-            </p>
-          </motion.div>
-
-          {/* Grid of Icons - Same Section */}
-          <div className="grid grid-cols-5 sm:grid-cols-7 md:grid-cols-9 lg:grid-cols-9 gap-3 sm:gap-4 md:gap-6 lg:gap-8 mt-12 md:mt-24 lg:mt-32">
-            {[
-              { icon: "/icons/eco-friendly.svg", title: "Eco-Friendly" },
-              { icon: "/icons/sistema-recargable.svg", title: "Sistema Recargable" },
-              { icon: "/icons/smart-system.svg", title: "Smart System" },
-              { icon: "/icons/libre-quimicos.svg", title: "Libre de Químicos" },
-              { icon: "/icons/ingredientes-naturales.svg", title: "Ingredientes Naturales" },
-              { icon: "/icons/24-hour.svg", title: "24 Hour Protection" },
-              { icon: "/icons/aromas-naturales.svg", title: "Aromas Naturales" },
-              { icon: "/icons/mayor-durabilidad.svg", title: "Mayor Durabilidad" },
-              { icon: "/icons/cruelty-free.svg", title: "Cruelty Free & Vegan" },
-              { icon: "/icons/dermatologicamente-probado.svg", title: "Dermatológicamente Probado" },
-              { icon: "/icons/biodegradables.svg", title: "Biodegradable" },
-              { icon: "/icons/hecho-colombia.svg", title: "Hecho en Colombia" },
-              { icon: "/icons/zero-waste.svg", title: "Zero Waste" },
-              { icon: "/icons/todos-tipos-piel.svg", title: "Todos los Tipos de Piel" },
-              { icon: "/icons/secado-rapido.svg", title: "Secado Rápido" },
-              { icon: "/icons/ph-balanced.svg", title: "pH Balanced" },
-              { icon: "/icons/no-microplastics.svg", title: "No Microplásticos" },
-              { icon: "/icons/unisex.svg", title: "Unisex" },
-              { icon: "/icons/formulacion.svg", title: "Formulación Premium" },
-              { icon: "/icons/aceites-esenciales.svg", title: "Aceites Esenciales" },
-              { icon: "/icons/antibacteriales.svg", title: "Antibacterial" },
-              { icon: "/icons/5-estrellas.svg", title: "5 Estrellas" },
-              { icon: "/icons/testeado-tropico.svg", title: "Testeado en el Trópico" },
-              { icon: "/icons/fast-absorption.svg", title: "Absorción Rápida" },
-              { icon: "/icons/diseno-patentado.svg", title: "Diseño Patentado" },
-              { icon: "/icons/no-white-residue.svg", title: "No White Residue" },
-              { icon: "/icons/no-interfiere-piel.svg", title: "No Interfiere con la Piel" },
-            ].map((point, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-                className="flex flex-col items-center text-center group relative"
-              >
-                {/* Icon */}
-                <div className="transition-all duration-300 opacity-40 group-hover:opacity-100">
-                  <Image
-                    src={point.icon}
-                    alt={point.title}
-                    width={64}
-                    height={64}
-                    className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 lg:w-16 lg:h-16"
-                    style={{
-                      filter: 'brightness(0) saturate(100%) invert(13%) sepia(25%) saturate(3194%) hue-rotate(147deg) brightness(95%) contrast(95%)'
-                    }}
-                  />
-                </div>
-
-                {/* Tooltip - Only visible on hover */}
-                <div className="absolute -top-12 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transform scale-95 group-hover:scale-100 transition-all duration-200 pointer-events-none z-10">
-                  <div className="bg-koel-teal text-white px-3 py-2 rounded-lg shadow-lg relative">
-                    <p className="text-xs font-medium whitespace-nowrap uppercase tracking-wide">
-                      {point.title}
-                    </p>
-                    {/* Arrow */}
-                    <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-koel-teal rotate-45"></div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Bottom Sello Divider */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="flex items-center justify-center gap-6 mt-12 md:mt-16"
           >
             <div className="h-[1px] flex-1 bg-koel-teal/30" />
             <Image
@@ -660,6 +550,30 @@ El futuro del cuidado comienza aquí.`;
               }}
             />
             <div className="h-[1px] flex-1 bg-koel-teal/30" />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="text-left space-y-6 md:space-y-8"
+          >
+            <p className="text-lg md:text-xl lg:text-2xl xl:text-3xl tracking-[0.1em] md:tracking-[0.15em] uppercase text-koel-neutral-600 leading-relaxed md:leading-loose">
+              Hay una <span className="font-bold">nueva forma de cuidar</span> que no se impone, se siente. Se revela en los detalles, en lo que dejamos atrás y en lo que elegimos volver <span className="font-bold">esencial</span>.
+            </p>
+            <p className="text-lg md:text-xl lg:text-2xl xl:text-3xl tracking-[0.1em] md:tracking-[0.15em] uppercase text-koel-neutral-600 leading-relaxed md:leading-loose">
+              No responde a tendencias ni promesas. Responde a una necesidad silenciosa de <span className="font-bold">pensar distinto</span>.
+            </p>
+            <p className="text-lg md:text-xl lg:text-2xl xl:text-3xl tracking-[0.1em] md:tracking-[0.15em] uppercase text-koel-neutral-600 leading-relaxed md:leading-loose">
+              Somos un universo que respira <span className="font-bold">claridad</span>. Fusionamos lo <span className="font-bold">natural</span> con lo <span className="font-bold">inteligente</span>, transformando lo cotidiano en una experiencia suave, <span className="font-bold">minimal</span> y <span className="font-bold">consciente</span>.
+            </p>
+            <p className="text-lg md:text-xl lg:text-2xl xl:text-3xl tracking-[0.1em] md:tracking-[0.15em] uppercase text-koel-neutral-600 leading-relaxed md:leading-loose">
+              El <span className="font-bold">diseño</span> nos permite simplificar, resolver y elevar. Los hábitos se vuelven <span className="font-bold">rituales</span> más claros, más propios, más pensados.
+            </p>
+            <p className="text-lg md:text-xl lg:text-2xl xl:text-3xl tracking-[0.1em] md:tracking-[0.15em] uppercase text-koel-neutral-600 leading-relaxed md:leading-loose">
+              Cuidar no es un acto de consumo — Es <span className="font-bold">coherencia en movimiento</span>.
+            </p>
           </motion.div>
         </Container>
       </section>
@@ -692,23 +606,20 @@ El futuro del cuidado comienza aquí.`;
                 transition={{ delay: 0.2, duration: 0.8 }}
                 className="bg-[#FCF7EE] rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-8 lg:p-10 max-w-[280px] sm:max-w-xs md:max-w-sm lg:max-w-md w-full flex flex-col items-center text-center"
               >
-                {/* Isotipo Circle - Top */}
+                {/* Logo KOEL - Top */}
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.3, duration: 0.6 }}
                   className="mb-6 md:mb-8"
                 >
                   <Image
-                    src="/icons/isotipo-koel.svg"
-                    alt="Isotipo KOEL"
-                    width={64}
-                    height={64}
-                    className="w-8 h-8 md:w-10 md:h-10"
-                    style={{
-                      filter: 'brightness(0) saturate(100%) invert(13%) sepia(25%) saturate(3194%) hue-rotate(147deg) brightness(95%) contrast(95%)'
-                    }}
+                    src="/logos/logo-teal.svg"
+                    alt="KOEL"
+                    width={200}
+                    height={80}
+                    className="w-16 md:w-20 h-auto"
                   />
                 </motion.div>
 
@@ -751,7 +662,7 @@ El futuro del cuidado comienza aquí.`;
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.7, duration: 0.6 }}
-                  className="mb-12 md:mb-16"
+                  className="mb-8 md:mb-12"
                 >
                   <a
                     href="/#products"
@@ -763,20 +674,43 @@ El futuro del cuidado comienza aquí.`;
                   </a>
                 </motion.div>
 
-                {/* Logo */}
+                {/* Icons: Aromas naturales, 5 estrellas, 24 hours */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.8, duration: 0.6 }}
-                  className="pb-4 md:pb-6"
+                  className="flex items-center justify-center gap-4 md:gap-6"
                 >
                   <Image
-                    src="/logos/logo-teal.svg"
-                    alt="KOEL"
-                    width={200}
-                    height={80}
-                    className="w-16 md:w-20 h-auto"
+                    src="/icons/aromas-naturales.svg"
+                    alt="Aromas Naturales"
+                    width={40}
+                    height={40}
+                    className="w-6 h-6 md:w-8 md:h-8"
+                    style={{
+                      filter: 'brightness(0) saturate(100%) invert(13%) sepia(25%) saturate(3194%) hue-rotate(147deg) brightness(95%) contrast(95%)'
+                    }}
+                  />
+                  <Image
+                    src="/icons/5-estrellas.svg"
+                    alt="5 Estrellas"
+                    width={40}
+                    height={40}
+                    className="w-6 h-6 md:w-8 md:h-8"
+                    style={{
+                      filter: 'brightness(0) saturate(100%) invert(13%) sepia(25%) saturate(3194%) hue-rotate(147deg) brightness(95%) contrast(95%)'
+                    }}
+                  />
+                  <Image
+                    src="/icons/24-hour.svg"
+                    alt="24 Hours"
+                    width={40}
+                    height={40}
+                    className="w-6 h-6 md:w-8 md:h-8"
+                    style={{
+                      filter: 'brightness(0) saturate(100%) invert(13%) sepia(25%) saturate(3194%) hue-rotate(147deg) brightness(95%) contrast(95%)'
+                    }}
                   />
                 </motion.div>
               </motion.div>

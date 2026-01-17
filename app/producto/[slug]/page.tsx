@@ -289,6 +289,77 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
         </div>
       </Container>
 
+      {/* Icons Grid Section */}
+      <section className="bg-koel-neutral-50 py-16 md:py-24">
+        <Container>
+          <div className="grid grid-cols-5 sm:grid-cols-7 md:grid-cols-9 lg:grid-cols-9 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
+            {[
+              { icon: "/icons/eco-friendly.svg", title: "Eco-Friendly" },
+              { icon: "/icons/sistema-recargable.svg", title: "Sistema Recargable" },
+              { icon: "/icons/smart-system.svg", title: "Smart System" },
+              { icon: "/icons/libre-quimicos.svg", title: "Libre de Químicos" },
+              { icon: "/icons/ingredientes-naturales.svg", title: "Ingredientes Naturales" },
+              { icon: "/icons/24-hour.svg", title: "24 Hour Protection" },
+              { icon: "/icons/aromas-naturales.svg", title: "Aromas Naturales" },
+              { icon: "/icons/mayor-durabilidad.svg", title: "Mayor Durabilidad" },
+              { icon: "/icons/cruelty-free.svg", title: "Cruelty Free & Vegan" },
+              { icon: "/icons/dermatologicamente-probado.svg", title: "Dermatológicamente Probado" },
+              { icon: "/icons/biodegradables.svg", title: "Biodegradable" },
+              { icon: "/icons/hecho-colombia.svg", title: "Hecho en Colombia" },
+              { icon: "/icons/zero-waste.svg", title: "Zero Waste" },
+              { icon: "/icons/todos-tipos-piel.svg", title: "Todos los Tipos de Piel" },
+              { icon: "/icons/secado-rapido.svg", title: "Secado Rápido" },
+              { icon: "/icons/ph-balanced.svg", title: "pH Balanced" },
+              { icon: "/icons/no-microplastics.svg", title: "No Microplásticos" },
+              { icon: "/icons/unisex.svg", title: "Unisex" },
+              { icon: "/icons/formulacion.svg", title: "Formulación Premium" },
+              { icon: "/icons/aceites-esenciales.svg", title: "Aceites Esenciales" },
+              { icon: "/icons/antibacteriales.svg", title: "Antibacterial" },
+              { icon: "/icons/5-estrellas.svg", title: "5 Estrellas" },
+              { icon: "/icons/testeado-tropico.svg", title: "Testeado en el Trópico" },
+              { icon: "/icons/fast-absorption.svg", title: "Absorción Rápida" },
+              { icon: "/icons/diseno-patentado.svg", title: "Diseño Patentado" },
+              { icon: "/icons/no-white-residue.svg", title: "No White Residue" },
+              { icon: "/icons/no-interfiere-piel.svg", title: "No Interfiere con la Piel" },
+            ].map((point, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                className="flex flex-col items-center text-center group relative"
+              >
+                {/* Icon */}
+                <div className="transition-all duration-300 opacity-40 group-hover:opacity-100">
+                  <Image
+                    src={point.icon}
+                    alt={point.title}
+                    width={64}
+                    height={64}
+                    className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 lg:w-16 lg:h-16"
+                    style={{
+                      filter: 'brightness(0) saturate(100%) invert(13%) sepia(25%) saturate(3194%) hue-rotate(147deg) brightness(95%) contrast(95%)'
+                    }}
+                  />
+                </div>
+
+                {/* Tooltip - Only visible on hover */}
+                <div className="absolute -top-12 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transform scale-95 group-hover:scale-100 transition-all duration-200 pointer-events-none z-10">
+                  <div className="bg-koel-teal text-white px-3 py-2 rounded-lg shadow-lg relative">
+                    <p className="text-xs font-medium whitespace-nowrap uppercase tracking-wide">
+                      {point.title}
+                    </p>
+                    {/* Arrow */}
+                    <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-koel-teal rotate-45"></div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
       {/* Sustainability Section */}
       <section className="bg-koel-aqua py-16 md:py-24">
         <Container>
