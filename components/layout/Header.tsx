@@ -160,35 +160,67 @@ export default function Header({ forceScrolled = false }: HeaderProps) {
           </button>
         </div>
 
-        {/* Mobile Menu */}
-        <div
+        {/* Mobile Menu - Full Screen */}
+        <motion.div
+          initial={false}
+          animate={isMobileMenuOpen ? { opacity: 1, x: 0 } : { opacity: 0, x: '100%' }}
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
           className={cn(
-            'md:hidden overflow-hidden transition-all duration-300',
-            isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+            'fixed inset-0 bg-koel-neutral-100 z-50 md:hidden',
+            isMobileMenuOpen ? 'pointer-events-auto' : 'pointer-events-none'
           )}
         >
-          <nav className="flex flex-col gap-4 py-4">
-            {NAV_LINKS.map((link) => (
+          <div className="flex flex-col h-full">
+            {/* Header with close button */}
+            <div className="flex items-center justify-between px-6 h-16">
+              <Image
+                src="/logos/logo-teal.svg"
+                alt="KOEL"
+                width={80}
+                height={32}
+                className="w-16 h-auto"
+              />
               <button
-                key={link.href}
-                onClick={() => handleNavClick(link.href)}
-                className="text-left text-koel-neutral-700 hover:text-koel-teal transition-colors duration-200 font-display font-medium tracking-wide text-sm uppercase"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="p-2"
+                aria-label="Cerrar menú"
               >
-                {link.label}
-              </button>
-            ))}
-            <div className="flex gap-3 pt-2">
-              <button className="flex-1 flex items-center justify-center gap-2 py-3 bg-koel-teal text-white rounded-full hover:bg-koel-teal/90 transition-colors duration-200">
-                <ShoppingCart className="w-4 h-4" />
-                <span className="font-display text-sm uppercase tracking-wide">Carrito</span>
-              </button>
-              <button className="flex-1 flex items-center justify-center gap-2 py-3 border-2 border-koel-teal text-koel-teal rounded-full hover:bg-koel-teal/10 transition-colors duration-200">
-                <User className="w-4 h-4" />
-                <span className="font-display text-sm uppercase tracking-wide">Entrar</span>
+                <div className="w-6 h-6 flex items-center justify-center">
+                  <span className="w-full h-0.5 bg-koel-teal rotate-45 absolute" />
+                  <span className="w-full h-0.5 bg-koel-teal -rotate-45 absolute" />
+                </div>
               </button>
             </div>
-          </nav>
-        </div>
+
+            {/* Navigation */}
+            <nav className="flex flex-col flex-1 justify-center items-center gap-8 px-6">
+              {NAV_LINKS.map((link, index) => (
+                <motion.button
+                  key={link.href}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isMobileMenuOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                  onClick={() => handleNavClick(link.href)}
+                  className="text-koel-neutral-700 hover:text-koel-teal transition-colors duration-200 font-display font-medium tracking-wide text-2xl uppercase"
+                >
+                  {link.label}
+                </motion.button>
+              ))}
+            </nav>
+
+            {/* Bottom Actions */}
+            <div className="flex flex-col gap-3 p-6">
+              <button className="w-full flex items-center justify-center gap-2 py-4 bg-koel-teal text-white rounded-full hover:bg-koel-teal/90 transition-colors duration-200">
+                <ShoppingCart className="w-5 h-5" />
+                <span className="font-display text-base uppercase tracking-wide">Carrito</span>
+              </button>
+              <button className="w-full flex items-center justify-center gap-2 py-4 border-2 border-koel-teal text-koel-teal rounded-full hover:bg-koel-teal/10 transition-colors duration-200">
+                <User className="w-5 h-5" />
+                <span className="font-display text-base uppercase tracking-wide">Entrar</span>
+              </button>
+            </div>
+          </div>
+        </motion.div>
       </Container>
     </motion.header>
   );
