@@ -51,12 +51,13 @@ export default function LoadingScreen({
 
     let logos;
 
-    if (isAquaBackground) {
-      // Para loader azul: muchos logos con física de Gravity
-      // 80 círculos tanto en móvil como desktop
+    if (isAquaBackground || isYellowBackground) {
+      // Para loaders con física (azul y amarillo): 80 círculos cayendo
+      const logoIndex = isAquaBackground ? 2 : 5; // Logo 3 para azul, Logo 6 para amarillo
+
       logos = Array.from({ length: 80 }, (_, i) => ({
         id: i,
-        logo: KOEL_LOGOS[2], // Logo 3 siempre
+        logo: KOEL_LOGOS[logoIndex],
         x: Math.random() * 100, // Posición horizontal aleatoria
         y: -800 - (i * 40), // Empiezan muy arriba, fuera de pantalla
         delay: 0,
@@ -99,6 +100,8 @@ export default function LoadingScreen({
   }, [minDuration, onLoadingComplete, bgColor]);
 
   const isAquaBackground = bgColor === 'bg-koel-aqua';
+  const isYellowBackground = bgColor === 'bg-koel-yellow';
+  const usePhysics = isAquaBackground || isYellowBackground;
 
   return (
     <AnimatePresence mode="wait">
@@ -116,8 +119,8 @@ export default function LoadingScreen({
           }}
           className={`fixed inset-0 w-screen h-screen ${bgColor} z-[9999] flex items-center justify-center overflow-hidden`}
         >
-          {/* Logos background - Gravity physics for aqua, floating for others */}
-          {isAquaBackground ? (
+          {/* Logos background - Gravity physics for aqua/yellow, floating for others */}
+          {usePhysics ? (
             <Gravity
               gravity={{ x: 0, y: 2 }}
               className="w-full h-full"
@@ -205,8 +208,8 @@ export default function LoadingScreen({
             </div>
           )}
 
-          {/* Logo container - solo mostrar si NO es loader azul */}
-          {!isAquaBackground && (
+          {/* Logo container - solo mostrar si NO usa física */}
+          {!usePhysics && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
