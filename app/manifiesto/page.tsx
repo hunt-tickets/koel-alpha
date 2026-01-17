@@ -151,7 +151,7 @@ El futuro del cuidado comienza aquí.`;
                 <Image
                   src={
                     activeColor === 0 ? "/icons/sello-olive.svg" :
-                    activeColor === 5 ? "/icons/sello-yellow.svg" :
+                    activeColor === 5 ? "/icons/sello-hover-yellow.svg" :
                     "/icons/sello.svg"
                   }
                   alt="Sello KOEL"

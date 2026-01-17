@@ -85,19 +85,11 @@ export default function Header({ forceScrolled = false }: HeaderProps) {
               <button
                 key={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className={cn(
-                  'relative transition-all duration-300 font-display font-medium tracking-wide text-sm uppercase group',
-                  isScrolled
-                    ? 'text-koel-neutral-700 hover:text-koel-teal'
-                    : 'text-white hover:text-koel-aqua drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]'
-                )}
+                className="relative transition-all duration-300 font-display font-medium tracking-wide text-sm uppercase group text-koel-neutral-700 hover:text-koel-teal"
               >
                 {link.label}
                 {/* Underline effect */}
-                <span className={cn(
-                  'absolute bottom-0 left-0 h-[2px] w-0 group-hover:w-full transition-all duration-300',
-                  isScrolled ? 'bg-koel-teal' : 'bg-koel-aqua'
-                )} />
+                <span className="absolute bottom-0 left-0 h-[2px] w-0 group-hover:w-full transition-all duration-300 bg-koel-teal" />
               </button>
             ))}
           </nav>
@@ -105,23 +97,13 @@ export default function Header({ forceScrolled = false }: HeaderProps) {
           {/* Action Icons */}
           <div className="hidden md:flex items-center gap-4">
             <button
-              className={cn(
-                'p-2 rounded-full transition-all duration-200',
-                isScrolled
-                  ? 'text-koel-neutral-700 hover:text-koel-teal hover:bg-koel-teal/10'
-                  : 'text-white hover:text-koel-aqua drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]'
-              )}
+              className="p-2 rounded-full transition-all duration-200 text-koel-neutral-700 hover:text-koel-teal hover:bg-koel-teal/10"
               aria-label="Carrito"
             >
               <ShoppingCart className="w-5 h-5" />
             </button>
             <button
-              className={cn(
-                'p-2 rounded-full transition-all duration-200',
-                isScrolled
-                  ? 'text-koel-neutral-700 hover:text-koel-teal hover:bg-koel-teal/10'
-                  : 'text-white hover:text-koel-aqua drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]'
-              )}
+              className="p-2 rounded-full transition-all duration-200 text-koel-neutral-700 hover:text-koel-teal hover:bg-koel-teal/10"
               aria-label="Iniciar sesión"
             >
               <User className="w-5 h-5" />
@@ -137,22 +119,19 @@ export default function Header({ forceScrolled = false }: HeaderProps) {
             <div className="w-6 h-5 flex flex-col justify-between">
               <span
                 className={cn(
-                  'w-full h-0.5 transition-all duration-300',
-                  isScrolled ? 'bg-koel-teal' : 'bg-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]',
+                  'w-full h-0.5 transition-all duration-300 bg-koel-teal',
                   isMobileMenuOpen && 'rotate-45 translate-y-2'
                 )}
               />
               <span
                 className={cn(
-                  'w-full h-0.5 transition-all duration-300',
-                  isScrolled ? 'bg-koel-teal' : 'bg-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]',
+                  'w-full h-0.5 transition-all duration-300 bg-koel-teal',
                   isMobileMenuOpen && 'opacity-0'
                 )}
               />
               <span
                 className={cn(
-                  'w-full h-0.5 transition-all duration-300',
-                  isScrolled ? 'bg-koel-teal' : 'bg-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]',
+                  'w-full h-0.5 transition-all duration-300 bg-koel-teal',
                   isMobileMenuOpen && '-rotate-45 -translate-y-2'
                 )}
               />
