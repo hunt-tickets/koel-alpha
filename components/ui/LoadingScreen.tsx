@@ -52,8 +52,12 @@ export default function LoadingScreen({
     let logos;
 
     if (isAquaBackground) {
-      // Para loader azul: muchos logos con física de Gravity - llenar pantalla completa
-      logos = Array.from({ length: 80 }, (_, i) => ({
+      // Para loader azul: muchos logos con física de Gravity
+      // Menos círculos en móvil (40) vs desktop (80)
+      const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+      const count = isMobile ? 40 : 80;
+
+      logos = Array.from({ length: count }, (_, i) => ({
         id: i,
         logo: KOEL_LOGOS[2], // Logo 3 siempre
         x: Math.random() * 100, // Posición horizontal aleatoria
@@ -140,7 +144,7 @@ export default function LoadingScreen({
                   angle={Math.random() * 360}
                   bodyType="circle"
                 >
-                  <div className="w-32 h-32 md:w-40 md:h-40 pointer-events-none">
+                  <div className="w-20 h-20 md:w-40 md:h-40 pointer-events-none">
                     <Image
                       src={item.logo}
                       alt="KOEL"
