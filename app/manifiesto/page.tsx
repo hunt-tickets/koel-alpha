@@ -335,7 +335,8 @@ El futuro del cuidado comienza aquí.`;
                   style={{ perspective: '1500px' }}
                   onHoverStart={() => setIsFlipped(true)}
                   onHoverEnd={() => setIsFlipped(false)}
-                  onClick={() => setIsFlipped(!isFlipped)}
+                  onTouchStart={() => setIsFlipped(true)}
+                  onTouchEnd={() => setIsFlipped(false)}
                 >
                   <motion.div
                     animate={{ rotateY: isFlipped ? 180 : 0 }}
@@ -370,12 +371,18 @@ El futuro del cuidado comienza aquí.`;
                   {/* Isotipo KOEL */}
                   <div className="mb-6 sm:mb-8">
                     <Image
-                      src="/icons/isotipo-koel.svg"
+                      src={
+                        value.title === 'Sostenibilidad' ? '/icons/isotipo-yellow.svg' :
+                        value.title === 'Bienestar' ? '/icons/isotipo-teal.svg' :
+                        value.title === 'Diseño' ? '/icons/isotipo-teal.svg' :
+                        value.title === 'Innovación' ? '/icons/isotipo-aqua.svg' :
+                        '/icons/isotipo-koel.svg'
+                      }
                       alt="Isotipo KOEL"
                       width={64}
                       height={64}
                       className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16"
-                      style={{
+                      style={(value.title === 'Sostenibilidad' || value.title === 'Bienestar' || value.title === 'Diseño' || value.title === 'Innovación') ? {} : {
                         filter: value.textColor.includes('white')
                           ? 'brightness(0) invert(1)'
                           : value.textColor.includes('yellow')
@@ -414,12 +421,16 @@ El futuro del cuidado comienza aquí.`;
                   {/* Bottom Logo */}
                   <div className="flex items-center justify-center">
                     <Image
-                      src="/logos/logo-teal.svg"
+                      src={
+                        value.title === 'Sostenibilidad' ? '/logos/logo-yellow-full.svg' :
+                        value.title === 'Innovación' ? '/logos/logo-aqua-full.svg' :
+                        '/logos/logo-teal.svg'
+                      }
                       alt="KOEL"
                       width={60}
                       height={24}
-                      className="w-auto h-3 sm:h-4 opacity-70"
-                      style={{
+                      className="w-auto h-5 sm:h-4 opacity-70"
+                      style={(value.title === 'Sostenibilidad' || value.title === 'Innovación') ? {} : {
                         filter: value.textColor.includes('white')
                           ? 'brightness(0) invert(1)'
                           : value.textColor.includes('yellow')
@@ -450,12 +461,16 @@ El futuro del cuidado comienza aquí.`;
                     >
                       <div className="mb-4 sm:mb-6 -mt-2">
                         <Image
-                          src="/icons/sello-02.svg"
+                          src={
+                            value.title === 'Sostenibilidad' ? '/icons/sello-yellow.svg' :
+                            value.title === 'Innovación' ? '/icons/sello-aqua.svg' :
+                            '/icons/sello-02.svg'
+                          }
                           alt="Sello KOEL"
                           width={160}
                           height={160}
                           className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 mx-auto"
-                          style={{
+                          style={(value.title === 'Sostenibilidad' || value.title === 'Innovación') ? {} : {
                             filter: value.textColor.includes('white')
                               ? 'brightness(0) invert(1)'
                               : value.textColor.includes('yellow')
@@ -478,12 +493,16 @@ El futuro del cuidado comienza aquí.`;
                       </p>
                       <div className="mt-auto pt-6 sm:pt-8">
                         <Image
-                          src="/logos/logo-teal.svg"
+                          src={
+                            value.title === 'Sostenibilidad' ? '/logos/logo-yellow-full.svg' :
+                            value.title === 'Innovación' ? '/logos/logo-aqua-full.svg' :
+                            '/logos/logo-teal.svg'
+                          }
                           alt="KOEL"
                           width={60}
                           height={24}
-                          className="w-auto h-3 sm:h-4 opacity-70 mx-auto"
-                          style={{
+                          className="w-auto h-5 sm:h-4 opacity-70 mx-auto"
+                          style={(value.title === 'Sostenibilidad' || value.title === 'Innovación') ? {} : {
                             filter: value.textColor.includes('white')
                               ? 'brightness(0) invert(1)'
                               : value.textColor.includes('yellow')
