@@ -39,7 +39,7 @@ export default function HeroSection() {
         style={isMobile ? {} : { y: imageY }}
       >
         <Image
-          src="/images/hero-products.png"
+          src={isMobile ? "/images/hero-mobile.png" : "/images/hero-products.png"}
           alt="KOEL - Productos Naturales"
           fill
           priority

@@ -6,6 +6,7 @@ import {
   ProductSystemSection,
   VelocityBannerSection,
   TutorialSection,
+  SubscriptionSection,
   ValuePropSection,
   FAQSection,
 } from '@/components/sections';
@@ -40,6 +41,7 @@ export default function HomePage() {
         <ProductSystemSection />
         <VelocityBannerSection />
         <TutorialSection />
+        <SubscriptionSection />
         <ValuePropSection />
         <FAQSection />
       </main>
