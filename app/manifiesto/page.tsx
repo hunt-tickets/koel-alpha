@@ -267,6 +267,7 @@ El futuro del cuidado comienza aquí.`;
                   whileHover={{ scale: 1.5 }}
                   onHoverStart={() => setActiveColor(0)}
                   onHoverEnd={() => setActiveColor(null)}
+                  onClick={() => setActiveColor(activeColor === 0 ? null : 0)}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   className="w-4 h-4 md:w-5 md:h-5 rounded-full bg-koel-olive cursor-pointer"
                 />
@@ -274,6 +275,7 @@ El futuro del cuidado comienza aquí.`;
                   whileHover={{ scale: 1.5 }}
                   onHoverStart={() => setActiveColor(1)}
                   onHoverEnd={() => setActiveColor(null)}
+                  onClick={() => setActiveColor(activeColor === 1 ? null : 1)}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   className="w-4 h-4 md:w-5 md:h-5 rounded-full bg-koel-coral cursor-pointer"
                 />
@@ -281,6 +283,7 @@ El futuro del cuidado comienza aquí.`;
                   whileHover={{ scale: 1.5 }}
                   onHoverStart={() => setActiveColor(2)}
                   onHoverEnd={() => setActiveColor(null)}
+                  onClick={() => setActiveColor(activeColor === 2 ? null : 2)}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   className="w-4 h-4 md:w-5 md:h-5 rounded-full bg-koel-aqua cursor-pointer"
                 />
@@ -288,6 +291,7 @@ El futuro del cuidado comienza aquí.`;
                   whileHover={{ scale: 1.5 }}
                   onHoverStart={() => setActiveColor(3)}
                   onHoverEnd={() => setActiveColor(null)}
+                  onClick={() => setActiveColor(activeColor === 3 ? null : 3)}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   className="w-4 h-4 md:w-5 md:h-5 rounded-full bg-koel-teal cursor-pointer"
                 />
@@ -295,6 +299,7 @@ El futuro del cuidado comienza aquí.`;
                   whileHover={{ scale: 1.5 }}
                   onHoverStart={() => setActiveColor(4)}
                   onHoverEnd={() => setActiveColor(null)}
+                  onClick={() => setActiveColor(activeColor === 4 ? null : 4)}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   className="w-4 h-4 md:w-5 md:h-5 rounded-full bg-koel-pink cursor-pointer"
                 />
@@ -302,6 +307,7 @@ El futuro del cuidado comienza aquí.`;
                   whileHover={{ scale: 1.5 }}
                   onHoverStart={() => setActiveColor(5)}
                   onHoverEnd={() => setActiveColor(null)}
+                  onClick={() => setActiveColor(activeColor === 5 ? null : 5)}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   className="w-4 h-4 md:w-5 md:h-5 rounded-full bg-koel-yellow cursor-pointer"
                 />
@@ -325,10 +331,11 @@ El futuro del cuidado comienza aquí.`;
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="relative min-h-[400px] sm:min-h-[440px] md:min-h-[520px]"
+                  className="relative min-h-[400px] sm:min-h-[440px] md:min-h-[520px] cursor-pointer"
                   style={{ perspective: '1500px' }}
                   onHoverStart={() => setIsFlipped(true)}
                   onHoverEnd={() => setIsFlipped(false)}
+                  onClick={() => setIsFlipped(!isFlipped)}
                 >
                   <motion.div
                     animate={{ rotateY: isFlipped ? 180 : 0 }}

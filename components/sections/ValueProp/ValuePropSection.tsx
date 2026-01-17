@@ -146,36 +146,33 @@ export default function ValuePropSection() {
   ];
 
   return (
-    <section className="section-container bg-koel-teal">
+    <section className="py-12 md:py-16 bg-koel-teal">
       <Container>
-        {/* Header */}
+        {/* Decorative Header with Sello */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-12 md:mb-16"
+          className="text-center mx-auto"
         >
-          <p className="text-sm tracking-[0.3em] uppercase text-koel-aqua/70 mb-4 font-light">
-            Por qué elegir KOEL
-          </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-koel-aqua font-display">
-            Diseñado para ti,
-          </h2>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-koel-neutral-100 font-display">
-            creado para marcar la diferencia
-          </h2>
-          <p className="text-lg md:text-xl text-white/80 leading-relaxed">
-            Más que un desodorante, un compromiso con tu bienestar y el planeta.
-          </p>
+          {/* Top Divider */}
+          <div className="flex items-center justify-center gap-6">
+            <div className="h-[1px] w-16 md:w-24 bg-koel-aqua/30" />
+            <Image
+              src="/logos/logo-teal.svg"
+              alt="KOEL"
+              width={120}
+              height={48}
+              className="w-20 md:w-24 h-auto opacity-90"
+              style={{
+                filter: 'brightness(0) invert(98%) sepia(8%) saturate(524%) hue-rotate(329deg) brightness(103%) contrast(97%)'
+              }}
+            />
+            <div className="h-[1px] w-16 md:w-24 bg-koel-aqua/30" />
+          </div>
         </motion.div>
 
-        {/* Grid of Icons */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10 lg:gap-12">
-          {valuePoints.map((point, index) => (
-            <ValueItem key={index} {...point} index={index} />
-          ))}
-        </div>
       </Container>
     </section>
   );
