@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, cloneElement } from 'react';
 import { motion, useInView } from 'framer-motion';
 
 interface DecryptTextProps {
@@ -22,7 +22,8 @@ export default function DecryptText({ children, className = '', delay = 0 }: Dec
     if (typeof node === 'string') return node;
     if (Array.isArray(node)) return node.map(getPlainText).join('');
     if (node && typeof node === 'object' && 'props' in node) {
-      return getPlainText(node.props.children);
+      const element = node as { props: { children?: React.ReactNode } };
+      return getPlainText(element.props.children);
     }
     return '';
   };
@@ -81,20 +82,16 @@ export default function DecryptText({ children, className = '', delay = 0 }: Dec
     }
 
     if (Array.isArray(node)) {
-      return node.map((child, i) => (
-        <span key={i}>{rebuildWithDecryptedText(child, textIndex)}</span>
-      ));
+      return node.map((child, i) =>
+        rebuildWithDecryptedText(child, textIndex)
+      );
     }
 
-    if (node && typeof node === 'object' && 'props' in node && 'type' in node) {
-      const element = node as React.ReactElement;
-      return {
-        ...element,
-        props: {
-          ...element.props,
-          children: rebuildWithDecryptedText(element.props.children, textIndex)
-        }
-      };
+    if (node && typeof node === 'object' && 'type' in node && 'props' in node) {
+      const element = node as React.ReactElement<{ children?: React.ReactNode }>;
+      return cloneElement(element, {
+        children: rebuildWithDecryptedText(element.props.children, textIndex)
+      } as any);
     }
 
     return node;
