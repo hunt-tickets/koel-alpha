@@ -37,14 +37,16 @@ export default function LoadingScreen({
     delay: number;
     duration: number;
     rotation: number;
+    floatDistance: number;
+    floatDuration: number;
   }>>([]);
 
   useEffect(() => {
-    // Logos flotantes como stickers en posiciones fijas - cerca al contenido central
+    // Logos flotantes como stickers en posiciones fijas con movimientos diferentes
     const fixedPositions = [
-      { x: 35, y: 30, rotation: -12 },
-      { x: 65, y: 60, rotation: 8 },
-      { x: 50, y: 70, rotation: 5 },
+      { x: 20, y: 25, rotation: -12, floatDistance: 15, floatDuration: 2.8 },  // Top left - grande y lento
+      { x: 75, y: 30, rotation: 8, floatDistance: 8, floatDuration: 2.0 },     // Top right - pequeño y rápido
+      { x: 25, y: 75, rotation: 5, floatDistance: 12, floatDuration: 3.2 },    // Bottom left - mediano y muy lento
     ];
 
     // Seleccionar logo según el color de fondo
@@ -63,6 +65,8 @@ export default function LoadingScreen({
       delay: i * 0.1, // delay escalonado
       duration: 2.5, // duración fija
       rotation: pos.rotation,
+      floatDistance: pos.floatDistance,
+      floatDuration: pos.floatDuration,
     }));
     setFallingLogos(logos);
 
@@ -102,22 +106,32 @@ export default function LoadingScreen({
                   rotate: item.rotation,
                   opacity: 0
                 }}
-                animate={{
+                animate={isLoading ? {
                   scale: 1,
                   rotate: item.rotation,
                   opacity: 1,
-                  y: [0, -10, 0], // Flotación sutil arriba y abajo
+                  y: [0, -item.floatDistance, 0], // Flotación con distancia única
+                } : {
+                  scale: 0,
+                  rotate: item.rotation + 180,
+                  opacity: 0,
+                }}
+                exit={{
+                  scale: 0,
+                  rotate: item.rotation + 180,
+                  opacity: 0,
                 }}
                 transition={{
                   scale: { duration: 0.5, delay: item.delay },
                   opacity: { duration: 0.5, delay: item.delay },
+                  rotate: { duration: 0.6 },
                   y: {
-                    duration: item.duration,
-                    repeat: Infinity,
+                    duration: item.floatDuration,
+                    repeat: isLoading ? Infinity : 0,
                     ease: 'easeInOut',
                   }
                 }}
-                className="absolute w-20 h-20 md:w-24 md:h-24"
+                className="absolute w-16 h-16 md:w-20 md:h-20"
                 style={{
                   left: `${item.x}%`,
                   top: `${item.y}%`,
@@ -137,6 +151,7 @@ export default function LoadingScreen({
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{
               staggerChildren: 0.15,
               delayChildren: 0.2,
@@ -157,6 +172,7 @@ export default function LoadingScreen({
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
                 transition={{ duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
                 className={`${textColor} text-xs md:text-sm font-light tracking-[0.2em] uppercase`}
               >
@@ -165,6 +181,7 @@ export default function LoadingScreen({
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
                 transition={{ delay: 0.1, duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
                 className={`${textColor} text-xs md:text-sm font-light tracking-widest uppercase`}
               >
@@ -210,13 +227,20 @@ export default function LoadingScreen({
               {[0, 1, 2].map((index) => (
                 <motion.div
                   key={index}
-                  animate={{
+                  animate={isLoading ? {
                     scale: [1, 1.3, 1],
                     opacity: [0.5, 1, 0.5],
+                  } : {
+                    scale: 0,
+                    opacity: 0,
+                  }}
+                  exit={{
+                    scale: 0,
+                    opacity: 0,
                   }}
                   transition={{
                     duration: 1.2,
-                    repeat: Infinity,
+                    repeat: isLoading ? Infinity : 0,
                     delay: index * 0.15,
                     ease: 'easeInOut',
                   }}
