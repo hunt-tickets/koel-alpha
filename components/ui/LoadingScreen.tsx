@@ -1,7 +1,7 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { motion, AnimatePresence, useAnimationFrame } from 'framer-motion';
+import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
 
 interface LoadingScreenProps {
@@ -11,6 +11,17 @@ interface LoadingScreenProps {
   textColor?: string;
 }
 
+const KOEL_LOGOS = [
+  '/logos/koel-logo-1.svg',
+  '/logos/koel-logo-2.svg',
+  '/logos/koel-logo-3.svg',
+  '/logos/koel-logo-4.svg',
+  '/logos/koel-logo-5.svg',
+  '/logos/koel-logo-6.svg',
+  '/logos/koel-logo-7.svg',
+  '/logos/koel-logo-8.svg',
+];
+
 export default function LoadingScreen({
   onLoadingComplete,
   minDuration = 2000,
@@ -18,8 +29,27 @@ export default function LoadingScreen({
   textColor = 'text-koel-teal',
 }: LoadingScreenProps) {
   const [isLoading, setIsLoading] = useState(true);
+  const [fallingLogos, setFallingLogos] = useState<Array<{
+    id: number;
+    logo: string;
+    x: number;
+    delay: number;
+    duration: number;
+    rotation: number;
+  }>>([]);
 
   useEffect(() => {
+    // Generar logos cayendo
+    const logos = Array.from({ length: 15 }, (_, i) => ({
+      id: i,
+      logo: KOEL_LOGOS[i % KOEL_LOGOS.length],
+      x: Math.random() * 100, // posición horizontal random en %
+      delay: Math.random() * 2, // delay aleatorio entre 0-2s
+      duration: 3 + Math.random() * 2, // duración aleatoria entre 3-5s
+      rotation: Math.random() * 360, // rotación inicial aleatoria
+    }));
+    setFallingLogos(logos);
+
     const timer = setTimeout(() => {
       setIsLoading(false);
       setTimeout(() => {
@@ -46,6 +76,40 @@ export default function LoadingScreen({
           }}
           className={`fixed inset-0 w-screen h-screen ${bgColor} z-[9999] flex items-center justify-center overflow-hidden`}
         >
+          {/* Falling logos background */}
+          <div className="absolute inset-0 overflow-hidden">
+            {fallingLogos.map((item) => (
+              <motion.div
+                key={item.id}
+                initial={{
+                  y: -100,
+                  rotate: item.rotation,
+                  opacity: 0.6
+                }}
+                animate={{
+                  y: '110vh',
+                  rotate: item.rotation + 360,
+                  opacity: [0.6, 0.8, 0.6]
+                }}
+                transition={{
+                  duration: item.duration,
+                  delay: item.delay,
+                  repeat: Infinity,
+                  ease: 'linear',
+                }}
+                className="absolute w-16 h-16 md:w-20 md:h-20"
+                style={{ left: `${item.x}%` }}
+              >
+                <Image
+                  src={item.logo}
+                  alt="KOEL"
+                  fill
+                  className="object-contain"
+                />
+              </motion.div>
+            ))}
+          </div>
+
           {/* Logo container */}
           <motion.div
             initial={{ opacity: 0 }}
