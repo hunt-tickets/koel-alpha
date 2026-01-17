@@ -21,13 +21,13 @@ export default function FAQSection() {
           transition={{ duration: 0.6 }}
           className="max-w-2xl mb-12 md:mb-16"
         >
-          <p className="text-sm tracking-[0.3em] uppercase text-koel-neutral-500 mb-3 font-light">
+          <p className="text-base tracking-[0.3em] uppercase text-koel-neutral-500 mb-3 font-light">
             FAQ
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-koel-teal mb-4 font-display leading-tight">
+          <h2 className="text-3xl md:text-4xl font-bold text-koel-teal mb-4 font-display leading-tight">
             ¿Tienes dudas?
           </h2>
-          <p className="text-lg text-koel-neutral-600">
+          <p className="text-xl text-koel-neutral-600">
             Aquí respondemos las preguntas más comunes sobre KOEL
           </p>
         </motion.div>
@@ -47,14 +47,14 @@ export default function FAQSection() {
                 {/* Question Button */}
                 <button
                   onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                  className="w-full px-6 py-5 flex items-start justify-between text-left gap-4 hover:bg-koel-neutral-50/50 transition-colors duration-200"
+                  className="w-full px-6 py-5 flex items-start justify-between text-left gap-4 hover:scale-110 active:scale-95 transition-all duration-200 group"
                 >
-                  <span className="text-base md:text-lg font-semibold text-koel-teal flex-1 leading-snug">
+                  <span className="text-base md:text-lg font-semibold text-koel-teal flex-1 leading-snug font-heading group-hover:scale-[0.909] group-active:scale-[1.053] transition-transform duration-200">
                     {faq.question}
                   </span>
 
                   {/* Plus/Minus Icon */}
-                  <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center">
+                  <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center group-hover:scale-[0.909] group-active:scale-[1.053] transition-transform duration-200">
                     <AnimatePresence mode="wait">
                       {openIndex === index ? (
                         <motion.div

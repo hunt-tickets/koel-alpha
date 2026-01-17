@@ -41,13 +41,13 @@ export default function ProductSystemSection() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <p className="text-sm tracking-[0.3em] uppercase text-koel-neutral-500 mb-4 font-light">
+          <p className="text-base tracking-[0.3em] uppercase text-koel-neutral-500 mb-4 font-light">
             Nuestro sistema
           </p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-koel-teal mb-4 font-display">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-koel-teal mb-4 font-display">
             Diseño que cambia las reglas
           </h2>
-          <p className="text-lg md:text-xl text-koel-neutral-600 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl text-koel-neutral-600 max-w-2xl mx-auto">
             Elige el sistema que mejor se adapte a tus necesidades
           </p>
         </motion.div>

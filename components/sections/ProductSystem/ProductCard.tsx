@@ -86,7 +86,7 @@ export default function ProductCard({
               {formatPrice(price)}
             </span>
           </div>
-          <Button size="md" variant="primary" fullWidth>
+          <Button size="md" variant="primary" fullWidth className="uppercase">
             Comprar
           </Button>
         </div>

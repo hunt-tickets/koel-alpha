@@ -55,7 +55,7 @@ export default function TutorialSection() {
                     className="text-center"
                   >
                     {/* Step Number */}
-                    <div className="text-6xl md:text-9xl font-bold text-koel-teal/10 mb-3 md:mb-4 font-display leading-none">
+                    <div className="text-5xl md:text-7xl font-bold text-koel-teal/10 mb-3 md:mb-4 font-display leading-none">
                       {step.number}
                     </div>
 
@@ -71,12 +71,12 @@ export default function TutorialSection() {
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-xl md:text-3xl font-bold text-koel-teal mb-3 md:mb-4 font-display uppercase tracking-wide">
+                    <h3 className="text-lg md:text-2xl font-bold text-koel-teal mb-3 md:mb-4 font-display uppercase tracking-wide">
                       {step.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-sm md:text-base text-koel-neutral-600 leading-relaxed max-w-xs mx-auto">
+                    <p className="text-base md:text-lg text-koel-neutral-600 leading-relaxed max-w-xs mx-auto">
                       {step.description}
                     </p>
                   </motion.div>
@@ -92,7 +92,7 @@ export default function TutorialSection() {
               transition={{ duration: 0.8, delay: 1 }}
               className="mt-12 md:mt-20"
             >
-              <p className="text-xs md:text-sm tracking-[0.2em] uppercase text-koel-teal-dark/60">
+              <p className="text-sm md:text-base tracking-[0.2em] uppercase text-koel-teal-dark/60">
                 Menos de <span className="font-bold text-koel-teal">30 segundos</span> de principio a fin
               </p>
             </motion.div>

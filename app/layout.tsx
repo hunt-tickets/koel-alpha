@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { HeaderWrapper, Footer } from '@/components/layout';
-import { spaceGrotesk, outfit, inter } from './fonts';
+import { transducer, mazzard, miso } from './fonts';
 
 export const metadata: Metadata = {
   title: 'KOEL - El Primer Desodorante Recargable de Colombia',
@@ -34,8 +34,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`scroll-smooth ${spaceGrotesk.variable} ${outfit.variable} ${inter.variable}`}>
-      <body className={inter.className}>
+    <html lang="es" className={`scroll-smooth ${transducer.variable} ${mazzard.variable} ${miso.variable}`}>
+      <body className={miso.className}>
         <HeaderWrapper />
         {children}
         <Footer />

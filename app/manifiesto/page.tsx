@@ -6,6 +6,7 @@ import { Leaf, Heart, Sparkles, Users, Target, Lightbulb } from 'lucide-react';
 import Image from 'next/image';
 import { useRef, useState, useEffect } from 'react';
 import { LoadingScreen } from '@/components/ui';
+import Button from '@/components/ui/Button';
 
 export default function ManifiestoPage() {
   const [isLoading, setIsLoading] = useState(true);
@@ -180,7 +181,7 @@ El futuro del cuidado comienza aquí.`;
                 animate={{ opacity: isVisible ? 1 : 0 }}
                 transition={{ duration: 1, ease: 'easeOut', delay: 0.3 }}
                 style={{ y: yTitle }}
-                className={`text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-4 md:mb-6 font-display tracking-tight transition-colors duration-500 ${
+                className={`text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 md:mb-6 font-display tracking-tight transition-colors duration-500 ${
                   currentScheme ? currentScheme.text : 'text-koel-teal'
                 }`}
               >
@@ -399,12 +400,12 @@ El futuro del cuidado comienza aquí.`;
                   </div>
 
                   {/* Title */}
-                  <h3 className={`text-2xl sm:text-3xl md:text-4xl font-bold ${value.textColor} mb-2 font-display tracking-tight uppercase`}>
+                  <h3 className={`text-xl sm:text-2xl md:text-3xl font-bold ${value.textColor} mb-2 font-display tracking-tight uppercase`}>
                     {value.title}
                   </h3>
 
                   {/* Subtitle */}
-                  <p className={`text-xs sm:text-sm md:text-base tracking-[0.15em] sm:tracking-[0.2em] uppercase ${value.textColor} mb-4 sm:mb-6 opacity-80`}>
+                  <p className={`text-sm sm:text-base md:text-lg tracking-[0.15em] sm:tracking-[0.2em] uppercase ${value.textColor} mb-4 sm:mb-6 opacity-80`}>
                     {value.subtitle}
                   </p>
 
@@ -485,10 +486,10 @@ El futuro del cuidado comienza aquí.`;
                           }}
                         />
                       </div>
-                      <h4 className={`text-xl sm:text-2xl md:text-3xl font-bold ${value.textColor} mb-3 sm:mb-4 font-display uppercase`}>
+                      <h4 className={`text-lg sm:text-xl md:text-2xl font-bold ${value.textColor} mb-3 sm:mb-4 font-display uppercase`}>
                         {value.subtitle}
                       </h4>
-                      <p className={`text-xs sm:text-sm md:text-base ${value.textColor} leading-relaxed opacity-80 max-w-xs`}>
+                      <p className={`text-sm sm:text-base md:text-lg ${value.textColor} leading-relaxed opacity-80 max-w-xs`}>
                         {value.description}
                       </p>
                       <div className="mt-auto pt-6 sm:pt-8">
@@ -745,16 +746,22 @@ El futuro del cuidado comienza aquí.`;
                 </motion.p>
 
                 {/* CTA Button */}
-                <motion.a
-                  href="/#products"
+                <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.7, duration: 0.6 }}
-                  className="inline-flex items-center justify-center px-8 py-3 font-medium tracking-[0.2em] uppercase text-xs md:text-sm text-white bg-koel-teal rounded-full transition-all duration-300 hover:opacity-90 mb-12 md:mb-16"
+                  className="mb-12 md:mb-16"
                 >
-                  Ver Productos
-                </motion.a>
+                  <a
+                    href="/#products"
+                    className="inline-block"
+                  >
+                    <Button size="md" variant="primary" className="uppercase">
+                      Ver Productos
+                    </Button>
+                  </a>
+                </motion.div>
 
                 {/* Logo */}
                 <motion.div

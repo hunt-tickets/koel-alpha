@@ -141,10 +141,10 @@ export default function ScrollMorphHero() {
         }
         transition={{ duration: 1, delay: 0.3 }}
       >
-        <h1 className="text-3xl md:text-5xl font-bold text-koel-teal font-display mb-3">
+        <h1 className="text-2xl md:text-4xl font-bold text-koel-teal font-display mb-3">
           Manifiesto KOEL
         </h1>
-        <p className="text-sm md:text-base text-koel-neutral-700">
+        <p className="text-base md:text-lg text-koel-neutral-700">
           Nuestros valores, tu compromiso
         </p>
       </motion.div>

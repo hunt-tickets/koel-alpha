@@ -158,7 +158,7 @@ export default function LoadingScreen({
                 duration: 0.8,
                 ease: [0.34, 1.56, 0.64, 1],
               }}
-              className={`${textColor} text-sm md:text-base font-heading tracking-wide uppercase`}
+              className={`${textColor} text-base md:text-lg font-heading tracking-wide uppercase`}
             >
               A New Way to Care
             </motion.p>

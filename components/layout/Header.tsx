@@ -107,9 +107,11 @@ export default function Header({ forceScrolled = false }: HeaderProps) {
               <button
                 key={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className="relative transition-all duration-300 font-display font-medium tracking-wide text-sm uppercase group text-koel-neutral-700 hover:text-koel-teal"
+                className="relative transition-all duration-300 font-heading font-medium tracking-wide text-xs uppercase group text-koel-neutral-700 hover:scale-110 active:scale-95 inline-block"
               >
-                {link.label}
+                <span className="inline-block group-hover:scale-[0.909] group-active:scale-[1.053] transition-transform duration-200">
+                  {link.label}
+                </span>
                 {/* Underline effect */}
                 <span className="absolute bottom-0 left-0 h-[2px] w-0 group-hover:w-full transition-all duration-300 bg-koel-teal" />
               </button>
@@ -119,16 +121,16 @@ export default function Header({ forceScrolled = false }: HeaderProps) {
           {/* Action Icons */}
           <div className="hidden md:flex items-center gap-4">
             <button
-              className="p-2 rounded-full transition-all duration-200 text-koel-neutral-700 hover:text-koel-teal hover:bg-koel-teal/10"
+              className="p-2 rounded-full transition-all duration-200 text-koel-neutral-700 hover:scale-110 active:scale-95 group"
               aria-label="Carrito"
             >
-              <ShoppingCart className="w-5 h-5" />
+              <ShoppingCart className="w-5 h-5 group-hover:scale-[0.909] group-active:scale-[1.053] transition-transform duration-200" />
             </button>
             <button
-              className="p-2 rounded-full transition-all duration-200 text-koel-neutral-700 hover:text-koel-teal hover:bg-koel-teal/10"
+              className="p-2 rounded-full transition-all duration-200 text-koel-neutral-700 hover:scale-110 active:scale-95 group"
               aria-label="Iniciar sesión"
             >
-              <User className="w-5 h-5" />
+              <User className="w-5 h-5 group-hover:scale-[0.909] group-active:scale-[1.053] transition-transform duration-200" />
             </button>
           </div>
 
@@ -213,11 +215,11 @@ export default function Header({ forceScrolled = false }: HeaderProps) {
                 animate={isMobileMenuOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.4, delay: 0.15 + index * 0.1 }}
                 onClick={() => handleNavClick(link.href)}
-                className="group text-left border-b border-[#2C5A5A]/30 pb-4"
+                className="group text-left border-b border-[#2C5A5A]/30 pb-4 hover:scale-110 active:scale-95 transition-transform duration-200"
               >
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 group-hover:scale-[0.909] group-active:scale-[1.053] transition-transform duration-200">
                   <span className="w-2 h-2 rounded-full bg-[#4FB3A9]" />
-                  <span className="text-[#4FB3A9] font-display font-normal text-xl uppercase tracking-wider transition-all duration-300 group-hover:translate-x-2">
+                  <span className="text-[#4FB3A9] font-heading font-normal text-lg uppercase tracking-wider">
                     {link.label}
                   </span>
                 </div>

@@ -17,13 +17,13 @@ export default function Button({
   disabled,
   ...props
 }: ButtonProps) {
-  const baseStyles = 'inline-flex items-center justify-center font-medium rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
+  const baseStyles = 'inline-flex items-center justify-center font-heading rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-110 active:scale-95';
 
   const variants = {
-    primary: 'bg-koel-teal text-white hover:bg-koel-teal-dark focus:ring-koel-teal',
-    secondary: 'bg-koel-aqua text-white hover:bg-koel-aqua-dark focus:ring-koel-aqua',
-    outline: 'border-2 border-koel-teal text-koel-teal hover:bg-koel-teal hover:text-white focus:ring-koel-teal',
-    ghost: 'text-koel-teal hover:bg-koel-neutral-100 focus:ring-koel-teal',
+    primary: 'bg-koel-teal text-white focus:ring-koel-teal',
+    secondary: 'bg-koel-aqua text-white focus:ring-koel-aqua',
+    outline: 'border-2 border-koel-teal text-koel-teal focus:ring-koel-teal',
+    ghost: 'text-koel-teal focus:ring-koel-teal',
   };
 
   const sizes = {
@@ -39,12 +39,15 @@ export default function Button({
         variants[variant],
         sizes[size],
         fullWidth && 'w-full',
+        'group',
         className
       )}
       disabled={disabled}
       {...props}
     >
-      {children}
+      <span className="inline-block group-hover:scale-[0.909] group-active:scale-[1.053] transition-transform duration-200">
+        {children}
+      </span>
     </button>
   );
 }

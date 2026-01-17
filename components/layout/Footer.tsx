@@ -31,49 +31,49 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-koel-teal text-white">
-      <Container className="py-12 md:py-16">
+    <footer className="bg-koel-teal text-[#FCF7EE]">
+      <Container className="py-16 md:py-20">
         {/* Newsletter Bar */}
-        <div className="mb-12 pb-8 border-b border-white/10">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mb-16 pb-12 border-b border-[#FCF7EE]/20">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="text-center md:text-left">
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-1">
+              <h3 className="text-base md:text-lg font-bold font-display tracking-wide uppercase mb-1 text-[#FCF7EE]">
                 Mantente al día
               </h3>
-              <p className="text-sm text-white/70">
+              <p className="text-sm md:text-base tracking-[0.1em] uppercase text-[#FCF7EE]/70">
                 Recibe noticias, ofertas y tips de cuidado personal
               </p>
             </div>
 
             {!isSubmitted ? (
-              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
+              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="tu@email.com"
                   required
-                  className="px-4 py-2.5 rounded-full bg-white/10 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all text-sm md:w-64 backdrop-blur-sm"
+                  className="px-6 py-3 rounded-full bg-[#FCF7EE]/10 border-2 border-[#FCF7EE]/20 text-[#FCF7EE] placeholder:text-[#FCF7EE]/50 focus:outline-none focus:border-[#FCF7EE]/40 transition-all text-sm md:w-64 font-display tracking-wide backdrop-blur-sm"
                 />
                 <Button
                   type="submit"
                   size="sm"
                   disabled={isLoading}
-                  className="whitespace-nowrap !bg-koel-neutral-100 !text-koel-teal hover:!bg-koel-neutral-200"
+                  className="whitespace-nowrap !bg-[#FCF7EE] !text-koel-teal !font-heading !tracking-wider !uppercase"
                 >
                   {isLoading ? 'Enviando...' : 'Suscribirse'}
                 </Button>
               </form>
             ) : (
-              <div className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-white/10 backdrop-blur-sm">
-                <CheckCircle2 className="w-5 h-5 text-koel-aqua" />
-                <span className="text-sm font-medium">¡Gracias por suscribirte!</span>
+              <div className="flex items-center gap-2 px-6 py-3 rounded-full bg-[#FCF7EE]/10 border-2 border-[#FCF7EE]/20 backdrop-blur-sm">
+                <CheckCircle2 className="w-5 h-5 text-[#FCF7EE]" />
+                <span className="text-sm font-medium font-display tracking-wide uppercase text-[#FCF7EE]">¡Gracias por suscribirte!</span>
               </div>
             )}
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16">
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
             <Image
@@ -81,17 +81,17 @@ export default function Footer() {
               alt={BRAND.name}
               width={100}
               height={40}
-              className="w-24 h-auto mb-4 brightness-0 invert"
+              className="w-24 h-auto mb-6 brightness-0 invert"
             />
-            <p className="text-koel-neutral-200 mb-4 max-w-md">
+            <p className="text-[#FCF7EE]/80 mb-6 max-w-md text-base md:text-lg tracking-wide leading-relaxed">
               {BRAND.fullDescription}
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-3">
               <a
                 href={SOCIAL_LINKS.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200"
+                className="w-10 h-10 rounded-full border-2 border-[#FCF7EE]/20 hover:border-[#FCF7EE]/40 hover:bg-[#FCF7EE]/5 flex items-center justify-center transition-all duration-300"
                 aria-label="Instagram"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -102,7 +102,7 @@ export default function Footer() {
                 href={SOCIAL_LINKS.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200"
+                className="w-10 h-10 rounded-full border-2 border-[#FCF7EE]/20 hover:border-[#FCF7EE]/40 hover:bg-[#FCF7EE]/5 flex items-center justify-center transition-all duration-300"
                 aria-label="Facebook"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -113,7 +113,7 @@ export default function Footer() {
                 href={SOCIAL_LINKS.tiktok}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200"
+                className="w-10 h-10 rounded-full border-2 border-[#FCF7EE]/20 hover:border-[#FCF7EE]/40 hover:bg-[#FCF7EE]/5 flex items-center justify-center transition-all duration-300"
                 aria-label="TikTok"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -125,13 +125,13 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-semibold text-lg mb-4">Enlaces</h3>
-            <ul className="space-y-2">
+            <h3 className="font-display font-bold text-base md:text-lg tracking-wide uppercase mb-6 text-[#FCF7EE]">Enlaces</h3>
+            <ul className="space-y-3">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-koel-neutral-200 hover:text-white transition-colors duration-200"
+                    className="text-[#FCF7EE]/70 hover:text-[#FCF7EE] transition-colors duration-300 text-base md:text-lg tracking-wide"
                   >
                     {link.label}
                   </a>
@@ -142,36 +142,36 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="font-semibold text-lg mb-4">Contacto</h3>
-            <ul className="space-y-2 text-koel-neutral-200">
+            <h3 className="font-display font-bold text-base md:text-lg tracking-wide uppercase mb-6 text-[#FCF7EE]">Contacto</h3>
+            <ul className="space-y-3 text-[#FCF7EE]/70">
               <li>
                 <a
                   href={`mailto:${SOCIAL_LINKS.email}`}
-                  className="hover:text-white transition-colors duration-200"
+                  className="hover:text-[#FCF7EE] transition-colors duration-300 text-base md:text-lg tracking-wide"
                 >
                   {SOCIAL_LINKS.email}
                 </a>
               </li>
-              <li>Bogotá, Colombia</li>
+              <li className="text-base md:text-lg tracking-wide">Bogotá, Colombia</li>
             </ul>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-koel-neutral-200 text-sm">
+        <div className="mt-16 pt-10 border-t border-[#FCF7EE]/20 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-[#FCF7EE]/60 text-base md:text-lg tracking-wide">
             © {currentYear} {BRAND.name}. Todos los derechos reservados.
           </p>
-          <div className="flex gap-6 text-sm">
+          <div className="flex gap-8 text-base md:text-lg">
             <a
               href="#"
-              className="text-koel-neutral-200 hover:text-white transition-colors duration-200"
+              className="text-[#FCF7EE]/70 hover:text-[#FCF7EE] transition-colors duration-300 tracking-wide"
             >
               Privacidad
             </a>
             <a
               href="#"
-              className="text-koel-neutral-200 hover:text-white transition-colors duration-200"
+              className="text-[#FCF7EE]/70 hover:text-[#FCF7EE] transition-colors duration-300 tracking-wide"
             >
               Términos
             </a>

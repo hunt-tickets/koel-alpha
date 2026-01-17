@@ -43,10 +43,10 @@ export default function NewsletterSection() {
               <Mail className="w-8 h-8 text-white" strokeWidth={1.5} />
             </div>
 
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-koel-teal font-display">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-koel-teal font-display">
               Únete a la revolución sostenible
             </h2>
-            <p className="text-lg md:text-xl text-white/80 mb-8 leading-relaxed">
+            <p className="text-xl md:text-2xl text-white/80 mb-8 leading-relaxed">
               Recibe tips de cuidado personal, ofertas exclusivas y sé el primero en conocer nuevos productos.
             </p>
           </motion.div>
