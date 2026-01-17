@@ -33,20 +33,36 @@ export default function LoadingScreen({
     id: number;
     logo: string;
     x: number;
+    y: number;
     delay: number;
     duration: number;
     rotation: number;
   }>>([]);
 
   useEffect(() => {
-    // Generar logos cayendo
-    const logos = Array.from({ length: 15 }, (_, i) => ({
+    // Logos flotantes como stickers en posiciones fijas - cerca al contenido central
+    const fixedPositions = [
+      { x: 35, y: 30, rotation: -12 },
+      { x: 65, y: 60, rotation: 8 },
+      { x: 50, y: 70, rotation: 5 },
+    ];
+
+    // Seleccionar logo según el color de fondo
+    const isYellowBackground = bgColor === 'bg-koel-yellow';
+    const isAquaBackground = bgColor === 'bg-koel-aqua';
+
+    const logos = fixedPositions.map((pos, i) => ({
       id: i,
-      logo: KOEL_LOGOS[i % KOEL_LOGOS.length],
-      x: Math.random() * 100, // posición horizontal random en %
-      delay: Math.random() * 2, // delay aleatorio entre 0-2s
-      duration: 3 + Math.random() * 2, // duración aleatoria entre 3-5s
-      rotation: Math.random() * 360, // rotación inicial aleatoria
+      logo: isYellowBackground
+        ? KOEL_LOGOS[5]  // Logo 6 es index 5
+        : isAquaBackground
+        ? KOEL_LOGOS[2]  // Logo 3 es index 2
+        : KOEL_LOGOS[i % KOEL_LOGOS.length],
+      x: pos.x,
+      y: pos.y,
+      delay: i * 0.1, // delay escalonado
+      duration: 2.5, // duración fija
+      rotation: pos.rotation,
     }));
     setFallingLogos(logos);
 
@@ -58,7 +74,7 @@ export default function LoadingScreen({
     }, minDuration);
 
     return () => clearTimeout(timer);
-  }, [minDuration, onLoadingComplete]);
+  }, [minDuration, onLoadingComplete, bgColor]);
 
   return (
     <AnimatePresence mode="wait">
@@ -82,23 +98,30 @@ export default function LoadingScreen({
               <motion.div
                 key={item.id}
                 initial={{
-                  y: -100,
+                  scale: 0,
                   rotate: item.rotation,
-                  opacity: 0.6
+                  opacity: 0
                 }}
                 animate={{
-                  y: '110vh',
-                  rotate: item.rotation + 360,
-                  opacity: [0.6, 0.8, 0.6]
+                  scale: 1,
+                  rotate: item.rotation,
+                  opacity: 1,
+                  y: [0, -10, 0], // Flotación sutil arriba y abajo
                 }}
                 transition={{
-                  duration: item.duration,
-                  delay: item.delay,
-                  repeat: Infinity,
-                  ease: 'linear',
+                  scale: { duration: 0.5, delay: item.delay },
+                  opacity: { duration: 0.5, delay: item.delay },
+                  y: {
+                    duration: item.duration,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }
                 }}
-                className="absolute w-16 h-16 md:w-20 md:h-20"
-                style={{ left: `${item.x}%` }}
+                className="absolute w-20 h-20 md:w-24 md:h-24"
+                style={{
+                  left: `${item.x}%`,
+                  top: `${item.y}%`,
+                }}
               >
                 <Image
                   src={item.logo}
@@ -164,24 +187,13 @@ export default function LoadingScreen({
               }}
               className="relative w-48 h-16 md:w-64 md:h-24"
             >
-              {/* Floating animation for logo */}
-              <motion.div
-                animate={{ y: [0, -12, 0] }}
-                transition={{
-                  duration: 2.5,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-                className="w-full h-full"
-              >
-                <Image
-                  src="/logos/logo-teal.svg"
-                  alt="KOEL Logo"
-                  fill
-                  className="object-contain"
-                  priority
-                />
-              </motion.div>
+              <Image
+                src="/logos/logo-teal.svg"
+                alt="KOEL Logo"
+                fill
+                className="object-contain"
+                priority
+              />
             </motion.div>
 
             {/* Loading dots */}
