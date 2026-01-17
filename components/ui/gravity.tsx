@@ -317,8 +317,8 @@ const Gravity = forwardRef<GravityRef, GravityProps>(
           },
         }),
 
-        // Right wall - moved inside
-        Bodies.rectangle(width - 10, height / 2, 40, height * 2, {
+        // Right wall - full height coverage
+        Bodies.rectangle(width - 10, 0, 40, height * 4, {
           isStatic: true,
           friction: 1,
           render: {
@@ -326,8 +326,8 @@ const Gravity = forwardRef<GravityRef, GravityProps>(
           },
         }),
 
-        // Left wall - moved inside
-        Bodies.rectangle(10, height / 2, 40, height * 2, {
+        // Left wall - full height coverage
+        Bodies.rectangle(10, 0, 40, height * 4, {
           isStatic: true,
           friction: 1,
           render: {
