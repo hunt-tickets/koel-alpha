@@ -53,11 +53,8 @@ export default function LoadingScreen({
 
     if (isAquaBackground) {
       // Para loader azul: muchos logos con física de Gravity
-      // Menos círculos en móvil (40) vs desktop (80)
-      const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-      const count = isMobile ? 40 : 80;
-
-      logos = Array.from({ length: count }, (_, i) => ({
+      // 80 círculos tanto en móvil como desktop
+      logos = Array.from({ length: 80 }, (_, i) => ({
         id: i,
         logo: KOEL_LOGOS[2], // Logo 3 siempre
         x: Math.random() * 100, // Posición horizontal aleatoria
