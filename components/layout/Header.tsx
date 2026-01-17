@@ -40,6 +40,19 @@ export default function Header({ forceScrolled = false }: HeaderProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [forceScrolled]);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
+
   const handleNavClick = (href: string) => {
     // Check if it's an anchor link or a page link
     if (href.startsWith('#')) {
@@ -146,9 +159,10 @@ export default function Header({ forceScrolled = false }: HeaderProps) {
         animate={isMobileMenuOpen ? { opacity: 1, x: 0 } : { opacity: 0, x: '100%' }}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
         className={cn(
-          'fixed inset-0 bg-koel-neutral-100 z-[100] md:hidden',
+          'fixed top-0 left-0 right-0 bottom-0 bg-koel-neutral-100 z-[100] md:hidden overflow-hidden',
           isMobileMenuOpen ? 'pointer-events-auto' : 'pointer-events-none'
         )}
+        style={{ position: 'fixed', width: '100vw', height: '100vh' }}
       >
         <div className="flex flex-col h-full">
           {/* Header with close button */}
