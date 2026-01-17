@@ -174,5 +174,5 @@ export const SOCIAL_LINKS = {
 export const NAV_LINKS = [
   { label: 'Productos', href: '#products' },
   { label: 'Manifiesto', href: '/manifiesto' },
-  { label: 'FAQ', href: '#faq' },
+  { label: 'Tutorial', href: '#tutorial' },
 ] as const;

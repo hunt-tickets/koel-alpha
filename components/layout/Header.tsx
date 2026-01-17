@@ -54,12 +54,20 @@ export default function Header({ forceScrolled = false }: HeaderProps) {
   }, [isMobileMenuOpen]);
 
   const handleNavClick = (href: string) => {
+    setIsMobileMenuOpen(false);
+
     // Check if it's an anchor link or a page link
     if (href.startsWith('#')) {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-        setIsMobileMenuOpen(false);
+      // Check if we're on the home page
+      if (window.location.pathname === '/') {
+        // We're on home page, scroll to anchor
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else {
+        // We're on another page, navigate to home with anchor
+        window.location.href = '/' + href;
       }
     } else {
       // It's a page link, navigate normally

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   HeroSection,
   ProductSystemSection,
@@ -13,6 +13,19 @@ import { LoadingScreen } from '@/components/ui';
 
 export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Check if there's a hash in the URL and scroll to it after loading
+    if (!isLoading && window.location.hash) {
+      // Small delay to ensure content is rendered
+      setTimeout(() => {
+        const element = document.querySelector(window.location.hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  }, [isLoading]);
 
   return (
     <>

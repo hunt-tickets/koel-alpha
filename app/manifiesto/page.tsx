@@ -126,7 +126,7 @@ El futuro del cuidado comienza aquí.`;
       >
         <motion.div style={{ opacity }} className="w-full">
           <Container className="relative z-10">
-            <div className="text-center max-w-4xl mx-auto py-12 px-4 md:py-20">
+            <div className="text-center max-w-4xl mx-auto py-20 px-4 md:py-20">
               {/* Top Label */}
               <motion.p
                 initial={{ opacity: 0 }}
@@ -331,8 +331,8 @@ El futuro del cuidado comienza aquí.`;
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="relative min-h-[400px] sm:min-h-[440px] md:min-h-[520px] cursor-pointer"
-                  style={{ perspective: '1500px' }}
+                  className="relative min-h-[400px] sm:min-h-[440px] md:min-h-[520px] cursor-pointer select-none"
+                  style={{ perspective: '1500px', WebkitUserSelect: 'none', userSelect: 'none' }}
                   onHoverStart={() => setIsFlipped(true)}
                   onHoverEnd={() => setIsFlipped(false)}
                   onTouchStart={() => setIsFlipped(true)}
@@ -573,7 +573,7 @@ El futuro del cuidado comienza aquí.`;
           </motion.div>
 
           {/* Grid of Icons - Same Section */}
-          <div className="grid grid-cols-6 sm:grid-cols-7 md:grid-cols-9 lg:grid-cols-9 gap-3 sm:gap-4 md:gap-6 lg:gap-8 mt-12 md:mt-24 lg:mt-32">
+          <div className="grid grid-cols-5 sm:grid-cols-7 md:grid-cols-9 lg:grid-cols-9 gap-3 sm:gap-4 md:gap-6 lg:gap-8 mt-12 md:mt-24 lg:mt-32">
             {[
               { icon: "/icons/eco-friendly.svg", title: "Eco-Friendly" },
               { icon: "/icons/sistema-recargable.svg", title: "Sistema Recargable" },
@@ -671,7 +671,7 @@ El futuro del cuidado comienza aquí.`;
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative w-full aspect-[4/3] sm:aspect-[16/9] md:aspect-[21/9] rounded-xl md:rounded-2xl overflow-hidden"
+            className="relative w-full aspect-[3/4] sm:aspect-[16/9] md:aspect-[21/9] rounded-xl md:rounded-2xl overflow-hidden"
           >
             {/* Background Gradient */}
             <Image
@@ -762,6 +762,7 @@ El futuro del cuidado comienza aquí.`;
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.8, duration: 0.6 }}
+                  className="pb-4 md:pb-6"
                 >
                   <Image
                     src="/logos/logo-teal.svg"
