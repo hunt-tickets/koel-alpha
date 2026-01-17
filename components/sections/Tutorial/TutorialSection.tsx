@@ -1,104 +1,105 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Sparkles } from 'lucide-react';
 import Image from 'next/image';
 import Container from '@/components/ui/Container';
 import { TUTORIAL_STEPS } from '@/lib/constants';
 
 export default function TutorialSection() {
   return (
-    <section id="tutorial" className="section-container bg-koel-neutral-100">
+    <section
+      id="tutorial"
+      className="bg-[#FCF7EE] py-16 md:py-20"
+    >
       <Container>
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-2xl mb-12 md:mb-16"
-        >
-          <p className="text-sm tracking-[0.3em] uppercase text-koel-neutral-500 mb-3 font-light">
-            Cómo funciona
-          </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-koel-teal font-display leading-tight">
-            Tres pasos. Cero complicaciones.
-          </h2>
-        </motion.div>
+        <div className="text-center max-w-5xl mx-auto">
+            {/* Divider with Logo */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="flex items-center justify-center gap-6 mb-12"
+            >
+              <div className="w-16 md:w-24 h-[1px] bg-koel-teal/30" />
+              <Image
+                src="/icons/isotipo-koel.svg"
+                alt="KOEL Isotipo"
+                width={32}
+                height={32}
+                className="w-6 h-6 md:w-8 md:h-8"
+                style={{
+                  filter: 'brightness(0) saturate(100%) invert(13%) sepia(25%) saturate(3194%) hue-rotate(147deg) brightness(95%) contrast(95%)'
+                }}
+              />
+              <div className="w-16 md:w-24 h-[1px] bg-koel-teal/30" />
+            </motion.div>
 
-        {/* Steps Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          {TUTORIAL_STEPS.map((step, index) => {
-            const iconSrc =
-              index === 0
-                ? '/icons/abre.svg'
-                : index === 1
-                ? '/icons/encaja.svg'
-                : '/icons/disfruta.svg';
+            {/* Steps - Minimalist */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 max-w-4xl mx-auto">
+              {TUTORIAL_STEPS.map((step, index) => {
+                const iconSrc =
+                  index === 0
+                    ? '/icons/abre.svg'
+                    : index === 1
+                    ? '/icons/encaja.svg'
+                    : '/icons/disfruta.svg';
 
-            const iconAlt =
-              index === 0 ? 'Abre' : index === 1 ? 'Encaja' : 'Disfruta';
+                const iconAlt =
+                  index === 0 ? 'Abre' : index === 1 ? 'Encaja' : 'Disfruta';
 
-            return (
-              <motion.div
-                key={step.number}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group relative"
-              >
-                {/* Card */}
-                <div className="relative h-full rounded-2xl border border-koel-neutral-200 bg-white p-8 transition-all duration-300 hover:border-koel-aqua/40 hover:shadow-lg">
-                  {/* Step Number Badge */}
-                  <div className="absolute -top-3 -left-3 w-12 h-12 rounded-full bg-koel-teal flex items-center justify-center shadow-md">
-                    <span className="text-white font-bold text-lg font-display">
+                return (
+                  <motion.div
+                    key={step.number}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
+                    className="text-center"
+                  >
+                    {/* Step Number */}
+                    <div className="text-8xl md:text-9xl font-bold text-koel-teal/10 mb-4 font-display leading-none">
                       {step.number}
-                    </span>
-                  </div>
+                    </div>
 
-                  {/* Icon */}
-                  <div className="mb-6 mt-2">
-                    <Image
-                      src={iconSrc}
-                      alt={iconAlt}
-                      width={64}
-                      height={64}
-                      className="w-16 h-16"
-                    />
-                  </div>
+                    {/* Icon */}
+                    <div className="mb-6 flex justify-center">
+                      <Image
+                        src={iconSrc}
+                        alt={iconAlt}
+                        width={80}
+                        height={80}
+                        className="w-16 h-16 md:w-20 md:h-20"
+                      />
+                    </div>
 
-                  {/* Content */}
-                  <h3 className="text-xl md:text-2xl font-bold text-koel-teal mb-3 font-display">
-                    {step.title}
-                  </h3>
-                  <p className="text-base text-koel-neutral-600 leading-relaxed">
-                    {step.description}
-                  </p>
+                    {/* Title */}
+                    <h3 className="text-2xl md:text-3xl font-bold text-koel-teal mb-4 font-display uppercase tracking-wide">
+                      {step.title}
+                    </h3>
 
-                  {/* Decorative Element */}
-                  <div className="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-tl from-koel-aqua/5 to-transparent rounded-tl-full" />
-                </div>
-              </motion.div>
-            );
-          })}
+                    {/* Description */}
+                    <p className="text-sm md:text-base text-koel-neutral-600 leading-relaxed max-w-xs mx-auto">
+                      {step.description}
+                    </p>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* Bottom Info */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 1 }}
+              className="mt-20"
+            >
+              <p className="text-xs md:text-sm tracking-[0.2em] uppercase text-koel-teal-dark/60">
+                Menos de <span className="font-bold text-koel-teal">30 segundos</span> de principio a fin
+              </p>
+            </motion.div>
         </div>
-
-        {/* Bottom Info */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-12 text-center"
-        >
-          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-koel-neutral-50 border border-koel-neutral-200">
-            <Sparkles className="w-4 h-4 text-koel-aqua" strokeWidth={2} />
-            <span className="text-sm text-koel-neutral-600">
-              Menos de <span className="font-semibold text-koel-teal">30 segundos</span> de principio a fin
-            </span>
-          </div>
-        </motion.div>
       </Container>
     </section>
   );
