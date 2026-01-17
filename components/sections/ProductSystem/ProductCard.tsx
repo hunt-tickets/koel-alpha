@@ -7,6 +7,7 @@ import { ChevronDown } from 'lucide-react';
 import { formatPrice } from '@/lib/utils';
 import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
+import { useRouter } from 'next/navigation';
 
 interface ProductFeature {
   icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
@@ -22,6 +23,7 @@ interface ProductCardProps {
   price: number;
   accentColor: string;
   image: string;
+  slug: string;
   isExpanded?: boolean;
   onToggleExpand?: () => void;
 }
@@ -34,9 +36,11 @@ export default function ProductCard({
   price,
   accentColor,
   image,
+  slug,
   isExpanded = false,
   onToggleExpand,
 }: ProductCardProps) {
+  const router = useRouter();
   const [isHovered, setIsHovered] = useState(false);
 
   // Scroll-based rotation for badge
@@ -86,7 +90,17 @@ export default function ProductCard({
               {formatPrice(price)}
             </span>
           </div>
-          <Button size="md" variant="primary" fullWidth className="uppercase">
+          <Button
+            size="md"
+            variant="primary"
+            fullWidth
+            className="uppercase"
+            onClick={() => {
+              console.log('Slug:', slug);
+              console.log('Navigating to:', `/producto/${slug}`);
+              router.push(`/producto/${slug}`);
+            }}
+          >
             Comprar
           </Button>
         </div>

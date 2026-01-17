@@ -32,6 +32,8 @@ export default function HomePage() {
       <LoadingScreen
         minDuration={2500}
         onLoadingComplete={() => setIsLoading(false)}
+        bgColor="bg-koel-neutral-100"
+        textColor="text-koel-teal"
       />
       <main className="min-h-screen">
         <HeroSection />

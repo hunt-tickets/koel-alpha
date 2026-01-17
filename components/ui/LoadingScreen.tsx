@@ -48,6 +48,7 @@ export default function LoadingScreen({
     // Seleccionar logo según el color de fondo
     const isYellowBackground = bgColor === 'bg-koel-yellow';
     const isAquaBackground = bgColor === 'bg-koel-aqua';
+    const isBeigeBackground = bgColor === 'bg-koel-neutral-100';
 
     let logos;
 
@@ -66,6 +67,19 @@ export default function LoadingScreen({
         floatDistance: 0,
         floatDuration: 0,
       }));
+    } else if (isBeigeBackground) {
+      // Para loader beige: 80 círculos cayendo con todos los colores
+      logos = Array.from({ length: 80 }, (_, i) => ({
+        id: i,
+        logo: KOEL_LOGOS[i % KOEL_LOGOS.length], // Rotar entre todos los logos
+        x: Math.random() * 100,
+        y: -800 - (i * 40),
+        delay: 0,
+        duration: 0,
+        rotation: 0,
+        floatDistance: 0,
+        floatDuration: 0,
+      }));
     } else {
       // Para otros loaders: stickers flotantes
       const fixedPositions = [
@@ -76,7 +90,7 @@ export default function LoadingScreen({
 
       logos = fixedPositions.map((pos, i) => ({
         id: i,
-        logo: isYellowBackground ? KOEL_LOGOS[5] : KOEL_LOGOS[i % KOEL_LOGOS.length],
+        logo: KOEL_LOGOS[i % KOEL_LOGOS.length],
         x: pos.x,
         y: pos.y,
         delay: i * 0.1,
@@ -101,7 +115,8 @@ export default function LoadingScreen({
 
   const isAquaBackground = bgColor === 'bg-koel-aqua';
   const isYellowBackground = bgColor === 'bg-koel-yellow';
-  const usePhysics = isAquaBackground || isYellowBackground;
+  const isBeigeBackground = bgColor === 'bg-koel-neutral-100';
+  const usePhysics = isAquaBackground || isYellowBackground || isBeigeBackground;
 
   return (
     <AnimatePresence mode="wait">

@@ -27,6 +27,7 @@ export const PRODUCTS = [
     price: 12000,
     accentColor: 'from-koel-olive/30 to-koel-aqua/30',
     image: '/images/products/pod-bamboo.jpg',
+    slug: 'lavanda',
   },
   {
     id: 'pod-ginger',
@@ -42,6 +43,7 @@ export const PRODUCTS = [
     price: 12000,
     accentColor: 'from-koel-coral/30 to-koel-coral-light/30',
     image: '/images/products/pod-ginger.jpg',
+    slug: 'citrico',
   },
   {
     id: 'case',
@@ -57,6 +59,7 @@ export const PRODUCTS = [
     price: 35000,
     accentColor: 'from-koel-aqua/30 to-koel-olive/30',
     image: '/images/products/case.jpg',
+    slug: 'coco',
   },
 ] as const;
 
