@@ -23,14 +23,11 @@ export default function TutorialSection() {
             >
               <div className="w-16 md:w-24 h-[1px] bg-koel-teal/30" />
               <Image
-                src="/icons/isotipo-koel.svg"
-                alt="KOEL Isotipo"
-                width={32}
-                height={32}
-                className="w-6 h-6 md:w-8 md:h-8"
-                style={{
-                  filter: 'brightness(0) saturate(100%) invert(13%) sepia(25%) saturate(3194%) hue-rotate(147deg) brightness(95%) contrast(95%)'
-                }}
+                src="/icons/divider-icon.svg"
+                alt="KOEL"
+                width={64}
+                height={64}
+                className="w-12 h-12 md:w-16 md:h-16"
               />
               <div className="w-16 md:w-24 h-[1px] bg-koel-teal/30" />
             </motion.div>
