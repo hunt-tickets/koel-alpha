@@ -370,7 +370,7 @@ El futuro del cuidado comienza aquí.`;
                   {/* Isotipo KOEL */}
                   <div className="mb-6 sm:mb-8">
                     <Image
-                      src="/icons/isotipo.svg"
+                      src="/icons/isotipo-koel.svg"
                       alt="Isotipo KOEL"
                       width={64}
                       height={64}
@@ -681,7 +681,7 @@ El futuro del cuidado comienza aquí.`;
                   className="mb-6 md:mb-8"
                 >
                   <Image
-                    src="/icons/isotipo.svg"
+                    src="/icons/isotipo-koel.svg"
                     alt="Isotipo KOEL"
                     width={64}
                     height={64}
