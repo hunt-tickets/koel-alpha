@@ -78,9 +78,10 @@ export default function Header({ forceScrolled = false }: HeaderProps) {
           ? 'bg-koel-neutral-100/95 backdrop-blur-md'
           : 'bg-transparent'
       )}
+      style={{ paddingTop: 'env(safe-area-inset-top)' }}
     >
       <Container>
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-16 md:h-20" style={{ paddingTop: '0' }}>
           {/* Logo */}
           <a href="/" className="flex items-center cursor-pointer group">
             <Image
@@ -157,50 +158,85 @@ export default function Header({ forceScrolled = false }: HeaderProps) {
       <motion.div
         initial={false}
         animate={isMobileMenuOpen ? { opacity: 1, x: 0 } : { opacity: 0, x: '100%' }}
-        transition={{ duration: 0.3, ease: 'easeInOut' }}
+        transition={{ duration: 0.4, ease: [0.34, 1.56, 0.64, 1] }}
         className={cn(
-          'fixed top-0 left-0 right-0 bottom-0 bg-koel-neutral-100 z-[100] md:hidden overflow-hidden',
+          'fixed top-0 left-0 right-0 bottom-0 bg-[#FCF7EE] z-[100] md:hidden overflow-y-auto',
           isMobileMenuOpen ? 'pointer-events-auto' : 'pointer-events-none'
         )}
-        style={{ position: 'fixed', width: '100vw', height: '100vh' }}
+        style={{ position: 'fixed', width: '100vw', height: '100vh', paddingTop: 'env(safe-area-inset-top)' }}
       >
-        <div className="flex flex-col h-full">
+        <div className="flex flex-col min-h-screen px-6 py-8">
           {/* Header with close button */}
-          <div className="flex items-center justify-between px-6 h-16">
-            <Image
-              src="/logos/logo-teal.svg"
-              alt="KOEL"
-              width={80}
-              height={32}
-              className="w-16 h-auto"
-            />
+          <div className="flex items-center justify-between mb-12">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={isMobileMenuOpen ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+            >
+              <Image
+                src="/icons/sello.svg"
+                alt="KOEL"
+                width={64}
+                height={64}
+                className="w-16 h-16"
+              />
+            </motion.div>
             <button
               onClick={() => setIsMobileMenuOpen(false)}
-              className="p-2"
+              className="p-2 -mr-2"
               aria-label="Cerrar menú"
             >
-              <div className="w-6 h-6 flex items-center justify-center relative">
-                <span className="w-full h-0.5 bg-koel-teal rotate-45 absolute" />
-                <span className="w-full h-0.5 bg-koel-teal -rotate-45 absolute" />
+              <div className="w-8 h-8 flex items-center justify-center relative">
+                <span className="w-6 h-0.5 bg-koel-teal rotate-45 absolute rounded-full" />
+                <span className="w-6 h-0.5 bg-koel-teal -rotate-45 absolute rounded-full" />
               </div>
             </button>
           </div>
 
           {/* Navigation */}
-          <nav className="flex flex-col flex-1 justify-center items-center gap-8 px-6">
+          <nav className="flex flex-col flex-1 justify-center items-center gap-10 py-8">
             {NAV_LINKS.map((link, index) => (
               <motion.button
                 key={link.href}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isMobileMenuOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isMobileMenuOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                transition={{ duration: 0.5, delay: 0.2 + index * 0.1, ease: [0.34, 1.56, 0.64, 1] }}
                 onClick={() => handleNavClick(link.href)}
-                className="text-koel-neutral-700 hover:text-koel-teal transition-colors duration-200 font-display font-medium tracking-wide text-2xl uppercase"
+                className="group relative"
               >
-                {link.label}
+                <span className="text-koel-teal font-display font-bold tracking-wider text-4xl uppercase block transition-all duration-300 group-hover:scale-110">
+                  {link.label}
+                </span>
+                <div className="absolute -bottom-2 left-0 right-0 h-1 bg-koel-teal scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-full" />
               </motion.button>
             ))}
           </nav>
+
+          {/* Footer - Logo isotipo */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={isMobileMenuOpen ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="flex flex-col items-center gap-6 pb-8"
+          >
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-[1px] bg-koel-teal/30" />
+              <Image
+                src="/icons/isotipo-koel.svg"
+                alt="KOEL"
+                width={24}
+                height={24}
+                className="w-6 h-6"
+                style={{
+                  filter: 'brightness(0) saturate(100%) invert(13%) sepia(25%) saturate(3194%) hue-rotate(147deg) brightness(95%) contrast(95%)'
+                }}
+              />
+              <div className="w-12 h-[1px] bg-koel-teal/30" />
+            </div>
+            <p className="text-xs tracking-[0.3em] uppercase text-koel-teal-dark/60">
+              A NEW WAY TO CARE
+            </p>
+          </motion.div>
 
           {/* Bottom Actions */}
           <div className="flex flex-col gap-3 p-6">
