@@ -27,7 +27,7 @@ export default function FAQSection() {
           <h2 className="text-3xl md:text-4xl font-bold text-koel-teal mb-4 font-display leading-tight">
             ¿Tienes dudas?
           </h2>
-          <p className="text-xl text-koel-neutral-600">
+          <p className="text-xl text-koel-neutral-600 uppercase">
             Aquí respondemos las preguntas más comunes sobre KOEL
           </p>
         </motion.div>
@@ -47,14 +47,14 @@ export default function FAQSection() {
                 {/* Question Button */}
                 <button
                   onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                  className="w-full px-6 py-5 flex items-start justify-between text-left gap-4 hover:scale-110 active:scale-95 transition-all duration-200 group"
+                  className="w-full px-6 py-5 flex items-start justify-between text-left gap-4 transition-all duration-200"
                 >
-                  <span className="text-base md:text-lg font-semibold text-koel-teal flex-1 leading-snug font-heading group-hover:scale-[0.909] group-active:scale-[1.053] transition-transform duration-200">
+                  <span className="text-base md:text-lg font-semibold text-koel-teal flex-1 leading-snug font-heading">
                     {faq.question}
                   </span>
 
                   {/* Plus/Minus Icon */}
-                  <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center group-hover:scale-[0.909] group-active:scale-[1.053] transition-transform duration-200">
+                  <div className="flex-shrink-0 w-6 h-6 flex items-center justify-center">
                     <AnimatePresence mode="wait">
                       {openIndex === index ? (
                         <motion.div
@@ -91,7 +91,7 @@ export default function FAQSection() {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <div className="px-6 pb-5 text-koel-neutral-600 leading-relaxed border-t border-koel-neutral-100 pt-4">
+                      <div className="px-6 pb-5 text-base md:text-lg text-koel-neutral-600 leading-relaxed border-t border-koel-neutral-100 pt-4">
                         {faq.answer}
                       </div>
                     </motion.div>

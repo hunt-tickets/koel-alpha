@@ -361,8 +361,38 @@ El futuro del cuidado comienza aquí.`;
                         width: '100%',
                         height: '100%'
                       }}
-                      className={`p-6 sm:p-8 md:p-10 rounded-2xl md:rounded-3xl ${value.bgColor} shadow-lg flex flex-col`}
+                      className={`p-6 sm:p-8 md:p-10 rounded-2xl md:rounded-3xl ${value.bgColor} shadow-lg flex flex-col relative`}
                     >
+                      {/* Mobile Touch Indicator - Only visible on mobile */}
+                      <div className="absolute top-4 right-4 md:hidden">
+                        <motion.div
+                          animate={{
+                            scale: [1, 1.2, 1],
+                            opacity: [0.5, 1, 0.5],
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                          }}
+                          className={`w-8 h-8 rounded-full border-2 ${value.textColor.replace('text-', 'border-')} flex items-center justify-center`}
+                        >
+                          <svg
+                            className={`w-4 h-4 ${value.textColor}`}
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"
+                            />
+                          </svg>
+                        </motion.div>
+                      </div>
+
                 {/* Top Section */}
                 <div className="flex flex-col items-center text-center mb-auto">
                   <p className={`text-[10px] sm:text-xs md:text-sm tracking-[0.25em] md:tracking-[0.3em] uppercase ${value.textColor} mb-4 sm:mb-6 font-medium opacity-90`}>
@@ -528,7 +558,7 @@ El futuro del cuidado comienza aquí.`;
       </section>
 
       {/* Vision Text Section */}
-      <section className="relative pt-20 md:pt-32 overflow-hidden" style={{ backgroundColor: '#FCF7EE' }}>
+      <section className="relative pt-2 overflow-hidden" style={{ backgroundColor: '#FCF7EE' }}>
         <Container>
           {/* Sello Divider */}
           <motion.div
@@ -536,7 +566,7 @@ El futuro del cuidado comienza aquí.`;
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="flex items-center justify-center gap-6 mb-12 md:mb-16"
+            className="flex items-center justify-center gap-6 mb-8 md:mb-12"
           >
             <div className="h-[1px] flex-1 bg-koel-teal/30" />
             <Image

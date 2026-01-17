@@ -96,19 +96,19 @@ export const TUTORIAL_STEPS = [
   {
     number: 1,
     title: 'Abre',
-    description: 'Gira la base del desodorante en sentido antihorario para abrir.',
+    description: 'GIRA LA BASE DEL DESODORANTE EN SENTIDO ANTIHORARIO PARA ABRIR.',
     image: '/images/tutorial/step-1.jpg',
   },
   {
     number: 2,
     title: 'Recarga',
-    description: 'Inserta la nueva recarga hasta escuchar un clic.',
+    description: 'INSERTA LA NUEVA RECARGA HASTA ESCUCHAR UN CLIC.',
     image: '/images/tutorial/step-2.jpg',
   },
   {
     number: 3,
     title: 'Disfruta',
-    description: 'Cierra y gira hacia arriba para usar. ¡Listo!',
+    description: 'CIERRA Y GIRA HACIA ARRIBA PARA USAR. ¡LISTO!',
     image: '/images/tutorial/step-3.jpg',
   },
 ] as const;

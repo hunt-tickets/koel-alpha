@@ -13,7 +13,7 @@ export default function TutorialSection() {
     >
       <Container>
         <div className="text-center max-w-5xl mx-auto">
-            {/* Divider with Logo */}
+            {/* Divider with Text */}
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -22,13 +22,9 @@ export default function TutorialSection() {
               className="flex items-center justify-center gap-4 md:gap-6 mb-8 md:mb-12"
             >
               <div className="w-12 md:w-24 h-[1px] bg-koel-teal/30" />
-              <Image
-                src="/logos/logo-tagline.svg"
-                alt="KOEL"
-                width={200}
-                height={80}
-                className="w-24 md:w-32 h-auto"
-              />
+              <h2 className="text-sm md:text-base font-heading tracking-[0.3em] uppercase text-koel-teal whitespace-nowrap">
+                A <span className="font-bold">New Way</span> to Care
+              </h2>
               <div className="w-12 md:w-24 h-[1px] bg-koel-teal/30" />
             </motion.div>
 
@@ -76,7 +72,7 @@ export default function TutorialSection() {
                     </h3>
 
                     {/* Description */}
-                    <p className="text-base md:text-lg text-koel-neutral-600 leading-relaxed max-w-xs mx-auto">
+                    <p className="text-lg md:text-xl text-koel-neutral-600 leading-relaxed max-w-xs mx-auto">
                       {step.description}
                     </p>
                   </motion.div>

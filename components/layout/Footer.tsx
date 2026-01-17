@@ -40,7 +40,7 @@ export default function Footer() {
               <h3 className="text-base md:text-lg font-bold font-display tracking-wide uppercase mb-1 text-[#FCF7EE]">
                 Mantente al día
               </h3>
-              <p className="text-sm md:text-base tracking-[0.1em] uppercase text-[#FCF7EE]/70">
+              <p className="text-sm md:text-base tracking-[0.1em] uppercase text-[#FCF7EE]/70 font-heading">
                 Recibe noticias, ofertas y tips de cuidado personal
               </p>
             </div>
@@ -53,13 +53,13 @@ export default function Footer() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="tu@email.com"
                   required
-                  className="px-6 py-3 rounded-full bg-[#FCF7EE]/10 border-2 border-[#FCF7EE]/20 text-[#FCF7EE] placeholder:text-[#FCF7EE]/50 focus:outline-none focus:border-[#FCF7EE]/40 transition-all text-sm md:w-64 font-display tracking-wide backdrop-blur-sm"
+                  className="px-6 py-3 rounded-full bg-[#FCF7EE]/10 border-2 border-[#FCF7EE]/20 text-[#FCF7EE] placeholder:text-[#FCF7EE]/50 focus:outline-none focus:border-[#FCF7EE]/20 transition-all text-sm md:w-64 font-heading tracking-wide backdrop-blur-sm"
                 />
                 <Button
                   type="submit"
                   size="sm"
                   disabled={isLoading}
-                  className="whitespace-nowrap !bg-[#FCF7EE] !text-koel-teal !font-heading !tracking-wider !uppercase"
+                  className="whitespace-nowrap !bg-[#FCF7EE] !text-koel-teal !font-heading !tracking-wider !uppercase !py-3"
                 >
                   {isLoading ? 'Enviando...' : 'Suscribirse'}
                 </Button>
@@ -83,7 +83,7 @@ export default function Footer() {
               height={40}
               className="w-24 h-auto mb-6 brightness-0 invert"
             />
-            <p className="text-[#FCF7EE]/80 mb-6 max-w-md text-base md:text-lg tracking-wide leading-relaxed">
+            <p className="text-[#FCF7EE]/80 mb-6 max-w-md text-base md:text-lg tracking-wide leading-relaxed font-heading">
               {BRAND.fullDescription}
             </p>
             <div className="flex gap-3">
@@ -131,7 +131,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-[#FCF7EE]/70 hover:text-[#FCF7EE] transition-colors duration-300 text-base md:text-lg tracking-wide"
+                    className="text-[#FCF7EE]/70 hover:text-[#FCF7EE] transition-colors duration-300 text-base md:text-lg tracking-wide font-heading"
                   >
                     {link.label}
                   </a>
@@ -147,31 +147,31 @@ export default function Footer() {
               <li>
                 <a
                   href={`mailto:${SOCIAL_LINKS.email}`}
-                  className="hover:text-[#FCF7EE] transition-colors duration-300 text-base md:text-lg tracking-wide"
+                  className="hover:text-[#FCF7EE] transition-colors duration-300 text-base md:text-lg tracking-wide font-heading"
                 >
                   {SOCIAL_LINKS.email}
                 </a>
               </li>
-              <li className="text-base md:text-lg tracking-wide">Bogotá, Colombia</li>
+              <li className="text-base md:text-lg tracking-wide font-heading">Bogotá, Colombia</li>
             </ul>
           </div>
         </div>
 
         {/* Bottom Bar */}
         <div className="mt-16 pt-10 border-t border-[#FCF7EE]/20 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-[#FCF7EE]/60 text-base md:text-lg tracking-wide">
+          <p className="text-[#FCF7EE]/60 text-base md:text-lg tracking-wide font-heading">
             © {currentYear} {BRAND.name}. Todos los derechos reservados.
           </p>
           <div className="flex gap-8 text-base md:text-lg">
             <a
               href="#"
-              className="text-[#FCF7EE]/70 hover:text-[#FCF7EE] transition-colors duration-300 tracking-wide"
+              className="text-[#FCF7EE]/70 hover:text-[#FCF7EE] transition-colors duration-300 tracking-wide font-heading"
             >
               Privacidad
             </a>
             <a
               href="#"
-              className="text-[#FCF7EE]/70 hover:text-[#FCF7EE] transition-colors duration-300 tracking-wide"
+              className="text-[#FCF7EE]/70 hover:text-[#FCF7EE] transition-colors duration-300 tracking-wide font-heading"
             >
               Términos
             </a>

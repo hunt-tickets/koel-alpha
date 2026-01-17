@@ -47,7 +47,7 @@ export default function ProductSystemSection() {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-koel-teal mb-4 font-display">
             Diseño que cambia las reglas
           </h2>
-          <p className="text-xl md:text-2xl text-koel-neutral-600 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl text-koel-neutral-600 max-w-2xl mx-auto uppercase">
             Elige el sistema que mejor se adapte a tus necesidades
           </p>
         </motion.div>
