@@ -5,7 +5,7 @@ import Container from '@/components/ui/Container';
 import { Leaf, Heart, Sparkles, Users, Target, Lightbulb } from 'lucide-react';
 import Image from 'next/image';
 import { useRef, useState, useEffect } from 'react';
-import { LoadingScreen } from '@/components/ui';
+import { LoadingScreen, DecryptText } from '@/components/ui';
 import Button from '@/components/ui/Button';
 
 export default function ManifiestoPage() {
@@ -367,7 +367,6 @@ El futuro del cuidado comienza aquí.`;
                       <div className="absolute top-4 right-4 md:hidden">
                         <motion.div
                           animate={{
-                            scale: [1, 1.2, 1],
                             opacity: [0.5, 1, 0.5],
                           }}
                           transition={{
@@ -375,10 +374,9 @@ El futuro del cuidado comienza aquí.`;
                             repeat: Infinity,
                             ease: "easeInOut"
                           }}
-                          className={`w-8 h-8 rounded-full border-2 ${value.textColor.replace('text-', 'border-')} flex items-center justify-center`}
                         >
                           <svg
-                            className={`w-4 h-4 ${value.textColor}`}
+                            className={`w-5 h-5 ${value.textColor}`}
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -590,19 +588,29 @@ El futuro del cuidado comienza aquí.`;
             className="text-left space-y-6 md:space-y-8"
           >
             <p className="text-lg md:text-xl lg:text-2xl xl:text-3xl tracking-[0.1em] md:tracking-[0.15em] uppercase text-koel-neutral-600 leading-relaxed md:leading-loose">
-              Hay una <span className="font-bold">nueva forma de cuidar</span> que no se impone, se siente. Se revela en los detalles, en lo que dejamos atrás y en lo que elegimos volver <span className="font-bold">esencial</span>.
+              <DecryptText delay={300}>
+                Hay una <strong>nueva forma de cuidar</strong> que no se impone, se siente. Se revela en los detalles, en lo que dejamos atrás y en lo que elegimos volver <strong>esencial</strong>.
+              </DecryptText>
             </p>
             <p className="text-lg md:text-xl lg:text-2xl xl:text-3xl tracking-[0.1em] md:tracking-[0.15em] uppercase text-koel-neutral-600 leading-relaxed md:leading-loose">
-              No responde a tendencias ni promesas. Responde a una necesidad silenciosa de <span className="font-bold">pensar distinto</span>.
+              <DecryptText delay={800}>
+                No responde a tendencias ni promesas. Responde a una necesidad silenciosa de <strong>pensar distinto</strong>.
+              </DecryptText>
             </p>
             <p className="text-lg md:text-xl lg:text-2xl xl:text-3xl tracking-[0.1em] md:tracking-[0.15em] uppercase text-koel-neutral-600 leading-relaxed md:leading-loose">
-              Somos un universo que respira <span className="font-bold">claridad</span>. Fusionamos lo <span className="font-bold">natural</span> con lo <span className="font-bold">inteligente</span>, transformando lo cotidiano en una experiencia suave, <span className="font-bold">minimal</span> y <span className="font-bold">consciente</span>.
+              <DecryptText delay={1300}>
+                Somos un universo que respira <strong>claridad</strong>. Fusionamos lo <strong>natural</strong> con lo <strong>inteligente</strong>, transformando lo cotidiano en una experiencia suave, <strong>minimal</strong> y <strong>consciente</strong>.
+              </DecryptText>
             </p>
             <p className="text-lg md:text-xl lg:text-2xl xl:text-3xl tracking-[0.1em] md:tracking-[0.15em] uppercase text-koel-neutral-600 leading-relaxed md:leading-loose">
-              El <span className="font-bold">diseño</span> nos permite simplificar, resolver y elevar. Los hábitos se vuelven <span className="font-bold">rituales</span> más claros, más propios, más pensados.
+              <DecryptText delay={1800}>
+                El <strong>diseño</strong> nos permite simplificar, resolver y elevar. Los hábitos se vuelven <strong>rituales</strong> más claros, más propios, más pensados.
+              </DecryptText>
             </p>
             <p className="text-lg md:text-xl lg:text-2xl xl:text-3xl tracking-[0.1em] md:tracking-[0.15em] uppercase text-koel-neutral-600 leading-relaxed md:leading-loose">
-              Cuidar no es un acto de consumo — Es <span className="font-bold">coherencia en movimiento</span>.
+              <DecryptText delay={2300}>
+                Cuidar no es un acto de consumo — Es <strong>coherencia en movimiento</strong>.
+              </DecryptText>
             </p>
           </motion.div>
         </Container>
