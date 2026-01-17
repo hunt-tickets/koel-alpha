@@ -269,7 +269,7 @@ El futuro del cuidado comienza aquí.`;
                   onHoverEnd={() => setActiveColor(null)}
                   onClick={() => setActiveColor(activeColor === 0 ? null : 0)}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  className="w-4 h-4 md:w-5 md:h-5 rounded-full bg-koel-olive cursor-pointer"
+                  className={`w-4 h-4 md:w-5 md:h-5 rounded-full bg-koel-olive cursor-pointer ${activeColor === 0 ? 'border border-[#FCF7EE]' : ''}`}
                 />
                 <motion.div
                   whileHover={{ scale: 1.5 }}
@@ -277,7 +277,7 @@ El futuro del cuidado comienza aquí.`;
                   onHoverEnd={() => setActiveColor(null)}
                   onClick={() => setActiveColor(activeColor === 1 ? null : 1)}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  className="w-4 h-4 md:w-5 md:h-5 rounded-full bg-koel-coral cursor-pointer"
+                  className={`w-4 h-4 md:w-5 md:h-5 rounded-full bg-koel-coral cursor-pointer ${activeColor === 1 ? 'border border-[#FCF7EE]' : ''}`}
                 />
                 <motion.div
                   whileHover={{ scale: 1.5 }}
@@ -285,7 +285,7 @@ El futuro del cuidado comienza aquí.`;
                   onHoverEnd={() => setActiveColor(null)}
                   onClick={() => setActiveColor(activeColor === 2 ? null : 2)}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  className="w-4 h-4 md:w-5 md:h-5 rounded-full bg-koel-aqua cursor-pointer"
+                  className={`w-4 h-4 md:w-5 md:h-5 rounded-full bg-koel-aqua cursor-pointer ${activeColor === 2 ? 'border border-[#FCF7EE]' : ''}`}
                 />
                 <motion.div
                   whileHover={{ scale: 1.5 }}
@@ -293,7 +293,7 @@ El futuro del cuidado comienza aquí.`;
                   onHoverEnd={() => setActiveColor(null)}
                   onClick={() => setActiveColor(activeColor === 3 ? null : 3)}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  className="w-4 h-4 md:w-5 md:h-5 rounded-full bg-koel-teal cursor-pointer"
+                  className={`w-4 h-4 md:w-5 md:h-5 rounded-full bg-koel-teal cursor-pointer ${activeColor === 3 ? 'border border-[#FCF7EE]' : ''}`}
                 />
                 <motion.div
                   whileHover={{ scale: 1.5 }}
@@ -301,7 +301,7 @@ El futuro del cuidado comienza aquí.`;
                   onHoverEnd={() => setActiveColor(null)}
                   onClick={() => setActiveColor(activeColor === 4 ? null : 4)}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  className="w-4 h-4 md:w-5 md:h-5 rounded-full bg-koel-pink cursor-pointer"
+                  className={`w-4 h-4 md:w-5 md:h-5 rounded-full bg-koel-pink cursor-pointer ${activeColor === 4 ? 'border border-[#FCF7EE]' : ''}`}
                 />
                 <motion.div
                   whileHover={{ scale: 1.5 }}
@@ -309,7 +309,7 @@ El futuro del cuidado comienza aquí.`;
                   onHoverEnd={() => setActiveColor(null)}
                   onClick={() => setActiveColor(activeColor === 5 ? null : 5)}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  className="w-4 h-4 md:w-5 md:h-5 rounded-full bg-koel-yellow cursor-pointer"
+                  className={`w-4 h-4 md:w-5 md:h-5 rounded-full bg-koel-yellow cursor-pointer ${activeColor === 5 ? 'border border-[#FCF7EE]' : ''}`}
                 />
               </motion.div>
             </div>
