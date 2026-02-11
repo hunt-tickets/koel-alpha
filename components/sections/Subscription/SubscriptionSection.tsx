@@ -32,6 +32,25 @@ export default function SubscriptionSection() {
             Elige tu aroma, define la frecuencia y recibe tus recargas automáticamente. Tu ritual, siempre listo. Sin pensarlo.
           </motion.p>
 
+          {/* Horizontal Image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.25 }}
+            className="mb-12 sm:mb-16 relative w-full aspect-[21/9] rounded-2xl overflow-hidden bg-gradient-to-br from-koel-teal/20 via-koel-aqua/15 to-koel-neutral-200/30 flex items-center justify-center p-8 sm:p-12"
+          >
+            <div className="relative w-full max-w-2xl aspect-[16/9]">
+              <Image
+                src="/images/subscription-hero.png"
+                alt="KOEL Subscription System"
+                fill
+                className="object-contain"
+                sizes="(max-width: 768px) 90vw, 800px"
+              />
+            </div>
+          </motion.div>
+
           {/* Features Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 mb-10 sm:mb-12">
             <motion.div
