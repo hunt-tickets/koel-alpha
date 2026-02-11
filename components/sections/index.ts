@@ -1,4 +1,5 @@
 export { HeroSection } from './Hero';
+export { default as SystemIntroSection } from './SystemIntro/SystemIntroSection';
 export { ProductSystemSection } from './ProductSystem';
 export { default as VelocityBannerSection } from './VelocityBanner/VelocityBannerSection';
 export { TutorialSection } from './Tutorial';

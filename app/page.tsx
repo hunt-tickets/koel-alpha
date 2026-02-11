@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import {
   HeroSection,
+  SystemIntroSection,
   ProductSystemSection,
   VelocityBannerSection,
   TutorialSection,
@@ -38,6 +39,7 @@ export default function HomePage() {
       />
       <main className="min-h-screen">
         <HeroSection />
+        <SystemIntroSection />
         <SubscriptionSection />
         <VelocityBannerSection />
         <ProductSystemSection />
