@@ -52,7 +52,7 @@ export default function SubscriptionSection() {
           </motion.div>
 
           {/* Features Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 lg:gap-12 mb-12 md:mb-14">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12 mb-12 md:mb-14">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -98,7 +98,7 @@ export default function SubscriptionSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="flex flex-col items-center gap-3 sm:gap-4"
+              className="flex flex-col items-center gap-3 sm:gap-4 col-span-2 md:col-span-1"
             >
               <Image
                 src="/icons/smart-system.svg"
