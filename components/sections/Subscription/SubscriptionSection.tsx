@@ -7,7 +7,7 @@ import Button from '@/components/ui/Button';
 
 export default function SubscriptionSection() {
   return (
-    <section className="relative z-10 bg-[#FCF7EE] py-16 md:py-20 lg:py-24">
+    <section className="relative z-20 bg-[#FCF7EE] py-16 md:py-20 lg:py-24">
       <Container>
         <div className="max-w-4xl mx-auto text-center px-4">
           {/* Title */}

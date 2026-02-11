@@ -31,7 +31,7 @@ export default function ProductSystemSection() {
   }));
 
   return (
-    <section id="products" className="section-container bg-koel-neutral-100">
+    <section id="products" className="section-container relative z-40 bg-koel-neutral-100">
       {/* Section Header */}
       <Container className="mb-12 md:mb-16">
         <motion.div

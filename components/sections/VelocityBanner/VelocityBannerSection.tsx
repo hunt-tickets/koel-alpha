@@ -15,7 +15,7 @@ const KOEL_LOGOS = [
 
 export default function VelocityBannerSection() {
   return (
-    <section className="relative py-12 md:py-16 bg-koel-neutral-100 overflow-hidden">
+    <section className="relative z-30 py-12 md:py-16 bg-koel-neutral-100 overflow-hidden">
       {/* Velocity Scroll with Logos */}
       <div className="relative">
         <VelocityScrollLogos
