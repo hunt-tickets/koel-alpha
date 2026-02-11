@@ -21,7 +21,7 @@ export default function SystemIntroSection() {
   const currentScheme = activeColor !== null ? colorSchemes[activeColor] : null;
 
   return (
-    <section className={`sticky top-16 md:top-20 z-10 py-12 md:py-16 transition-colors duration-500 ${
+    <section className={`sticky top-16 md:top-20 z-0 py-12 md:py-16 transition-colors duration-500 ${
       currentScheme ? currentScheme.bg : 'bg-koel-aqua'
     }`}>
       <Container>

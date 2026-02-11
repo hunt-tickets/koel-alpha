@@ -22,8 +22,8 @@ export default function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image - Fixed */}
-      <div className="fixed inset-0 z-0" style={{ transform: 'none', willChange: 'auto' }}>
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
         <Image
           src={isMobile ? "/images/hero-mobile.png" : "/images/hero-products.png"}
           alt="KOEL - Productos Naturales"
@@ -31,7 +31,6 @@ export default function HeroSection() {
           priority
           className="object-cover"
           sizes="100vw"
-          style={{ transform: 'none' }}
         />
       </div>
 
