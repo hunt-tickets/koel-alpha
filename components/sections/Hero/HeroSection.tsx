@@ -23,7 +23,7 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image - Fixed */}
-      <div className="absolute inset-0 z-0">
+      <div className="fixed inset-0 z-0">
         <Image
           src={isMobile ? "/images/hero-mobile.png" : "/images/hero-products.png"}
           alt="KOEL - Productos Naturales"
