@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Image from 'next/image';
 import { ChevronDown } from 'lucide-react';
 import { formatPrice } from '@/lib/utils';
@@ -42,17 +42,22 @@ export default function ProductCard({
 }: ProductCardProps) {
   const router = useRouter();
   const [isHovered, setIsHovered] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
 
-  // Scroll-based rotation for badge
-  const { scrollY } = useScroll();
-  const scrollRotation = useTransform(scrollY, [0, 1000], [0, 360]);
+  // Scroll-based rotation for badge - relative to card position
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "end start"]
+  });
+
+  const scrollRotation = useTransform(scrollYProgress, [0, 1], [0, 720]);
   const smoothRotation = useSpring(scrollRotation, {
-    damping: 20,
+    damping: 30,
     stiffness: 100,
   });
 
   return (
-    <div className="h-full">
+    <div className="h-full" ref={cardRef}>
       <div className="h-full">
         <Card className="flex flex-col h-full min-h-[600px] relative">
           {/* Badge Seal - Top Right */}
