@@ -68,7 +68,9 @@ export default function SystemIntroSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-sm md:text-base lg:text-lg text-white leading-relaxed uppercase max-w-2xl mx-auto"
+            className={`text-sm md:text-base lg:text-lg leading-relaxed uppercase max-w-2xl mx-auto transition-colors duration-500 ${
+              currentScheme ? currentScheme.text : 'text-koel-teal'
+            }`}
           >
             KOEL ES UN SISTEMA DE DESODORANTE RECARGABLE: APLICADOR REUTILIZABLE Y RECARGAS BIODEGRADABLES, DISEÑADOS PARA EL USO DIARIO.
           </motion.p>
