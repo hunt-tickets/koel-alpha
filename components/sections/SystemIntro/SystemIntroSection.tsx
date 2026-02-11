@@ -6,7 +6,7 @@ import Container from '@/components/ui/Container';
 
 export default function SystemIntroSection() {
   return (
-    <section className="sticky top-0 z-10 bg-koel-aqua py-12 md:py-16">
+    <section className="sticky top-16 md:top-20 z-10 bg-koel-aqua py-12 md:py-16">
       <Container>
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
