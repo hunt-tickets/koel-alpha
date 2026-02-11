@@ -38,7 +38,7 @@ export default function SubscriptionSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.25 }}
-            className="mb-12 md:mb-16 relative w-full h-[400px] sm:h-[500px] md:h-[600px] rounded-xl md:rounded-2xl overflow-hidden bg-gradient-to-br from-koel-teal/20 via-koel-aqua/15 to-koel-neutral-200/30"
+            className="mb-12 md:mb-16 relative w-full h-[280px] sm:h-[320px] md:h-[400px] rounded-xl md:rounded-2xl overflow-hidden bg-gradient-to-br from-koel-teal/20 via-koel-aqua/15 to-koel-neutral-200/30"
           >
             <Image
               src="/images/subscription-hero.png"
