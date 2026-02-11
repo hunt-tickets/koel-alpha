@@ -33,7 +33,7 @@ export default function FAQSection() {
         </motion.div>
 
         {/* FAQ Items - 2 Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 items-start">
           {FAQS.map((faq, index) => (
             <motion.div
               key={index}
@@ -43,7 +43,7 @@ export default function FAQSection() {
               transition={{ duration: 0.5, delay: index * 0.05 }}
               className="group"
             >
-              <div className="h-full border border-koel-neutral-200 rounded-xl overflow-hidden hover:border-koel-aqua/40 transition-colors duration-300">
+              <div className="border border-koel-neutral-200 rounded-xl overflow-hidden hover:border-koel-aqua/40 transition-colors duration-300">
                 {/* Question Button */}
                 <button
                   onClick={() => setOpenIndex(openIndex === index ? null : index)}

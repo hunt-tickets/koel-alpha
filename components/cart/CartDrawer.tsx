@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '@/contexts/CartContext';
 import Image from 'next/image';
 import { X, Plus, Minus, Trash2 } from 'lucide-react';
+import { formatPrice } from '@/lib/utils/formatPrice';
 
 export default function CartDrawer() {
   const { items, isOpen, closeCart, updateQuantity, removeItem, total, itemCount } = useCart();
@@ -144,7 +145,7 @@ export default function CartDrawer() {
                           {/* Price and Quantity Controls */}
                           <div className="flex justify-between items-center mt-3">
                             <p className="text-lg font-semibold text-koel-neutral-900">
-                              ${item.price.toFixed(2)}
+                              {formatPrice(item.price)}
                             </p>
 
                             {/* Quantity Controls */}
@@ -183,7 +184,7 @@ export default function CartDrawer() {
                 <div className="flex justify-between items-center mb-4">
                   <span className="text-koel-neutral-600 font-medium">Subtotal</span>
                   <span className="text-2xl font-heading font-bold text-koel-neutral-900">
-                    ${total.toFixed(2)}
+                    {formatPrice(total)}
                   </span>
                 </div>
 
