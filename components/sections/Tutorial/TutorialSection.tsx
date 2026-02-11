@@ -17,26 +17,8 @@ export default function TutorialSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="relative w-full min-h-[800px] sm:aspect-[16/9] md:aspect-[21/9] rounded-xl md:rounded-2xl overflow-hidden"
+          className="relative w-full max-w-5xl mx-auto bg-[#FCF7EE] rounded-xl md:rounded-2xl p-6 sm:p-8 md:p-12 lg:p-16 text-center"
         >
-          {/* Background Image */}
-          <Image
-            src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=2000&auto=format&fit=crop"
-            alt="KOEL Tutorial"
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
-          />
-
-          {/* Content Overlay */}
-          <div className="absolute inset-0 flex items-center justify-center py-8 px-6 sm:p-6 md:p-8 lg:p-16">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative w-full max-w-5xl bg-[#FCF7EE] rounded-xl md:rounded-2xl p-6 sm:p-8 md:p-12 lg:p-16 text-center"
-            >
               {/* Divider with Text */}
               <motion.div
                 initial={{ opacity: 0 }}
@@ -47,7 +29,7 @@ export default function TutorialSection() {
               >
                 <div className="w-12 md:w-24 h-[1px] bg-koel-teal/30" />
                 <h2 className="text-sm md:text-base font-heading tracking-[0.3em] uppercase text-koel-teal whitespace-nowrap">
-                  Recargar es parte del <span className="font-bold">ritual</span>
+                  Recargar es parte del <span className="font-bold text-koel-aqua">ritual</span>
                 </h2>
                 <div className="w-12 md:w-24 h-[1px] bg-koel-teal/30" />
               </motion.div>
@@ -88,7 +70,7 @@ export default function TutorialSection() {
                         height={80}
                         className="w-12 h-12 md:w-20 md:h-20"
                         style={{
-                          filter: 'brightness(0) saturate(100%) invert(13%) sepia(25%) saturate(3194%) hue-rotate(147deg) brightness(95%) contrast(95%)'
+                          filter: 'brightness(0) saturate(100%) invert(75%) sepia(12%) saturate(650%) hue-rotate(128deg) brightness(98%) contrast(90%)'
                         }}
                       />
                     </div>
@@ -107,20 +89,18 @@ export default function TutorialSection() {
               })}
             </div>
 
-              {/* Bottom Info */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 1 }}
-                className="mt-8 md:mt-12"
-              >
-                <p className="text-sm md:text-base tracking-[0.2em] uppercase text-koel-neutral-500">
-                  Menos de <span className="font-bold text-koel-teal">30 segundos</span> de principio a fin
-                </p>
-              </motion.div>
-            </motion.div>
-          </div>
+          {/* Bottom Info */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 1 }}
+            className="mt-8 md:mt-12"
+          >
+            <p className="text-sm md:text-base tracking-[0.2em] uppercase text-koel-neutral-500">
+              Menos de <span className="font-bold text-koel-aqua">30 segundos</span> de principio a fin
+            </p>
+          </motion.div>
         </motion.div>
       </Container>
     </section>
