@@ -47,7 +47,7 @@ export default function ProductSystemSection() {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-koel-teal mb-4 font-display">
             EL SISTEMA KOEL
           </h2>
-          <p className="text-xl md:text-2xl text-koel-neutral-600 max-w-2xl mx-auto uppercase">
+          <p className="text-base sm:text-lg md:text-xl text-koel-neutral-600 max-w-3xl mx-auto leading-relaxed font-heading">
             Cada pieza tiene un propósito. Juntas crean un ritual de cuidado personal consciente y sostenible.
           </p>
         </motion.div>
