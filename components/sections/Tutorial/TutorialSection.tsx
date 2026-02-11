@@ -9,7 +9,7 @@ export default function TutorialSection() {
   return (
     <section
       id="tutorial"
-      className="bg-koel-teal py-12 md:py-20 lg:py-32"
+      className="bg-koel-teal py-16 md:py-20 lg:py-32"
     >
       <Container>
         <motion.div

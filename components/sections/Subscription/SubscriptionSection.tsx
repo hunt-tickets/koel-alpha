@@ -7,9 +7,9 @@ import Button from '@/components/ui/Button';
 
 export default function SubscriptionSection() {
   return (
-    <section className="relative z-10 bg-[#FCF7EE] py-12 md:py-16 lg:py-20">
+    <section className="relative z-10 bg-[#FCF7EE] py-16 md:py-20 lg:py-24">
       <Container>
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto text-center px-4">
           {/* Title */}
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -38,7 +38,7 @@ export default function SubscriptionSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.25 }}
-            className="mb-12 sm:mb-16 relative w-full aspect-[21/9] rounded-2xl overflow-hidden bg-gradient-to-br from-koel-teal/20 via-koel-aqua/15 to-koel-neutral-200/30 flex items-center justify-center p-8 sm:p-12"
+            className="mb-12 md:mb-16 relative w-full aspect-[21/9] rounded-xl md:rounded-2xl overflow-hidden bg-gradient-to-br from-koel-teal/20 via-koel-aqua/15 to-koel-neutral-200/30 flex items-center justify-center p-6 sm:p-10 md:p-12"
           >
             <div className="relative w-full max-w-2xl aspect-[16/9]">
               <Image
@@ -52,7 +52,7 @@ export default function SubscriptionSection() {
           </motion.div>
 
           {/* Features Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 mb-10 sm:mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 lg:gap-12 mb-12 md:mb-14">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

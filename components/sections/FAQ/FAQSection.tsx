@@ -19,7 +19,7 @@ export default function FAQSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="max-w-2xl mb-12 md:mb-16"
+          className="max-w-2xl mb-12 md:mb-16 px-4"
         >
           <p className="text-base tracking-[0.3em] uppercase text-koel-neutral-500 mb-3 font-light">
             FAQ
@@ -33,7 +33,7 @@ export default function FAQSection() {
         </motion.div>
 
         {/* FAQ Items - 2 Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 items-start px-4">
           {FAQS.map((faq, index) => (
             <motion.div
               key={index}
