@@ -45,10 +45,10 @@ export default function ProductSystemSection() {
             Nuestro sistema
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-koel-teal mb-4 font-display">
-            ¿QUÉ ES KOEL?
+            EL SISTEMA KOEL
           </h2>
           <p className="text-xl md:text-2xl text-koel-neutral-600 max-w-2xl mx-auto uppercase">
-            KOEL es un sistema de desodorante recargable: aplicador reutilizable y recargas biodegradables, diseñados para el uso diario.
+            Cada pieza tiene un propósito. Juntas crean un ritual de cuidado personal consciente y sostenible.
           </p>
         </motion.div>
       </Container>
