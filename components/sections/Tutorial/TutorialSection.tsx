@@ -9,27 +9,51 @@ export default function TutorialSection() {
   return (
     <section
       id="tutorial"
-      className="bg-koel-teal py-12 md:py-20"
+      className="bg-koel-teal py-12 md:py-20 lg:py-32"
     >
       <Container>
-        <div className="text-center max-w-5xl mx-auto">
-            {/* Divider with Text */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="flex items-center justify-center gap-4 md:gap-6 mb-8 md:mb-12"
-            >
-              <div className="w-12 md:w-24 h-[1px] bg-koel-aqua/30" />
-              <h2 className="text-sm md:text-base font-heading tracking-[0.3em] uppercase text-white whitespace-nowrap">
-                Recargar es parte del <span className="font-bold">ritual</span>
-              </h2>
-              <div className="w-12 md:w-24 h-[1px] bg-koel-aqua/30" />
-            </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative w-full min-h-[800px] sm:aspect-[16/9] md:aspect-[21/9] rounded-xl md:rounded-2xl overflow-hidden"
+        >
+          {/* Background Image */}
+          <Image
+            src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=2000&auto=format&fit=crop"
+            alt="KOEL Tutorial"
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+          />
 
-            {/* Steps - Minimalist */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 max-w-4xl mx-auto">
+          {/* Content Overlay */}
+          <div className="absolute inset-0 flex items-center justify-center py-8 px-6 sm:p-6 md:p-8 lg:p-16">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative w-full max-w-5xl bg-[#FCF7EE] rounded-xl md:rounded-2xl p-6 sm:p-8 md:p-12 lg:p-16 text-center"
+            >
+              {/* Divider with Text */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+                className="flex items-center justify-center gap-4 md:gap-6 mb-8 md:mb-12"
+              >
+                <div className="w-12 md:w-24 h-[1px] bg-koel-teal/30" />
+                <h2 className="text-sm md:text-base font-heading tracking-[0.3em] uppercase text-koel-teal whitespace-nowrap">
+                  Recargar es parte del <span className="font-bold">ritual</span>
+                </h2>
+                <div className="w-12 md:w-24 h-[1px] bg-koel-teal/30" />
+              </motion.div>
+
+              {/* Steps - Minimalist */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 max-w-4xl mx-auto">
               {TUTORIAL_STEPS.map((step, index) => {
                 const iconSrc =
                   index === 0
@@ -51,7 +75,7 @@ export default function TutorialSection() {
                     className="text-center"
                   >
                     {/* Step Number */}
-                    <div className="text-5xl md:text-7xl font-bold text-white/10 mb-3 md:mb-4 font-display leading-none">
+                    <div className="text-5xl md:text-7xl font-bold text-koel-teal/10 mb-3 md:mb-4 font-display leading-none">
                       {step.number}
                     </div>
 
@@ -64,18 +88,18 @@ export default function TutorialSection() {
                         height={80}
                         className="w-12 h-12 md:w-20 md:h-20"
                         style={{
-                          filter: 'brightness(0) saturate(100%) invert(79%) sepia(14%) saturate(1187%) hue-rotate(128deg) brightness(95%) contrast(89%)'
+                          filter: 'brightness(0) saturate(100%) invert(13%) sepia(25%) saturate(3194%) hue-rotate(147deg) brightness(95%) contrast(95%)'
                         }}
                       />
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-lg md:text-2xl font-bold text-white mb-3 md:mb-4 font-display uppercase tracking-wide">
+                    <h3 className="text-lg md:text-2xl font-bold text-koel-teal mb-3 md:mb-4 font-display uppercase tracking-wide">
                       {step.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-lg md:text-xl text-white/80 leading-relaxed max-w-xs mx-auto">
+                    <p className="text-base md:text-lg text-koel-neutral-600 leading-relaxed max-w-xs mx-auto">
                       {step.description}
                     </p>
                   </motion.div>
@@ -83,19 +107,21 @@ export default function TutorialSection() {
               })}
             </div>
 
-            {/* Bottom Info */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 1 }}
-              className="mt-12 md:mt-20"
-            >
-              <p className="text-sm md:text-base tracking-[0.2em] uppercase text-white/60">
-                Menos de <span className="font-bold text-koel-aqua">30 segundos</span> de principio a fin
-              </p>
+              {/* Bottom Info */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 1 }}
+                className="mt-8 md:mt-12"
+              >
+                <p className="text-sm md:text-base tracking-[0.2em] uppercase text-koel-neutral-500">
+                  Menos de <span className="font-bold text-koel-teal">30 segundos</span> de principio a fin
+                </p>
+              </motion.div>
             </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </Container>
     </section>
   );
