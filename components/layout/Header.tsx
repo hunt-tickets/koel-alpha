@@ -7,12 +7,14 @@ import { NAV_LINKS } from '@/lib/constants';
 import Container from '@/components/ui/Container';
 import { ShoppingCart, User } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useCart } from '@/contexts/CartContext';
 
 interface HeaderProps {
   forceScrolled?: boolean;
 }
 
 export default function Header({ forceScrolled = false }: HeaderProps) {
+  const { toggleCart, itemCount } = useCart();
   const [isScrolled, setIsScrolled] = useState(forceScrolled);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -121,10 +123,16 @@ export default function Header({ forceScrolled = false }: HeaderProps) {
           {/* Action Icons */}
           <div className="hidden md:flex items-center gap-4">
             <button
-              className="p-2 rounded-full transition-all duration-200 text-koel-neutral-700 hover:scale-110 active:scale-95 group"
+              onClick={toggleCart}
+              className="p-2 rounded-full transition-all duration-200 text-koel-neutral-700 hover:scale-110 active:scale-95 group relative"
               aria-label="Carrito"
             >
               <ShoppingCart className="w-5 h-5 group-hover:scale-[0.909] group-active:scale-[1.053] transition-transform duration-200" />
+              {itemCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-koel-teal text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                  {itemCount}
+                </span>
+              )}
             </button>
             <button
               className="p-2 rounded-full transition-all duration-200 text-koel-neutral-700 hover:scale-110 active:scale-95 group"
@@ -134,33 +142,47 @@ export default function Header({ forceScrolled = false }: HeaderProps) {
             </button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            <div className="w-6 h-5 flex flex-col justify-between">
-              <span
-                className={cn(
-                  'w-full h-0.5 transition-all duration-300 bg-koel-teal',
-                  isMobileMenuOpen && 'rotate-45 translate-y-2'
-                )}
-              />
-              <span
-                className={cn(
-                  'w-full h-0.5 transition-all duration-300 bg-koel-teal',
-                  isMobileMenuOpen && 'opacity-0'
-                )}
-              />
-              <span
-                className={cn(
-                  'w-full h-0.5 transition-all duration-300 bg-koel-teal',
-                  isMobileMenuOpen && '-rotate-45 -translate-y-2'
-                )}
-              />
-            </div>
-          </button>
+          {/* Mobile Cart & Menu Button */}
+          <div className="md:hidden flex items-center gap-2">
+            <button
+              onClick={toggleCart}
+              className="p-2 rounded-full transition-all duration-200 text-koel-neutral-700 hover:scale-110 active:scale-95 group relative"
+              aria-label="Carrito"
+            >
+              <ShoppingCart className="w-5 h-5 group-hover:scale-[0.909] group-active:scale-[1.053] transition-transform duration-200" />
+              {itemCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-koel-teal text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                  {itemCount}
+                </span>
+              )}
+            </button>
+            <button
+              className="p-2"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              <div className="w-6 h-5 flex flex-col justify-between">
+                <span
+                  className={cn(
+                    'w-full h-0.5 transition-all duration-300 bg-koel-teal',
+                    isMobileMenuOpen && 'rotate-45 translate-y-2'
+                  )}
+                />
+                <span
+                  className={cn(
+                    'w-full h-0.5 transition-all duration-300 bg-koel-teal',
+                    isMobileMenuOpen && 'opacity-0'
+                  )}
+                />
+                <span
+                  className={cn(
+                    'w-full h-0.5 transition-all duration-300 bg-koel-teal',
+                    isMobileMenuOpen && '-rotate-45 -translate-y-2'
+                  )}
+                />
+              </div>
+            </button>
+          </div>
         </div>
       </Container>
 

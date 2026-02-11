@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { HeaderWrapper, Footer } from '@/components/layout';
 import { transducer, mazzard, miso } from './fonts';
+import { CartProvider } from '@/contexts/CartContext';
+import CartDrawer from '@/components/cart/CartDrawer';
 
 export const metadata: Metadata = {
   title: 'KOEL - El Primer Desodorante Recargable de Colombia',
@@ -36,9 +38,12 @@ export default function RootLayout({
   return (
     <html lang="es" className={`scroll-smooth ${transducer.variable} ${mazzard.variable} ${miso.variable}`}>
       <body className={miso.className}>
-        <HeaderWrapper />
-        {children}
-        <Footer />
+        <CartProvider>
+          <HeaderWrapper />
+          {children}
+          <Footer />
+          <CartDrawer />
+        </CartProvider>
       </body>
     </html>
   );
