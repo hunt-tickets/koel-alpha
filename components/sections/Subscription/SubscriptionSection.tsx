@@ -10,23 +10,6 @@ export default function SubscriptionSection() {
     <section className="relative z-10 bg-[#FCF7EE] py-12 md:py-16 lg:py-20">
       <Container>
         <div className="max-w-4xl mx-auto text-center">
-          {/* Logo KOEL - Top */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-6 sm:mb-8"
-          >
-            <Image
-              src="/logos/logo-teal.svg"
-              alt="KOEL"
-              width={200}
-              height={80}
-              className="w-20 md:w-24 h-auto mx-auto"
-            />
-          </motion.div>
-
           {/* Title */}
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
