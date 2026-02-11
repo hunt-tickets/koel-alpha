@@ -95,20 +95,20 @@ export const FRAGRANCES = [
 export const TUTORIAL_STEPS = [
   {
     number: 1,
-    title: 'Abre',
-    description: 'GIRA LA BASE DEL DESODORANTE EN SENTIDO ANTIHORARIO PARA ABRIR.',
+    title: 'Calienta',
+    description: 'Frota el POD entre tus manos durante 90 segundos para una mejor recarga.',
     image: '/images/tutorial/step-1.jpg',
   },
   {
     number: 2,
-    title: 'Recarga',
-    description: 'INSERTA LA NUEVA RECARGA HASTA ESCUCHAR UN CLIC.',
+    title: 'Encaja',
+    description: 'Encaja el POD en el aplicador hasta que quede firme.',
     image: '/images/tutorial/step-2.jpg',
   },
   {
     number: 3,
-    title: 'Disfruta',
-    description: 'CIERRA Y GIRA HACIA ARRIBA PARA USAR. ¡LISTO!',
+    title: 'Empuja',
+    description: 'Empuja desde la base del POD hasta que quede completamente encajado.',
     image: '/images/tutorial/step-3.jpg',
   },
 ] as const;
@@ -140,28 +140,48 @@ export const VALUE_PROPS = [
 // FAQs
 export const FAQS = [
   {
-    question: '¿Cuánto dura una recarga?',
-    answer: 'Cada recarga dura aproximadamente 2-3 meses con uso diario normal.',
+    question: '¿Qué incluye el Kit Inicial KOEL?',
+    answer: 'El Kit Inicial KOEL incluye todo lo que necesitas para comenzar tu ritual:\n\n• 1 Aplicador reutilizable, fabricado en plástico PCR reciclable\n• 1 POD recargable, hecho en cartón biodegradable, en el aroma que elijas\n\nEs la forma más simple de entrar al sistema KOEL y empezar desde el primer día.\n\nAdemás, todos los pedidos durante el lanzamiento participan en un sorteo para ganar una Golden Box que te otorga un año completo de desodorante KOEL gratis.',
   },
   {
-    question: '¿Es realmente libre de aluminio?',
-    answer: 'Sí, nuestra fórmula no contiene sales de aluminio (antitranspirantes). Usamos ingredientes naturales efectivos.',
+    question: '¿Cómo funciona el sistema recargable de KOEL?',
+    answer: 'KOEL funciona como un sistema simple, diseñado para repetirse:\n\n• El aplicador se queda contigo\n• Cuando se termina tu desodorante, solo cambias el POD\n\nRecargarlo es así de fácil:\n\nPaso 1 — CALIENTA\nFrota el POD entre tus manos durante 90 segundos para una mejor recarga.\n\nPaso 2 — ENCAJA\nEncaja el POD en el aplicador hasta que quede firme.\n\nPaso 3 — EMPUJA\nEmpuja desde la base del POD hasta que quede completamente encajado.\n\nLuego, solo gira la base y úsalo normalmente.',
   },
   {
-    question: '¿Cómo funciona el sistema de recarga?',
-    answer: 'Simple: abre girando la base, inserta la nueva recarga hasta el clic, cierra y listo. Toma menos de 30 segundos.',
+    question: '¿Qué aromas están disponibles?',
+    answer: 'Actualmente ofrecemos dos aromas:\n\n• Bamboo: fresco, limpio y equilibrado\n• Ginger Grape: vibrante, moderno y energizante\n\nAmbos están pensados para acompañar tu rutina diaria sin ser invasivos.',
   },
   {
-    question: '¿Hacen envíos a toda Colombia?',
-    answer: 'Sí, enviamos a todo el país. Envío gratis en compras superiores a $100.000.',
+    question: '¿Las fragancias de KOEL son aptas para piel sensible?',
+    answer: 'Sí. Las fórmulas de KOEL están diseñadas para ser suaves con la piel.\nNo contienen aluminio ni alcohol y están pensadas para el uso diario, incluso en pieles sensibles.\n\nSi tienes alguna condición específica, siempre recomendamos revisar los ingredientes antes de usar.',
   },
   {
-    question: '¿Puedo mezclar fragancias?',
-    answer: 'Absolutamente. El sistema está diseñado para cambiar de fragancia cuando quieras.',
+    question: '¿Cuánto tiempo dura un POD de KOEL?',
+    answer: 'Cada POD está diseñado para durar aproximadamente entre uno y dos meses, dependiendo de la frecuencia y cantidad de uso diario.\n\nLa suscripción te permite elegir la periodicidad que mejor se adapte a tu ritmo.',
   },
   {
-    question: '¿Qué hago con las recargas vacías?',
-    answer: 'Son 100% reciclables. También estamos desarrollando un programa de retorno para reusarlas.',
+    question: '¿Qué hace a KOEL una opción más consciente?',
+    answer: 'KOEL reduce el desperdicio desde el diseño:\n\n• El aplicador es reutilizable y está hecho en plástico PCR reciclable\n• Los PODs son de cartón biodegradable\n• Solo reemplazas lo que realmente se consume\n\nNo es solo un producto, es un sistema pensado para durar.',
+  },
+  {
+    question: '¿Puedo comprar los productos sin suscribirme?',
+    answer: 'Sí. Puedes comprar el Kit Inicial, los PODs o el Aplicador de forma individual.\n\nSin embargo, la suscripción es la forma más conveniente de usar KOEL: ahorras en cada recarga y recibes tus PODs automáticamente.',
+  },
+  {
+    question: '¿Puedo modificar o cancelar mi suscripción?',
+    answer: 'Claro. La suscripción KOEL es flexible:\n\n• Puedes cambiar la frecuencia\n• Pausar cuando lo necesites\n• Cancelar en cualquier momento\n\nTodo desde tu cuenta, sin complicaciones.',
+  },
+  {
+    question: '¿Dónde está disponible KOEL?',
+    answer: 'Por ahora, KOEL está disponible únicamente en Colombia.\nEstamos trabajando para expandirnos a otros mercados en el futuro.',
+  },
+  {
+    question: '¿Cuánto tiempo tarda el envío?',
+    answer: 'Los tiempos de envío se muestran antes de finalizar tu compra.\nTrabajos para que recibas tu KOEL lo más rápido posible y en óptimas condiciones.',
+  },
+  {
+    question: '¿KOEL tendrá más productos en el futuro?',
+    answer: 'Sí. KOEL nace como un sistema de cuidado personal recargable.\nEn el futuro, iremos ampliando el universo KOEL a otros productos de aseo personal, siempre bajo la misma lógica de diseño consciente y simplicidad.',
   },
 ] as const;
 

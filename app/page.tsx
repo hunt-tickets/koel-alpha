@@ -38,11 +38,10 @@ export default function HomePage() {
       />
       <main className="min-h-screen">
         <HeroSection />
-        <ProductSystemSection />
-        <VelocityBannerSection />
-        <TutorialSection />
         <SubscriptionSection />
-        <ValuePropSection />
+        <VelocityBannerSection />
+        <ProductSystemSection />
+        <TutorialSection />
         <FAQSection />
       </main>
     </>

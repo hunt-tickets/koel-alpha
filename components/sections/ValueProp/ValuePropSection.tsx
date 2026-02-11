@@ -21,12 +21,12 @@ function ValueItem({ icon, title, index }: ValueItemProps) {
       className="flex flex-col items-center text-center group"
     >
       {/* Icon */}
-      <div className="mb-4 text-koel-aqua group-hover:text-white transition-colors duration-300">
+      <div className="mb-4 text-koel-teal group-hover:text-koel-aqua transition-colors duration-300">
         {icon}
       </div>
 
       {/* Title */}
-      <h4 className="text-sm md:text-base font-semibold text-white uppercase tracking-wide">
+      <h4 className="text-sm md:text-base font-semibold text-koel-teal uppercase tracking-wide">
         {title}
       </h4>
     </motion.div>
@@ -146,7 +146,7 @@ export default function ValuePropSection() {
   ];
 
   return (
-    <section className="py-12 md:py-16 bg-koel-teal">
+    <section className="pt-12 md:pt-16 pb-12 md:pb-16 bg-[#FCF7EE]">
       <Container>
         {/* Decorative Header with Sello */}
         <motion.div
@@ -158,18 +158,15 @@ export default function ValuePropSection() {
         >
           {/* Top Divider */}
           <div className="flex items-center justify-center gap-6">
-            <div className="h-[1px] w-16 md:w-24 bg-koel-aqua/30" />
+            <div className="h-[1px] w-16 md:w-24 bg-koel-teal/30" />
             <Image
               src="/logos/logo-teal.svg"
               alt="KOEL"
               width={120}
               height={48}
               className="w-20 md:w-24 h-auto opacity-90"
-              style={{
-                filter: 'brightness(0) invert(98%) sepia(8%) saturate(524%) hue-rotate(329deg) brightness(103%) contrast(97%)'
-              }}
             />
-            <div className="h-[1px] w-16 md:w-24 bg-koel-aqua/30" />
+            <div className="h-[1px] w-16 md:w-24 bg-koel-teal/30" />
           </div>
         </motion.div>
 

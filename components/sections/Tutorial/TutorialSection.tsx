@@ -9,7 +9,7 @@ export default function TutorialSection() {
   return (
     <section
       id="tutorial"
-      className="bg-[#FCF7EE] py-12 md:py-20"
+      className="bg-koel-teal py-12 md:py-20"
     >
       <Container>
         <div className="text-center max-w-5xl mx-auto">
@@ -21,11 +21,11 @@ export default function TutorialSection() {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="flex items-center justify-center gap-4 md:gap-6 mb-8 md:mb-12"
             >
-              <div className="w-12 md:w-24 h-[1px] bg-koel-teal/30" />
-              <h2 className="text-sm md:text-base font-heading tracking-[0.3em] uppercase text-koel-teal whitespace-nowrap">
-                A <span className="font-bold">New Way</span> to Care
+              <div className="w-12 md:w-24 h-[1px] bg-koel-aqua/30" />
+              <h2 className="text-sm md:text-base font-heading tracking-[0.3em] uppercase text-white whitespace-nowrap">
+                Recargar es parte del <span className="font-bold">ritual</span>
               </h2>
-              <div className="w-12 md:w-24 h-[1px] bg-koel-teal/30" />
+              <div className="w-12 md:w-24 h-[1px] bg-koel-aqua/30" />
             </motion.div>
 
             {/* Steps - Minimalist */}
@@ -39,7 +39,7 @@ export default function TutorialSection() {
                     : '/icons/disfruta.svg';
 
                 const iconAlt =
-                  index === 0 ? 'Abre' : index === 1 ? 'Encaja' : 'Disfruta';
+                  index === 0 ? 'Calienta' : index === 1 ? 'Encaja' : 'Empuja';
 
                 return (
                   <motion.div
@@ -51,7 +51,7 @@ export default function TutorialSection() {
                     className="text-center"
                   >
                     {/* Step Number */}
-                    <div className="text-5xl md:text-7xl font-bold text-koel-teal/10 mb-3 md:mb-4 font-display leading-none">
+                    <div className="text-5xl md:text-7xl font-bold text-white/10 mb-3 md:mb-4 font-display leading-none">
                       {step.number}
                     </div>
 
@@ -63,16 +63,19 @@ export default function TutorialSection() {
                         width={80}
                         height={80}
                         className="w-12 h-12 md:w-20 md:h-20"
+                        style={{
+                          filter: 'brightness(0) saturate(100%) invert(79%) sepia(14%) saturate(1187%) hue-rotate(128deg) brightness(95%) contrast(89%)'
+                        }}
                       />
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-lg md:text-2xl font-bold text-koel-teal mb-3 md:mb-4 font-display uppercase tracking-wide">
+                    <h3 className="text-lg md:text-2xl font-bold text-white mb-3 md:mb-4 font-display uppercase tracking-wide">
                       {step.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-lg md:text-xl text-koel-neutral-600 leading-relaxed max-w-xs mx-auto">
+                    <p className="text-lg md:text-xl text-white/80 leading-relaxed max-w-xs mx-auto">
                       {step.description}
                     </p>
                   </motion.div>
@@ -88,8 +91,8 @@ export default function TutorialSection() {
               transition={{ duration: 0.8, delay: 1 }}
               className="mt-12 md:mt-20"
             >
-              <p className="text-sm md:text-base tracking-[0.2em] uppercase text-koel-teal-dark/60">
-                Menos de <span className="font-bold text-koel-teal">30 segundos</span> de principio a fin
+              <p className="text-sm md:text-base tracking-[0.2em] uppercase text-white/60">
+                Menos de <span className="font-bold text-koel-aqua">30 segundos</span> de principio a fin
               </p>
             </motion.div>
         </div>
