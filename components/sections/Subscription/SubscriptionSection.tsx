@@ -18,7 +18,7 @@ export default function SubscriptionSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-koel-teal mb-4 sm:mb-6 uppercase tracking-wide"
           >
-            La forma más simple de usar KOEL
+            La forma más simple de usar
           </motion.h2>
 
           {/* Description */}
