@@ -24,7 +24,7 @@ export default function TutorialSection() {
   return (
     <section
       id="tutorial"
-      className="relative z-50 bg-koel-teal py-16 md:py-20 lg:py-32"
+      className="relative z-30 bg-koel-teal py-16 md:py-20 lg:py-32"
     >
       <Container>
         <motion.div

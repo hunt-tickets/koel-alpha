@@ -11,7 +11,7 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="section-container relative z-60 bg-koel-neutral-100">
+    <section id="faq" className="section-container relative z-40 bg-koel-neutral-100">
       <Container>
         {/* Section Header */}
         <motion.div
