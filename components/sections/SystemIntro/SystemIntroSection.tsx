@@ -20,6 +20,28 @@ export default function SystemIntroSection() {
 
   const currentScheme = activeColor !== null ? colorSchemes[activeColor] : null;
 
+  // Get the appropriate isotipo based on active color
+  const getIsotipoSrc = () => {
+    if (activeColor === null) return '/icons/isotipo-teal.svg';
+
+    switch (activeColor) {
+      case 0: // olive/yellow
+        return '/icons/isotipo-yellow.svg';
+      case 1: // coral/teal
+        return '/icons/isotipo-teal.svg';
+      case 2: // aqua/teal
+        return '/icons/isotipo-teal.svg';
+      case 3: // teal/aqua
+        return '/icons/isotipo-aqua.svg';
+      case 4: // pink/white
+        return '/icons/isotipo-koel.svg';
+      case 5: // yellow/olive
+        return '/icons/isotipo-olive.svg';
+      default:
+        return '/icons/isotipo-teal.svg';
+    }
+  };
+
   return (
     <section className={`sticky top-16 md:top-20 z-0 py-12 md:py-16 transition-colors duration-500 ${
       currentScheme ? currentScheme.bg : 'bg-koel-aqua'
@@ -41,11 +63,12 @@ export default function SystemIntroSection() {
             className="flex justify-center mb-4 md:mb-6"
           >
             <Image
-              src="/icons/isotipo-teal.svg"
+              key={activeColor}
+              src={getIsotipoSrc()}
               alt="KOEL"
               width={48}
               height={48}
-              className="w-10 h-10 md:w-12 md:h-12 opacity-40"
+              className="w-10 h-10 md:w-12 md:h-12 opacity-40 transition-opacity duration-500"
             />
           </motion.div>
 
