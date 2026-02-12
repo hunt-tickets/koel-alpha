@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Container from '@/components/ui/Container';
 import { useState } from 'react';
@@ -36,7 +36,7 @@ export default function SystemIntroSection() {
       case 4: // pink/white
         return '/icons/isotipo-koel.svg';
       case 5: // yellow/olive
-        return '/icons/isotipo-olive.svg';
+        return '/icons/isotipo-yellow.svg';
       default:
         return '/icons/isotipo-teal.svg';
     }
@@ -62,14 +62,23 @@ export default function SystemIntroSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="flex justify-center mb-4 md:mb-6"
           >
-            <Image
-              key={activeColor}
-              src={getIsotipoSrc()}
-              alt="KOEL"
-              width={48}
-              height={48}
-              className="w-10 h-10 md:w-12 md:h-12 opacity-40 transition-opacity duration-500"
-            />
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeColor ?? 'default'}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Image
+                  src={getIsotipoSrc()}
+                  alt="KOEL"
+                  width={48}
+                  height={48}
+                  className="w-10 h-10 md:w-12 md:h-12"
+                />
+              </motion.div>
+            </AnimatePresence>
           </motion.div>
 
           {/* Title */}

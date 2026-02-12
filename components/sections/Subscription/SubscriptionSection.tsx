@@ -9,13 +9,13 @@ import Button from '@/components/ui/Button';
 export default function SubscriptionSection() {
   const imageRef = useRef<HTMLDivElement>(null);
 
-  // Parallax effect for image - subtle movement
+  // Parallax effect for image
   const { scrollYProgress } = useScroll({
     target: imageRef,
     offset: ["start end", "end start"]
   });
 
-  const imageY = useTransform(scrollYProgress, [0, 1], ['-5%', '5%']);
+  const imageY = useTransform(scrollYProgress, [0, 1], ['-10%', '10%']);
 
   return (
     <section className="relative z-20 bg-[#FCF7EE] py-16 md:py-20 lg:py-24">
@@ -54,7 +54,7 @@ export default function SubscriptionSection() {
           >
             <motion.div
               style={{ y: imageY }}
-              className="relative w-full h-[110%]"
+              className="relative w-full h-[120%]"
             >
               <Image
                 src="/images/subscription-hero.png"
