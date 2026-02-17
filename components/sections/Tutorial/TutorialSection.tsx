@@ -40,6 +40,8 @@ export default function TutorialSection() {
     setCurrentStep(index);
   };
 
+  const [direction, setDirection] = useState(0);
+
   const swipeConfidenceThreshold = 10000;
   const swipePower = (offset: number, velocity: number) => {
     return Math.abs(offset) * velocity;
@@ -48,6 +50,7 @@ export default function TutorialSection() {
   const paginate = (newDirection: number) => {
     const nextStep = currentStep + newDirection;
     if (nextStep >= 0 && nextStep < TUTORIAL_STEPS.length) {
+      setDirection(newDirection);
       setCurrentStep(nextStep);
     }
   };
@@ -87,9 +90,9 @@ export default function TutorialSection() {
                   <AnimatePresence mode="wait" initial={false}>
                     <motion.div
                       key={currentStep}
-                      initial={{ opacity: 0, x: 300 }}
+                      initial={{ opacity: 0, x: direction >= 0 ? 300 : -300 }}
                       animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -300 }}
+                      exit={{ opacity: 0, x: direction >= 0 ? -300 : 300 }}
                       transition={{ duration: 0.3 }}
                       drag="x"
                       dragConstraints={{ left: 0, right: 0 }}
