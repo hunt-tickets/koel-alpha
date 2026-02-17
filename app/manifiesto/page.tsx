@@ -201,7 +201,6 @@ function FlipCard({ value, index }: { value: ValueItem; index: number }) {
 }
 
 export default function ManifiestoPage() {
-  const [isLoading, setIsLoading] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
   const [activeColor, setActiveColor] = useState<number | null>(null);
   const heroRef = useRef(null);
@@ -294,7 +293,6 @@ export default function ManifiestoPage() {
     <>
       <LoadingScreen
         minDuration={1750}
-        onLoadingComplete={() => setIsLoading(false)}
         bgColor="bg-koel-yellow"
         textColor="text-koel-olive"
       />

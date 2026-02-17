@@ -92,7 +92,6 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [addedToCart, setAddedToCart] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
 
   const { slug } = use(params);
   const product = PRODUCTS[slug as keyof typeof PRODUCTS];
@@ -117,7 +116,6 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
     <>
       <LoadingScreen
         minDuration={1750}
-        onLoadingComplete={() => setIsLoading(false)}
         bgColor="bg-koel-aqua"
         textColor="text-koel-teal"
       />
