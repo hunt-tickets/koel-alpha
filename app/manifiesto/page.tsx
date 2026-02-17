@@ -158,7 +158,7 @@ El futuro del cuidado comienza aquí.`;
                   alt="Sello KOEL"
                   width={160}
                   height={160}
-                  className="w-24 h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 transition-all duration-500"
+                  className="w-24 h-24 md:w-32 md:h-32 lg:w-40 lg:h-40"
                   style={{
                     filter: currentScheme && activeColor !== 0 && activeColor !== 5
                       ? currentScheme.text === 'text-koel-yellow'
@@ -221,7 +221,7 @@ El futuro del cuidado comienza aquí.`;
                   alt="KOEL"
                   width={100}
                   height={40}
-                  className="w-16 md:w-20 lg:w-24 h-auto transition-all duration-500"
+                  className="w-16 md:w-20 lg:w-24 h-auto"
                   style={{
                     filter: currentScheme && activeColor !== 0 && activeColor !== 5
                       ? currentScheme.text === 'text-koel-yellow'
