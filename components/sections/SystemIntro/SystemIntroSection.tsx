@@ -5,18 +5,18 @@ import Image from 'next/image';
 import Container from '@/components/ui/Container';
 import { useState } from 'react';
 
+// Color combinations — defined at module level so they're not recreated on every render
+const colorSchemes = [
+  { bg: 'bg-koel-olive',  text: 'text-koel-yellow', divider: 'bg-koel-yellow', border: 'border-koel-yellow' },
+  { bg: 'bg-koel-coral',  text: 'text-koel-teal',   divider: 'bg-koel-teal',   border: 'border-koel-teal'   },
+  { bg: 'bg-koel-aqua',   text: 'text-koel-teal',   divider: 'bg-koel-teal',   border: 'border-koel-teal'   },
+  { bg: 'bg-koel-teal',   text: 'text-koel-aqua',   divider: 'bg-koel-aqua',   border: 'border-koel-aqua'   },
+  { bg: 'bg-koel-pink',   text: 'text-white',        divider: 'bg-white',       border: 'border-white'       },
+  { bg: 'bg-koel-yellow', text: 'text-koel-olive',  divider: 'bg-koel-olive',  border: 'border-koel-olive'  },
+];
+
 export default function SystemIntroSection() {
   const [activeColor, setActiveColor] = useState<number | null>(null);
-
-  // Color combinations
-  const colorSchemes = [
-    { bg: 'bg-koel-olive',  text: 'text-koel-yellow', divider: 'bg-koel-yellow', border: 'border-koel-yellow' },
-    { bg: 'bg-koel-coral',  text: 'text-koel-teal',   divider: 'bg-koel-teal',   border: 'border-koel-teal'   },
-    { bg: 'bg-koel-aqua',   text: 'text-koel-teal',   divider: 'bg-koel-teal',   border: 'border-koel-teal'   },
-    { bg: 'bg-koel-teal',   text: 'text-koel-aqua',   divider: 'bg-koel-aqua',   border: 'border-koel-aqua'   },
-    { bg: 'bg-koel-pink',   text: 'text-white',        divider: 'bg-white',       border: 'border-white'       },
-    { bg: 'bg-koel-yellow', text: 'text-koel-olive',  divider: 'bg-koel-olive',  border: 'border-koel-olive'  },
-  ];
 
   const currentScheme = activeColor !== null ? colorSchemes[activeColor] : null;
 

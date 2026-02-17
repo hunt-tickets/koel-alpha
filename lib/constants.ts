@@ -15,6 +15,7 @@ export const ICON_FILTERS = {
   yellow: 'brightness(0) saturate(100%) invert(85%) sepia(16%) saturate(1449%) hue-rotate(358deg) brightness(102%) contrast(101%)',
   olive: 'brightness(0) saturate(100%) invert(38%) sepia(13%) saturate(1066%) hue-rotate(74deg) brightness(94%) contrast(88%)',
   cream: 'brightness(0) saturate(100%) invert(98%) sepia(2%) saturate(1157%) hue-rotate(318deg) brightness(102%) contrast(96%)',
+  aquaLight: 'brightness(0) saturate(100%) invert(75%) sepia(12%) saturate(650%) hue-rotate(128deg) brightness(98%) contrast(90%)',
 } as const;
 
 // Brand Information

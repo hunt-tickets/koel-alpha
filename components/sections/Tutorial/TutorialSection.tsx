@@ -2,52 +2,25 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import Container from '@/components/ui/Container';
 import { TUTORIAL_STEPS } from '@/lib/constants';
+import { ICON_FILTERS } from '@/lib/constants';
 
-const STEP_DURATION = 6000; // ms per step
+const STEP_DURATION = 6; // seconds (Framer Motion uses seconds)
 
 export default function TutorialSection() {
   const [currentStep, setCurrentStep] = useState(0);
-  const [progress, setProgress] = useState(0);
-  const rafRef = useRef<number | null>(null);
-  const startTimeRef = useRef<number>(Date.now());
-
-  const startProgress = () => {
-    if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    startTimeRef.current = Date.now();
-    setProgress(0);
-
-    const tick = () => {
-      const elapsed = Date.now() - startTimeRef.current;
-      const pct = Math.min((elapsed / STEP_DURATION) * 100, 100);
-      setProgress(pct);
-      if (pct < 100) {
-        rafRef.current = requestAnimationFrame(tick);
-      } else {
-        setCurrentStep((prev) => (prev + 1) % TUTORIAL_STEPS.length);
-      }
-    };
-    rafRef.current = requestAnimationFrame(tick);
-  };
-
-  useEffect(() => {
-    startProgress();
-    return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentStep]);
-
-  const goToStep = (index: number) => {
-    if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    setCurrentStep(index);
-  };
-
   const [direction, setDirection] = useState(0);
 
   const swipeConfidenceThreshold = 10000;
   const swipePower = (offset: number, velocity: number) => {
     return Math.abs(offset) * velocity;
+  };
+
+  const goToStep = (index: number) => {
+    setDirection(index > currentStep ? 1 : -1);
+    setCurrentStep(index);
   };
 
   const paginate = (newDirection: number) => {
@@ -56,6 +29,11 @@ export default function TutorialSection() {
       setDirection(newDirection);
       setCurrentStep(nextStep);
     }
+  };
+
+  const advanceStep = () => {
+    setDirection(1);
+    setCurrentStep((prev) => (prev + 1) % TUTORIAL_STEPS.length);
   };
 
   return (
@@ -138,9 +116,7 @@ export default function TutorialSection() {
                                 width={120}
                                 height={120}
                                 className="w-24 h-24"
-                                style={{
-                                  filter: 'brightness(0) saturate(100%) invert(75%) sepia(12%) saturate(650%) hue-rotate(128deg) brightness(98%) contrast(90%)'
-                                }}
+                                style={{ filter: ICON_FILTERS.aquaLight }}
                               />
                             </div>
 
@@ -160,7 +136,7 @@ export default function TutorialSection() {
                   </AnimatePresence>
                 </div>
 
-                {/* Progressive pills */}
+                {/* Progressive pills — CSS animation, zero JS state updates */}
                 <div className="mt-8 flex justify-center gap-3">
                   {TUTORIAL_STEPS.map((_, index) => {
                     const isActive = index === currentStep;
@@ -168,19 +144,25 @@ export default function TutorialSection() {
                     return (
                       <button
                         key={index}
+                        type="button"
                         onClick={() => goToStep(index)}
                         aria-label={`Go to step ${index + 1}`}
                         className="relative w-16 h-8 rounded-full overflow-hidden border-2 border-koel-teal"
                         style={{ background: 'transparent' }}
                       >
-                        {/* Fill layer */}
-                        <div
+                        {/* Fill layer — Framer Motion animates scaleX, no JS state updates */}
+                        <motion.div
+                          key={isActive ? `active-${currentStep}` : `done-${index}`}
                           className="absolute inset-0 bg-koel-teal origin-left"
-                          style={{
-                            transform: `scaleX(${isDone ? 1 : isActive ? progress / 100 : 0})`,
-                            transformOrigin: 'left',
-                            transition: isActive ? 'none' : 'transform 0.2s',
-                          }}
+                          initial={{ scaleX: isDone ? 1 : 0 }}
+                          animate={{ scaleX: isDone || isActive ? 1 : 0 }}
+                          transition={
+                            isActive
+                              ? { duration: STEP_DURATION, ease: 'linear' }
+                              : { duration: 0.2 }
+                          }
+                          onAnimationComplete={isActive ? advanceStep : undefined}
+                          style={{ transformOrigin: 'left' }}
                         />
                         {/* Number */}
                         <span
@@ -230,9 +212,7 @@ export default function TutorialSection() {
                           width={80}
                           height={80}
                           className="w-12 h-12 md:w-20 md:h-20"
-                          style={{
-                            filter: 'brightness(0) saturate(100%) invert(75%) sepia(12%) saturate(650%) hue-rotate(128deg) brightness(98%) contrast(90%)'
-                          }}
+                          style={{ filter: ICON_FILTERS.aquaLight }}
                         />
                       </div>
 
