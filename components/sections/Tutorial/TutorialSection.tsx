@@ -83,7 +83,7 @@ export default function TutorialSection() {
               {/* Steps - Mobile Swiper / Desktop Grid */}
               {/* Mobile: Swipeable Carousel */}
               <div className="md:hidden relative overflow-hidden">
-                <div className="relative h-[400px] flex items-center justify-center">
+                <div className="relative h-[480px] flex items-center justify-center">
                   <AnimatePresence mode="wait" initial={false}>
                     <motion.div
                       key={currentStep}
@@ -120,18 +120,18 @@ export default function TutorialSection() {
                         return (
                           <>
                             {/* Step Number */}
-                            <div className="text-5xl font-bold text-koel-teal/10 mb-3 font-display leading-none">
+                            <div className="text-7xl font-bold text-koel-teal/10 mb-4 font-display leading-none">
                               {step.number}
                             </div>
 
                             {/* Icon */}
-                            <div className="mb-4 flex justify-center">
+                            <div className="mb-6 flex justify-center">
                               <Image
                                 src={iconSrc}
                                 alt={iconAlt}
-                                width={80}
-                                height={80}
-                                className="w-16 h-16"
+                                width={120}
+                                height={120}
+                                className="w-24 h-24"
                                 style={{
                                   filter: 'brightness(0) saturate(100%) invert(75%) sepia(12%) saturate(650%) hue-rotate(128deg) brightness(98%) contrast(90%)'
                                 }}
@@ -139,12 +139,12 @@ export default function TutorialSection() {
                             </div>
 
                             {/* Title */}
-                            <h3 className="text-xl font-bold text-koel-teal mb-3 font-display uppercase tracking-wide">
+                            <h3 className="text-2xl font-bold text-koel-teal mb-4 font-display uppercase tracking-wide">
                               {step.title}
                             </h3>
 
                             {/* Description */}
-                            <p className="text-base text-koel-neutral-600 leading-relaxed max-w-xs mx-auto">
+                            <p className="text-lg text-koel-neutral-600 leading-relaxed max-w-xs mx-auto">
                               {step.description}
                             </p>
                           </>
