@@ -8,6 +8,7 @@ import Button from '@/components/ui/Button';
 import { ArrowLeft, ShoppingCart, Check } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { formatPrice } from '@/lib/utils';
+import { ICON_FILTERS } from '@/lib/constants';
 import LoadingScreen from '@/components/ui/LoadingScreen';
 
 // Datos de productos (más adelante vendrán de Shopify)
@@ -330,9 +331,7 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
                     width={64}
                     height={64}
                     className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 lg:w-16 lg:h-16"
-                    style={{
-                      filter: 'brightness(0) saturate(100%) invert(13%) sepia(25%) saturate(3194%) hue-rotate(147deg) brightness(95%) contrast(95%)'
-                    }}
+                    style={{ filter: ICON_FILTERS.teal }}
                   />
                 </div>
 

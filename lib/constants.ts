@@ -3,6 +3,20 @@
  * Centralized content and configuration
  */
 
+// Timing
+export const LOADER_MIN_DURATION = 1750;
+export const LOADER_EXIT_DURATION = 800;
+export const LOADER_REVEAL_DELAY = LOADER_MIN_DURATION + LOADER_EXIT_DURATION; // 2550ms
+
+// CSS filter strings for SVG icon tinting
+export const ICON_FILTERS = {
+  teal: 'brightness(0) saturate(100%) invert(13%) sepia(25%) saturate(3194%) hue-rotate(147deg) brightness(95%) contrast(95%)',
+  aqua: 'brightness(0) saturate(100%) invert(73%) sepia(11%) saturate(1590%) hue-rotate(128deg) brightness(91%) contrast(87%)',
+  yellow: 'brightness(0) saturate(100%) invert(85%) sepia(16%) saturate(1449%) hue-rotate(358deg) brightness(102%) contrast(101%)',
+  olive: 'brightness(0) saturate(100%) invert(38%) sepia(13%) saturate(1066%) hue-rotate(74deg) brightness(94%) contrast(88%)',
+  cream: 'brightness(0) saturate(100%) invert(98%) sepia(2%) saturate(1157%) hue-rotate(318deg) brightness(102%) contrast(96%)',
+} as const;
+
 // Brand Information
 export const BRAND = {
   name: 'KOEL',

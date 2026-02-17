@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { useRef, useState, useEffect } from 'react';
 import { LoadingScreen, DecryptText } from '@/components/ui';
 import Button from '@/components/ui/Button';
+import { LOADER_REVEAL_DELAY } from '@/lib/constants';
 
 export default function ManifiestoPage() {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,7 +23,7 @@ export default function ManifiestoPage() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);
-    }, 2550);
+    }, LOADER_REVEAL_DELAY);
 
     return () => clearTimeout(timer);
   }, []);

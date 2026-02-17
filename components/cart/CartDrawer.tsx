@@ -1,27 +1,16 @@
 'use client';
 
-import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '@/contexts/CartContext';
 import Image from 'next/image';
 import { X, Plus, Minus, Trash2 } from 'lucide-react';
-import { formatPrice } from '@/lib/utils/formatPrice';
+import { formatPrice } from '@/lib/utils';
+import { useBodyScrollLock } from '@/lib/hooks/useBodyScrollLock';
 
 export default function CartDrawer() {
   const { items, isOpen, closeCart, updateQuantity, removeItem, total, itemCount } = useCart();
 
-  // Prevent body scroll when drawer is open
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isOpen]);
+  useBodyScrollLock(isOpen);
 
   return (
     <AnimatePresence>

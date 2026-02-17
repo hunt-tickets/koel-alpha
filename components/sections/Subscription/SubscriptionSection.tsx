@@ -2,9 +2,11 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState } from 'react';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
+import { useIsMobile } from '@/lib/hooks/useIsMobile';
+import { ICON_FILTERS } from '@/lib/constants';
 
 const VARIANTS = [
   { src: '/images/koel-bamboo.png', shot: '/images/productshot-bamboo.png', label: 'Bamboo', key: 'bamboo' },
@@ -14,14 +16,7 @@ const VARIANTS = [
 export default function SubscriptionSection() {
   const imageRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 640);
-    check();
-    window.addEventListener('resize', check);
-    return () => window.removeEventListener('resize', check);
-  }, []);
+  const isMobile = useIsMobile();
 
   // Parallax effect for image
   const { scrollYProgress } = useScroll({
@@ -125,7 +120,7 @@ export default function SubscriptionSection() {
                 height={64}
                 className="w-14 h-14 sm:w-16 sm:h-16"
                 style={{
-                  filter: 'brightness(0) saturate(100%) invert(13%) sepia(25%) saturate(3194%) hue-rotate(147deg) brightness(95%) contrast(95%)'
+                  filter: ICON_FILTERS.teal
                 }}
               />
               <h3 className="text-sm sm:text-base font-heading font-bold text-koel-teal uppercase tracking-wide">Subscribe & Save</h3>
@@ -145,7 +140,7 @@ export default function SubscriptionSection() {
                 height={64}
                 className="w-14 h-14 sm:w-16 sm:h-16"
                 style={{
-                  filter: 'brightness(0) saturate(100%) invert(13%) sepia(25%) saturate(3194%) hue-rotate(147deg) brightness(95%) contrast(95%)'
+                  filter: ICON_FILTERS.teal
                 }}
               />
               <h3 className="text-sm sm:text-base font-heading font-bold text-koel-teal uppercase tracking-wide">Envío automático</h3>
@@ -165,7 +160,7 @@ export default function SubscriptionSection() {
                 height={64}
                 className="w-14 h-14 sm:w-16 sm:h-16"
                 style={{
-                  filter: 'brightness(0) saturate(100%) invert(13%) sepia(25%) saturate(3194%) hue-rotate(147deg) brightness(95%) contrast(95%)'
+                  filter: ICON_FILTERS.teal
                 }}
               />
               <h3 className="text-sm sm:text-base font-heading font-bold text-koel-teal uppercase tracking-wide">Control total</h3>

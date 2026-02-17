@@ -1,8 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
+import { useIsMobile } from '@/lib/hooks/useIsMobile';
 
 const KoelModel3D = dynamic(() => import('@/components/three/KoelModel3D'), {
   ssr: false,
@@ -10,18 +10,7 @@ const KoelModel3D = dynamic(() => import('@/components/three/KoelModel3D'), {
 });
 
 export default function HeroSection() {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+  const isMobile = useIsMobile(768);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">

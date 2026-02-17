@@ -12,11 +12,12 @@ export function cn(...classes: (string | undefined | null | false)[]): string {
 /**
  * Format price in Colombian Pesos
  */
-export function formatPrice(price: number): string {
+export function formatPrice(price: number, includeCurrency = true): string {
   return new Intl.NumberFormat('es-CO', {
-    style: 'currency',
+    style: includeCurrency ? 'currency' : 'decimal',
     currency: 'COP',
     minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
   }).format(price);
 }
 

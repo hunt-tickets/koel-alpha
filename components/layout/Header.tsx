@@ -1,9 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useBodyScrollLock } from '@/lib/hooks/useBodyScrollLock';
+import { LOADER_REVEAL_DELAY, NAV_LINKS, ICON_FILTERS } from '@/lib/constants';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import { NAV_LINKS } from '@/lib/constants';
 import Container from '@/components/ui/Container';
 import { ShoppingCart, User } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -23,7 +24,7 @@ export default function Header({ forceScrolled = false }: HeaderProps) {
     // Show header after loader (1.75s loader + 0.8s exit animation)
     const timer = setTimeout(() => {
       setIsVisible(true);
-    }, 2550);
+    }, LOADER_REVEAL_DELAY);
 
     return () => clearTimeout(timer);
   }, []);
@@ -42,18 +43,7 @@ export default function Header({ forceScrolled = false }: HeaderProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [forceScrolled]);
 
-  // Prevent body scroll when mobile menu is open
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isMobileMenuOpen]);
+  useBodyScrollLock(isMobileMenuOpen);
 
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
@@ -211,9 +201,7 @@ export default function Header({ forceScrolled = false }: HeaderProps) {
                 width={80}
                 height={32}
                 className="w-16 md:w-20 h-auto"
-                style={{
-                  filter: 'brightness(0) saturate(100%) invert(73%) sepia(11%) saturate(1590%) hue-rotate(128deg) brightness(91%) contrast(87%)'
-                }}
+                style={{ filter: ICON_FILTERS.aqua }}
               />
             </motion.div>
             <button
@@ -264,9 +252,7 @@ export default function Header({ forceScrolled = false }: HeaderProps) {
                 width={24}
                 height={24}
                 className="w-6 h-6"
-                style={{
-                  filter: 'brightness(0) saturate(100%) invert(73%) sepia(11%) saturate(1590%) hue-rotate(128deg) brightness(91%) contrast(87%)'
-                }}
+                style={{ filter: ICON_FILTERS.aqua }}
               />
               <div className="w-12 h-[1px] bg-koel-aqua/30" />
             </div>
