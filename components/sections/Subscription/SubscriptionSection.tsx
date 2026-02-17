@@ -68,7 +68,7 @@ export default function SubscriptionSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.25 }}
-            className="mb-8 md:mb-10 relative z-0 -mx-4 sm:-mx-8 md:-mx-20 lg:-mx-40 h-[160px] sm:h-[190px] md:h-[220px] rounded-xl md:rounded-2xl cursor-pointer bg-[#E8DDD0]"
+            className="mb-8 md:mb-10 relative z-0 -mx-4 sm:-mx-8 md:-mx-20 lg:-mx-40 h-[160px] sm:h-[190px] md:h-[260px] lg:h-[300px] rounded-xl md:rounded-2xl cursor-pointer bg-[#E8DDD0]"
           >
             {VARIANTS.map((v, i) => (
               <div
