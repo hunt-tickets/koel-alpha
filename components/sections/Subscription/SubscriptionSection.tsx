@@ -1,13 +1,19 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
 
+const VARIANTS = [
+  { src: '/images/koel-bamboo.png', label: 'Bamboo', key: 'bamboo' },
+  { src: '/images/koel-grape.png',  label: 'Ginger Grape', key: 'grape'  },
+];
+
 export default function SubscriptionSection() {
   const imageRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   // Parallax effect for image
   const { scrollYProgress } = useScroll({
@@ -43,27 +49,52 @@ export default function SubscriptionSection() {
             Elige tu aroma, define la frecuencia y recibe tus recargas automáticamente. Tu ritual, siempre listo. Sin pensarlo.
           </motion.p>
 
-          {/* Horizontal Image */}
+          {/* Product Image with hover variant switch */}
           <motion.div
             ref={imageRef}
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.25 }}
-            className="mb-12 md:mb-16 relative w-full h-[280px] sm:h-[320px] md:h-[400px] rounded-xl md:rounded-2xl overflow-hidden"
+            className="mb-8 md:mb-10 relative w-full h-[320px] sm:h-[400px] md:h-[520px] rounded-xl md:rounded-2xl overflow-hidden cursor-pointer"
+            onMouseEnter={() => setActiveIndex(1)}
+            onMouseLeave={() => setActiveIndex(0)}
           >
-            <motion.div
-              style={{ y: imageY }}
-              className="relative w-full h-[120%]"
-            >
-              <Image
-                src="/images/subscription-hero.png"
-                alt="KOEL Subscription System"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 1200px"
-              />
-            </motion.div>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={VARIANTS[activeIndex].key}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src={VARIANTS[activeIndex].src}
+                  alt={`KOEL ${VARIANTS[activeIndex].label}`}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 1200px"
+                  priority
+                />
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Variant label */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+              {VARIANTS.map((v, i) => (
+                <span
+                  key={v.key}
+                  className={`px-3 py-1 rounded-full text-xs font-heading font-bold uppercase tracking-widest transition-all duration-300 ${
+                    i === activeIndex
+                      ? 'bg-koel-teal text-white opacity-100'
+                      : 'bg-white/60 text-koel-teal opacity-70'
+                  }`}
+                >
+                  {v.label}
+                </span>
+              ))}
+            </div>
           </motion.div>
 
           {/* Features Grid */}
