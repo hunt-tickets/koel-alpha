@@ -90,9 +90,10 @@ export default function SubscriptionSection() {
           {/* Variant label */}
           <div className="relative z-10 flex justify-center gap-2 mb-10">
             {VARIANTS.map((v, i) => (
-              <span
+              <button
                 key={v.key}
-                className={`w-36 py-2 text-center rounded-full text-xs font-heading font-bold uppercase tracking-widest transition-all duration-300 cursor-pointer ${
+                type="button"
+                className={`w-36 py-2 text-center rounded-full text-xs font-heading font-bold uppercase tracking-widest transition-all duration-300 ${
                   i === activeIndex
                     ? 'bg-koel-teal text-white opacity-100'
                     : 'bg-koel-teal/20 text-koel-teal opacity-70'
@@ -100,7 +101,7 @@ export default function SubscriptionSection() {
                 onClick={() => setActiveIndex(i)}
               >
                 {v.label}
-              </span>
+              </button>
             ))}
           </div>
 

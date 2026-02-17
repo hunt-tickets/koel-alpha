@@ -2,24 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Hide scrollbar for all browsers */
+/* Reset + hide scrollbar globally */
 * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
 }
 
 *::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
-}
-
-/* ========================================
-   GLOBAL STYLES
-   ======================================== */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
 }
 
 html {
@@ -33,13 +26,6 @@ body {
   color: var(--color-koel-neutral-900);
   font-family: var(--font-sans);
   overflow-x: hidden;
-}
-
-/* Safe area for mobile devices */
-@supports (height: 100dvh) {
-  .h-screen-safe {
-    height: 100dvh;
-  }
 }
 
 /* Section container spacing */
@@ -60,33 +46,4 @@ body {
     padding-top: 8rem;
     padding-bottom: 8rem;
   }
-}
-
-/* Glassmorphism utility */
-.glass {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-}
-
-/* Hide scrollbar but keep functionality */
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-
-/* Scroll snap for carousels */
-.snap-x {
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-}
-
-.snap-center {
-  scroll-snap-align: center;
-  scroll-snap-stop: always;
 }
