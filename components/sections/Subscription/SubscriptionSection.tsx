@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
 
@@ -14,6 +14,14 @@ const VARIANTS = [
 export default function SubscriptionSection() {
   const imageRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 640);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
 
   // Parallax effect for image
   const { scrollYProgress } = useScroll({
@@ -21,7 +29,11 @@ export default function SubscriptionSection() {
     offset: ["start end", "end start"]
   });
 
-  const imageY = useTransform(scrollYProgress, [0, 1], ['-10%', '10%']);
+  const imageY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    isMobile ? ['-4%', '4%'] : ['-10%', '10%']
+  );
 
   return (
     <section className="relative z-20 bg-[#FCF7EE] py-16 md:py-20 lg:py-24 overflow-x-hidden">
