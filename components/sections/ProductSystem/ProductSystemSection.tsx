@@ -47,7 +47,7 @@ export default function ProductSystemSection() {
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-koel-teal mb-4 font-display flex items-center justify-center gap-3 flex-wrap">
             EL SISTEMA
-            <Image src="/logos/logo-teal.svg" alt="KOEL" width={120} height={40} className="h-8 md:h-10 lg:h-12 w-auto inline-block" />
+            <Image src="/logos/logo-teal.svg" alt="KOEL" width={120} height={40} className="h-6 md:h-8 lg:h-9 w-auto inline-block" />
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-koel-neutral-600 max-w-3xl mx-auto leading-relaxed font-heading">
             Cada pieza tiene un propósito. Juntas crean un ritual de cuidado personal consciente y sostenible.
