@@ -56,7 +56,7 @@ export default function SubscriptionSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.25 }}
-            className="mb-8 md:mb-10 relative -mx-4 sm:-mx-8 md:-mx-20 lg:-mx-40 h-[380px] sm:h-[460px] md:h-[540px] rounded-xl md:rounded-2xl cursor-pointer bg-koel-aqua"
+            className="mb-8 md:mb-10 relative -mx-4 sm:-mx-8 md:-mx-20 lg:-mx-40 h-[280px] sm:h-[340px] md:h-[400px] rounded-xl md:rounded-2xl cursor-pointer bg-koel-aqua"
             onMouseEnter={() => setActiveIndex(1)}
             onMouseLeave={() => setActiveIndex(0)}
           >
