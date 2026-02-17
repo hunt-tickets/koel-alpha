@@ -8,16 +8,6 @@ import { useState } from 'react';
 export default function SystemIntroSection() {
   const [activeColor, setActiveColor] = useState<number | null>(null);
 
-  const handleCirclesTouchMove = (e: React.TouchEvent) => {
-    const touch = e.touches[0];
-    const el = document.elementFromPoint(touch.clientX, touch.clientY);
-    const colorEl = el?.closest('[data-color-index]');
-    if (colorEl) {
-      const idx = colorEl.getAttribute('data-color-index');
-      if (idx !== null) setActiveColor(parseInt(idx));
-    }
-  };
-
   // Color combinations
   const colorSchemes = [
     { bg: 'bg-koel-olive',  text: 'text-koel-yellow', divider: 'bg-koel-yellow', border: 'border-koel-yellow' },
@@ -153,21 +143,14 @@ export default function SystemIntroSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.5 }}
             className="mt-6 md:mt-8 flex items-center justify-center gap-3"
-            onTouchMove={handleCirclesTouchMove}
-            onTouchEnd={() => setActiveColor(null)}
           >
             {colorSchemes.map((scheme, index) => (
               <motion.div
                 key={index}
-                data-color-index={index}
                 whileHover={{ scale: 1.5 }}
                 onHoverStart={() => setActiveColor(index)}
                 onHoverEnd={() => setActiveColor(null)}
                 onClick={() => setActiveColor(activeColor === index ? null : index)}
-                onTouchStart={(e) => {
-                  e.preventDefault();
-                  setActiveColor(index);
-                }}
                 className={`w-4 h-4 md:w-5 md:h-5 rounded-full ${scheme.bg} cursor-pointer border-2 border-white/30 transition-all duration-300`}
               />
             ))}
