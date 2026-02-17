@@ -564,7 +564,7 @@ El futuro del cuidado comienza aquí.`;
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="flex items-center justify-center gap-6 mb-8 md:mb-12"
+            className="flex items-center justify-center gap-6 mb-4 md:mb-6"
           >
             <div className="h-[1px] flex-1 bg-koel-teal/30" />
             <Image
