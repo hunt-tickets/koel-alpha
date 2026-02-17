@@ -11,32 +11,35 @@ const STEP_DURATION = 6000; // ms per step
 export default function TutorialSection() {
   const [currentStep, setCurrentStep] = useState(0);
   const [progress, setProgress] = useState(0);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const rafRef = useRef<number | null>(null);
   const startTimeRef = useRef<number>(Date.now());
 
   const startProgress = () => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
     startTimeRef.current = Date.now();
     setProgress(0);
-    intervalRef.current = setInterval(() => {
+
+    const tick = () => {
       const elapsed = Date.now() - startTimeRef.current;
       const pct = Math.min((elapsed / STEP_DURATION) * 100, 100);
       setProgress(pct);
-      if (pct >= 100) {
-        clearInterval(intervalRef.current!);
+      if (pct < 100) {
+        rafRef.current = requestAnimationFrame(tick);
+      } else {
         setCurrentStep((prev) => (prev + 1) % TUTORIAL_STEPS.length);
       }
-    }, 16);
+    };
+    rafRef.current = requestAnimationFrame(tick);
   };
 
   useEffect(() => {
     startProgress();
-    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
+    return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentStep]);
 
   const goToStep = (index: number) => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
     setCurrentStep(index);
   };
 
