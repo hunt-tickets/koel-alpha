@@ -168,9 +168,7 @@ export default function SystemIntroSection() {
                   e.preventDefault();
                   setActiveColor(index);
                 }}
-                className={`w-4 h-4 md:w-5 md:h-5 rounded-full ${scheme.bg} cursor-pointer border-2 ${
-                  activeColor === index ? scheme.border : 'border-transparent'
-                } transition-all duration-300`}
+                className={`w-4 h-4 md:w-5 md:h-5 rounded-full ${scheme.bg} cursor-pointer border-2 border-white/30 transition-all duration-300`}
               />
             ))}
           </motion.div>
