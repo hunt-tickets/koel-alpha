@@ -154,30 +154,38 @@ export default function TutorialSection() {
                   </AnimatePresence>
                 </div>
 
-                {/* Progressive loader */}
-                <div className="mt-8 px-4">
-                  <div className="flex items-center gap-3">
-                    {TUTORIAL_STEPS.map((_, index) => (
+                {/* Progressive pills */}
+                <div className="mt-8 flex justify-center gap-3">
+                  {TUTORIAL_STEPS.map((_, index) => {
+                    const isActive = index === currentStep;
+                    const isDone = index < currentStep;
+                    return (
                       <button
                         key={index}
                         onClick={() => goToStep(index)}
-                        className="relative flex-1 h-[3px] bg-koel-neutral-300 rounded-full overflow-hidden"
                         aria-label={`Go to step ${index + 1}`}
+                        className="relative w-16 h-8 rounded-full overflow-hidden border-2 border-koel-teal"
+                        style={{ background: 'transparent' }}
                       >
+                        {/* Fill layer */}
                         <div
-                          className="absolute inset-y-0 left-0 bg-koel-aqua rounded-full"
+                          className="absolute inset-0 bg-koel-teal origin-left"
                           style={{
-                            width: index < currentStep
-                              ? '100%'
-                              : index === currentStep
-                              ? `${progress}%`
-                              : '0%',
-                            transition: index === currentStep ? 'none' : 'width 0.2s',
+                            transform: `scaleX(${isDone ? 1 : isActive ? progress / 100 : 0})`,
+                            transformOrigin: 'left',
+                            transition: isActive ? 'none' : 'transform 0.2s',
                           }}
                         />
+                        {/* Number */}
+                        <span
+                          className="relative z-10 text-xs font-heading font-bold"
+                          style={{ color: isDone || isActive ? '#FCF7EE' : '#153439' }}
+                        >
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
                       </button>
-                    ))}
-                  </div>
+                    );
+                  })}
                 </div>
               </div>
 
