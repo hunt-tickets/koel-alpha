@@ -66,14 +66,19 @@ export default function SubscriptionSection() {
                 key={v.key}
                 className={`absolute inset-0 ${i === activeIndex ? 'block' : 'hidden'}`}
               >
-                <Image
-                  src={v.src}
-                  alt={`KOEL ${v.label}`}
-                  fill
-                  className="object-contain p-8"
-                  sizes="(max-width: 768px) 100vw, 1200px"
-                  priority
-                />
+                <motion.div
+                  style={{ y: imageY }}
+                  className="relative w-full h-[120%] -top-[10%]"
+                >
+                  <Image
+                    src={v.src}
+                    alt={`KOEL ${v.label}`}
+                    fill
+                    className="object-contain p-8"
+                    sizes="(max-width: 768px) 100vw, 1200px"
+                    priority
+                  />
+                </motion.div>
               </div>
             ))}
 
