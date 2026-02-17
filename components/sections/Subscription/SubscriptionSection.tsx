@@ -33,7 +33,7 @@ export default function SubscriptionSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-koel-teal mb-4 sm:mb-6 uppercase tracking-wide"
+            className="relative z-10 text-2xl sm:text-3xl md:text-4xl font-display font-bold text-koel-teal mb-4 sm:mb-6 uppercase tracking-wide"
           >
             La forma más simple de usar
           </motion.h2>
@@ -44,7 +44,7 @@ export default function SubscriptionSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-base sm:text-lg md:text-xl text-koel-neutral-600 mb-10 sm:mb-12 leading-relaxed font-heading max-w-3xl mx-auto"
+            className="relative z-10 text-base sm:text-lg md:text-xl text-koel-neutral-600 mb-10 sm:mb-12 leading-relaxed font-heading max-w-3xl mx-auto"
           >
             Elige tu aroma, define la frecuencia y recibe tus recargas automáticamente. Tu ritual, siempre listo. Sin pensarlo.
           </motion.p>
@@ -83,7 +83,7 @@ export default function SubscriptionSection() {
           </motion.div>
 
           {/* Variant label */}
-          <div className="flex justify-center gap-2 mb-10">
+          <div className="relative z-10 flex justify-center gap-2 mb-10">
             {VARIANTS.map((v, i) => (
               <span
                 key={v.key}
@@ -100,7 +100,7 @@ export default function SubscriptionSection() {
           </div>
 
           {/* Features Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12 mb-12 md:mb-14">
+          <div className="relative z-10 grid grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12 mb-12 md:mb-14">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -169,7 +169,7 @@ export default function SubscriptionSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="flex flex-col items-center gap-4"
+            className="relative z-10 flex flex-col items-center gap-4"
           >
             <Button variant="primary" size="lg" className="uppercase">
               Comenzar suscripción
