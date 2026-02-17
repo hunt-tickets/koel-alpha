@@ -34,7 +34,7 @@ export default function Footer() {
     <footer className="bg-koel-teal text-[#FCF7EE]">
       <Container className="py-16 md:py-20">
         {/* Newsletter Bar */}
-        <div className="mb-16 pb-12 border-b border-[#FCF7EE]/20 overflow-hidden">
+        <div className="mb-16 pb-12 border-b border-[#FCF7EE]/20">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="text-center md:text-left">
               <h3 className="text-base md:text-lg font-bold font-display tracking-wide uppercase mb-1 text-[#FCF7EE]">
@@ -59,7 +59,7 @@ export default function Footer() {
                   type="submit"
                   size="sm"
                   disabled={isLoading}
-                  className="whitespace-nowrap !bg-[#FCF7EE] !text-koel-teal !font-heading !tracking-wider !uppercase !py-3"
+                  className="whitespace-nowrap !bg-[#FCF7EE] !text-koel-teal !font-heading !tracking-wider !uppercase !py-3 hover:!scale-100 active:!scale-100"
                 >
                   {isLoading ? 'Enviando...' : 'Suscribirse'}
                 </Button>
