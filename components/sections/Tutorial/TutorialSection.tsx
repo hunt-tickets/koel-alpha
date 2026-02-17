@@ -2,12 +2,43 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Container from '@/components/ui/Container';
 import { TUTORIAL_STEPS } from '@/lib/constants';
 
+const STEP_DURATION = 3000; // ms per step
+
 export default function TutorialSection() {
   const [currentStep, setCurrentStep] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const startTimeRef = useRef<number>(Date.now());
+
+  const startProgress = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    startTimeRef.current = Date.now();
+    setProgress(0);
+    intervalRef.current = setInterval(() => {
+      const elapsed = Date.now() - startTimeRef.current;
+      const pct = Math.min((elapsed / STEP_DURATION) * 100, 100);
+      setProgress(pct);
+      if (pct >= 100) {
+        clearInterval(intervalRef.current!);
+        setCurrentStep((prev) => (prev + 1) % TUTORIAL_STEPS.length);
+      }
+    }, 16);
+  };
+
+  useEffect(() => {
+    startProgress();
+    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentStep]);
+
+  const goToStep = (index: number) => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    setCurrentStep(index);
+  };
 
   const swipeConfidenceThreshold = 10000;
   const swipePower = (offset: number, velocity: number) => {
@@ -123,20 +154,30 @@ export default function TutorialSection() {
                   </AnimatePresence>
                 </div>
 
-                {/* Pagination Dots */}
-                <div className="flex justify-center gap-2 mt-6">
-                  {TUTORIAL_STEPS.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setCurrentStep(index)}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                        index === currentStep
-                          ? 'bg-koel-aqua w-8'
-                          : 'bg-koel-neutral-300'
-                      }`}
-                      aria-label={`Go to step ${index + 1}`}
-                    />
-                  ))}
+                {/* Progressive loader */}
+                <div className="mt-8 px-4">
+                  <div className="flex items-center gap-3">
+                    {TUTORIAL_STEPS.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => goToStep(index)}
+                        className="relative flex-1 h-[3px] bg-koel-neutral-300 rounded-full overflow-hidden"
+                        aria-label={`Go to step ${index + 1}`}
+                      >
+                        <div
+                          className="absolute inset-y-0 left-0 bg-koel-aqua rounded-full"
+                          style={{
+                            width: index < currentStep
+                              ? '100%'
+                              : index === currentStep
+                              ? `${progress}%`
+                              : '0%',
+                            transition: index === currentStep ? 'none' : 'width 0.2s',
+                          }}
+                        />
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
 
