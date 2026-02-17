@@ -62,30 +62,33 @@ export default function SystemIntroSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="flex justify-center mb-4 md:mb-6"
           >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeColor ?? 'default'}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <Image
-                  src={getIsotipoSrc()}
-                  alt="KOEL"
-                  width={48}
-                  height={48}
-                  className="w-10 h-10 md:w-12 md:h-12"
-                  style={{
-                    filter: activeColor === 4
-                      ? 'brightness(0) invert(98%) sepia(8%) saturate(524%) hue-rotate(329deg) brightness(103%) contrast(97%)'
-                      : activeColor === 5
-                      ? 'brightness(0) saturate(100%) invert(35%) sepia(14%) saturate(1272%) hue-rotate(45deg) brightness(93%) contrast(89%)'
-                      : undefined
-                  }}
-                />
-              </motion.div>
-            </AnimatePresence>
+            <div className="relative w-10 h-10 md:w-12 md:h-12">
+              <AnimatePresence mode="sync" initial={false}>
+                <motion.div
+                  key={activeColor ?? 'default'}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={getIsotipoSrc()}
+                    alt="KOEL"
+                    width={48}
+                    height={48}
+                    className="w-10 h-10 md:w-12 md:h-12"
+                    style={{
+                      filter: activeColor === 4
+                        ? 'brightness(0) invert(98%) sepia(8%) saturate(524%) hue-rotate(329deg) brightness(103%) contrast(97%)'
+                        : activeColor === 5
+                        ? 'brightness(0) saturate(100%) invert(35%) sepia(14%) saturate(1272%) hue-rotate(45deg) brightness(93%) contrast(89%)'
+                        : undefined
+                    }}
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </motion.div>
 
           {/* Title */}
