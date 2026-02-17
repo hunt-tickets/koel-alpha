@@ -65,7 +65,7 @@ export default function SubscriptionSection() {
               >
                 <motion.div
                   style={{ y: imageY }}
-                  className="absolute inset-x-0 h-[360px] sm:h-[360px] md:h-[420px] -top-[80px]"
+                  className="absolute inset-x-0 h-[440px] sm:h-[360px] md:h-[420px] -top-[80px]"
                 >
                   <Image
                     src={v.src}
