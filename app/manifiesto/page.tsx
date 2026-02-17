@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Container from '@/components/ui/Container';
 import { Leaf, Heart, Sparkles, Users, Target, Lightbulb } from 'lucide-react';
 import Image from 'next/image';
@@ -149,40 +149,30 @@ El futuro del cuidado comienza aquí.`;
                 style={{ y: yLogo }}
                 className="inline-flex items-center justify-center mb-16"
               >
-                <AnimatePresence mode="sync" initial={false}>
-                  <motion.div
-                    key={`sello-${activeColor}`}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.4 }}
-                    style={{
-                      filter: currentScheme && activeColor !== 0 && activeColor !== 5
-                        ? currentScheme.text === 'text-koel-yellow'
-                          ? 'brightness(0) saturate(100%) invert(85%) sepia(16%) saturate(1449%) hue-rotate(358deg) brightness(102%) contrast(101%)'
-                          : currentScheme.text === 'text-koel-teal'
-                          ? 'brightness(0) saturate(100%) invert(13%) sepia(25%) saturate(3194%) hue-rotate(147deg) brightness(95%) contrast(95%)'
-                          : currentScheme.text === 'text-koel-aqua'
-                          ? 'brightness(0) saturate(100%) invert(73%) sepia(11%) saturate(1590%) hue-rotate(128deg) brightness(91%) contrast(87%)'
-                          : currentScheme.text === 'text-koel-olive'
-                          ? 'brightness(0) saturate(100%) invert(38%) sepia(13%) saturate(1066%) hue-rotate(74deg) brightness(94%) contrast(88%)'
-                          : 'brightness(0) saturate(100%) invert(98%) sepia(2%) saturate(1157%) hue-rotate(318deg) brightness(102%) contrast(96%)'
-                        : undefined
-                    }}
-                  >
-                    <Image
-                      src={
-                        activeColor === 0 ? "/icons/sello-olive.svg" :
-                        activeColor === 5 ? "/icons/sello-hover-yellow.svg" :
-                        "/icons/sello.svg"
-                      }
-                      alt="Sello KOEL"
-                      width={160}
-                      height={160}
-                      className="w-24 h-24 md:w-32 md:h-32 lg:w-40 lg:h-40"
-                    />
-                  </motion.div>
-                </AnimatePresence>
+                <Image
+                  src={
+                    activeColor === 0 ? "/icons/sello-olive.svg" :
+                    activeColor === 5 ? "/icons/sello-hover-yellow.svg" :
+                    "/icons/sello.svg"
+                  }
+                  alt="Sello KOEL"
+                  width={160}
+                  height={160}
+                  className="w-24 h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 transition-all duration-500"
+                  style={{
+                    filter: currentScheme && activeColor !== 0 && activeColor !== 5
+                      ? currentScheme.text === 'text-koel-yellow'
+                        ? 'brightness(0) saturate(100%) invert(85%) sepia(16%) saturate(1449%) hue-rotate(358deg) brightness(102%) contrast(101%)'
+                        : currentScheme.text === 'text-koel-teal'
+                        ? 'brightness(0) saturate(100%) invert(13%) sepia(25%) saturate(3194%) hue-rotate(147deg) brightness(95%) contrast(95%)'
+                        : currentScheme.text === 'text-koel-aqua'
+                        ? 'brightness(0) saturate(100%) invert(73%) sepia(11%) saturate(1590%) hue-rotate(128deg) brightness(91%) contrast(87%)'
+                        : currentScheme.text === 'text-koel-olive'
+                        ? 'brightness(0) saturate(100%) invert(38%) sepia(13%) saturate(1066%) hue-rotate(74deg) brightness(94%) contrast(88%)'
+                        : 'brightness(0) saturate(100%) invert(98%) sepia(2%) saturate(1157%) hue-rotate(318deg) brightness(102%) contrast(96%)'
+                      : undefined
+                  }}
+                />
               </motion.div>
 
               {/* Main Title */}
@@ -222,40 +212,30 @@ El futuro del cuidado comienza aquí.`;
                 <div className={`h-[1px] w-16 md:w-24 transition-colors duration-500 ${
                   currentScheme ? currentScheme.text.replace('text-', 'bg-') : 'bg-koel-teal'
                 }`} />
-                <AnimatePresence mode="sync" initial={false}>
-                  <motion.div
-                    key={`wordmark-${activeColor}`}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.4 }}
-                    style={{
-                      filter: currentScheme && activeColor !== 0 && activeColor !== 5
-                        ? currentScheme.text === 'text-koel-yellow'
-                          ? 'brightness(0) saturate(100%) invert(85%) sepia(16%) saturate(1449%) hue-rotate(358deg) brightness(102%) contrast(101%)'
-                          : currentScheme.text === 'text-koel-teal'
-                          ? 'brightness(0) saturate(100%) invert(13%) sepia(25%) saturate(3194%) hue-rotate(147deg) brightness(95%) contrast(95%)'
-                          : currentScheme.text === 'text-koel-aqua'
-                          ? 'brightness(0) saturate(100%) invert(73%) sepia(11%) saturate(1590%) hue-rotate(128deg) brightness(91%) contrast(87%)'
-                          : currentScheme.text === 'text-koel-olive'
-                          ? 'brightness(0) saturate(100%) invert(38%) sepia(13%) saturate(1066%) hue-rotate(74deg) brightness(94%) contrast(88%)'
-                          : 'brightness(0) saturate(100%) invert(98%) sepia(2%) saturate(1157%) hue-rotate(318deg) brightness(102%) contrast(96%)'
-                        : undefined
-                    }}
-                  >
-                    <Image
-                      src={
-                        activeColor === 0 ? "/logos/logo-olive.svg" :
-                        activeColor === 5 ? "/logos/logo-yellow.svg" :
-                        "/logos/logo-teal.svg"
-                      }
-                      alt="KOEL"
-                      width={100}
-                      height={40}
-                      className="w-16 md:w-20 lg:w-24 h-auto"
-                    />
-                  </motion.div>
-                </AnimatePresence>
+                <Image
+                  src={
+                    activeColor === 0 ? "/logos/logo-olive.svg" :
+                    activeColor === 5 ? "/logos/logo-yellow.svg" :
+                    "/logos/logo-teal.svg"
+                  }
+                  alt="KOEL"
+                  width={100}
+                  height={40}
+                  className="w-16 md:w-20 lg:w-24 h-auto transition-all duration-500"
+                  style={{
+                    filter: currentScheme && activeColor !== 0 && activeColor !== 5
+                      ? currentScheme.text === 'text-koel-yellow'
+                        ? 'brightness(0) saturate(100%) invert(85%) sepia(16%) saturate(1449%) hue-rotate(358deg) brightness(102%) contrast(101%)'
+                        : currentScheme.text === 'text-koel-teal'
+                        ? 'brightness(0) saturate(100%) invert(13%) sepia(25%) saturate(3194%) hue-rotate(147deg) brightness(95%) contrast(95%)'
+                        : currentScheme.text === 'text-koel-aqua'
+                        ? 'brightness(0) saturate(100%) invert(73%) sepia(11%) saturate(1590%) hue-rotate(128deg) brightness(91%) contrast(87%)'
+                        : currentScheme.text === 'text-koel-olive'
+                        ? 'brightness(0) saturate(100%) invert(38%) sepia(13%) saturate(1066%) hue-rotate(74deg) brightness(94%) contrast(88%)'
+                        : 'brightness(0) saturate(100%) invert(98%) sepia(2%) saturate(1157%) hue-rotate(318deg) brightness(102%) contrast(96%)'
+                      : undefined
+                  }}
+                />
                 <div className={`h-[1px] w-16 md:w-24 transition-colors duration-500 ${
                   currentScheme ? currentScheme.text.replace('text-', 'bg-') : 'bg-koel-teal'
                 }`} />
