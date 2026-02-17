@@ -94,13 +94,7 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
   const [isLoading, setIsLoading] = useState(true);
 
   const { slug } = use(params);
-
-  console.log('Product page - slug:', slug);
-  console.log('Available products:', Object.keys(PRODUCTS));
-
   const product = PRODUCTS[slug as keyof typeof PRODUCTS];
-
-  console.log('Found product:', product);
 
   if (!product) {
     return (
@@ -114,8 +108,6 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
   }
 
   const handleAddToCart = () => {
-    // TODO: Integrar con Shopify Cart API
-    console.log('Agregando al carrito:', { product: product.id, quantity });
     setAddedToCart(true);
     setTimeout(() => setAddedToCart(false), 3000);
   };

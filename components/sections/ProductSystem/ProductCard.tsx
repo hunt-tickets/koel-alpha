@@ -95,11 +95,7 @@ export default function ProductCard({
             variant="primary"
             fullWidth
             className="uppercase"
-            onClick={() => {
-              console.log('Slug:', slug);
-              console.log('Navigating to:', `/producto/${slug}`);
-              router.push(`/producto/${slug}`);
-            }}
+            onClick={() => router.push(`/producto/${slug}`)}
           >
             Comprar
           </Button>
