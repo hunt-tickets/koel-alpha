@@ -6,6 +6,8 @@ import Image from 'next/image';
 import { X, Plus, Minus, Trash2 } from 'lucide-react';
 import { formatPrice } from '@/lib/utils';
 import { useBodyScrollLock } from '@/lib/hooks/useBodyScrollLock';
+import { ICON_FILTERS } from '@/lib/constants';
+import Button from '@/components/ui/Button';
 
 export default function CartDrawer() {
   const { items, isOpen, closeCart, updateQuantity, removeItem, total, itemCount } = useCart();
@@ -18,21 +20,24 @@ export default function CartDrawer() {
         <>
           {/* Backdrop */}
           <motion.div
+            key="cart-backdrop"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[200]"
+            className="fixed inset-0 bg-black/50 z-[200]"
             onClick={closeCart}
           />
 
           {/* Drawer */}
           <motion.div
+            key="cart-drawer"
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-            className="fixed top-0 right-0 h-full w-full sm:w-[480px] bg-[#FCF7EE] z-[201] shadow-2xl flex flex-col"
+            className="fixed inset-y-0 right-0 w-full sm:w-[480px] bg-[#FCF7EE] z-[201] shadow-2xl flex flex-col"
+            style={{ paddingRight: 'var(--scrollbar-width, 0px)' }}
           >
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-6 border-b border-koel-neutral-300">
@@ -56,36 +61,31 @@ export default function CartDrawer() {
             </div>
 
             {/* Cart Items */}
-            <div className="flex-1 overflow-y-auto px-6 py-4">
+            <div className="flex-1 overflow-y-auto px-6 py-4 flex flex-col">
               {items.length === 0 ? (
-                <div className="flex flex-col items-center justify-center h-full text-center px-4">
-                  <div className="w-24 h-24 rounded-full bg-koel-neutral-200 flex items-center justify-center mb-4">
-                    <svg
-                      className="w-12 h-12 text-koel-neutral-500"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-                      />
-                    </svg>
+                <div className="flex-1 flex flex-col items-center justify-center text-center px-4">
+                  <div
+                    className="w-28 h-28 mb-6 animate-spin"
+                    style={{ animationDuration: '24s' }}
+                  >
+                    <Image
+                      src="/icons/sello.svg"
+                      alt="KOEL"
+                      width={112}
+                      height={112}
+                      className="w-full h-full opacity-90"
+                      style={{ filter: ICON_FILTERS.teal }}
+                    />
                   </div>
                   <h3 className="text-xl font-heading font-medium text-koel-neutral-900 mb-2">
                     Tu carrito está vacío
                   </h3>
-                  <p className="text-koel-neutral-600 mb-6">
+                  <p className="text-lg text-koel-neutral-600 mb-6">
                     Agrega productos para comenzar tu ritual KOEL
                   </p>
-                  <button
-                    onClick={closeCart}
-                    className="px-6 py-3 bg-koel-teal text-white font-medium rounded-full hover:bg-koel-teal/90 transition-colors duration-200"
-                  >
-                    Continuar comprando
-                  </button>
+                  <Button onClick={closeCart} variant="primary" size="md" className="uppercase">
+                    Explorar
+                  </Button>
                 </div>
               ) : (
                 <div className="space-y-4">

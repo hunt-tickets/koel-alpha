@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
 import Container from '@/components/ui/Container';
+import Button from '@/components/ui/Button';
 import { TUTORIAL_STEPS, ICON_FILTERS } from '@/lib/constants';
 
 const STEP_DURATION = 6; // seconds (Framer Motion uses seconds)
@@ -65,7 +66,7 @@ export default function TutorialSection() {
 
               {/* Steps - Mobile Swiper / Desktop Grid */}
               {/* Mobile: Swipeable Carousel */}
-              <div className="md:hidden relative overflow-hidden">
+              <div className="md:hidden relative">
                 <div className="relative h-[400px] flex items-center justify-center">
                   <AnimatePresence mode="wait" initial={false}>
                     <motion.div
@@ -79,35 +80,26 @@ export default function TutorialSection() {
                       dragElastic={1}
                       onDragEnd={(e, { offset, velocity }) => {
                         const swipe = swipePower(offset.x, velocity.x);
-
-                        if (swipe < -swipeConfidenceThreshold) {
-                          paginate(1);
-                        } else if (swipe > swipeConfidenceThreshold) {
-                          paginate(-1);
-                        }
+                        if (swipe < -swipeConfidenceThreshold) paginate(-1);
+                        else if (swipe > swipeConfidenceThreshold) paginate(1);
                       }}
                       className="absolute w-full text-center px-4"
                     >
                       {(() => {
                         const step = TUTORIAL_STEPS[currentStep];
                         const iconSrc =
-                          currentStep === 0
-                            ? '/icons/abre.svg'
-                            : currentStep === 1
-                            ? '/icons/encaja.svg'
-                            : '/icons/disfruta.svg';
-
+                          currentStep === 0 ? '/icons/abre.svg'
+                          : currentStep === 1 ? '/icons/encaja.svg'
+                          : '/icons/disfruta.svg';
                         const iconAlt =
-                          currentStep === 0 ? 'Calienta' : currentStep === 1 ? 'Encaja' : 'Empuja';
-
+                          currentStep === 0 ? 'Calienta'
+                          : currentStep === 1 ? 'Encaja'
+                          : 'Empuja';
                         return (
                           <>
-                            {/* Step Number */}
                             <div className="text-7xl font-bold text-koel-teal/10 mb-4 font-display leading-none">
                               {step.number}
                             </div>
-
-                            {/* Icon */}
                             <div className="mb-6 flex justify-center">
                               <Image
                                 src={iconSrc}
@@ -118,13 +110,9 @@ export default function TutorialSection() {
                                 style={{ filter: ICON_FILTERS.aquaLight }}
                               />
                             </div>
-
-                            {/* Title */}
                             <h3 className="text-2xl font-bold text-koel-teal mb-4 font-display uppercase tracking-wide">
                               {step.title}
                             </h3>
-
-                            {/* Description */}
                             <p className="text-lg text-koel-neutral-600 leading-relaxed max-w-xs mx-auto">
                               {step.description}
                             </p>
@@ -133,46 +121,39 @@ export default function TutorialSection() {
                       })()}
                     </motion.div>
                   </AnimatePresence>
+                  {/* Circular progress — bottom-right corner */}
+                  <div className="absolute top-3 right-4">
+                    <svg
+                      width="30"
+                      height="30"
+                      viewBox="0 0 40 40"
+                      style={{ transform: 'rotate(-90deg)' }}
+                    >
+                      <circle cx="20" cy="20" r="16" fill="none" stroke="#153439" strokeWidth="1.5" strokeOpacity="0.15" />
+                      <motion.circle
+                        key={currentStep}
+                        cx="20"
+                        cy="20"
+                        r="16"
+                        fill="none"
+                        stroke="#153439"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        pathLength={1}
+                        initial={{ pathLength: currentStep / TUTORIAL_STEPS.length }}
+                        animate={{ pathLength: (currentStep + 1) / TUTORIAL_STEPS.length }}
+                        transition={{ duration: STEP_DURATION, ease: 'linear' }}
+                        onAnimationComplete={advanceStep}
+                      />
+                    </svg>
+                  </div>
                 </div>
 
-                {/* Progressive pills — CSS animation, zero JS state updates */}
-                <div className="mt-8 flex justify-center gap-3">
-                  {TUTORIAL_STEPS.map((_, index) => {
-                    const isActive = index === currentStep;
-                    const isDone = index < currentStep;
-                    return (
-                      <button
-                        key={index}
-                        type="button"
-                        onClick={() => goToStep(index)}
-                        aria-label={`Go to step ${index + 1}`}
-                        className="relative w-16 h-8 rounded-full overflow-hidden border-2 border-koel-teal"
-                        style={{ background: 'transparent' }}
-                      >
-                        {/* Fill layer — Framer Motion animates scaleX, no JS state updates */}
-                        <motion.div
-                          key={isActive ? `active-${currentStep}` : `done-${index}`}
-                          className="absolute inset-0 bg-koel-teal origin-left"
-                          initial={{ scaleX: isDone ? 1 : 0 }}
-                          animate={{ scaleX: isDone || isActive ? 1 : 0 }}
-                          transition={
-                            isActive
-                              ? { duration: STEP_DURATION, ease: 'linear' }
-                              : { duration: 0.2 }
-                          }
-                          onAnimationComplete={isActive ? advanceStep : undefined}
-                          style={{ transformOrigin: 'left' }}
-                        />
-                        {/* Number */}
-                        <span
-                          className="relative z-10 text-xs font-heading font-bold"
-                          style={{ color: isDone ? '#FCF7EE' : '#153439' }}
-                        >
-                          {String(index + 1).padStart(2, '0')}
-                        </span>
-                      </button>
-                    );
-                  })}
+                {/* CTA */}
+                <div>
+                  <Button variant="primary" size="md" fullWidth className="uppercase tracking-widest">
+                    Ver Tutorial
+                  </Button>
                 </div>
               </div>
 
