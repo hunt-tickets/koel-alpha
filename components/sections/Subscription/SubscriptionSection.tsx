@@ -65,13 +65,13 @@ export default function SubscriptionSection() {
               >
                 <motion.div
                   style={{ y: imageY }}
-                  className="absolute inset-x-0 h-[520px] sm:h-[360px] md:h-[420px] -top-[140px] sm:-top-[80px]"
+                  className="absolute inset-x-0 h-[400px] sm:h-[360px] md:h-[420px] -top-[80px]"
                 >
                   <Image
                     src={v.src}
                     alt={`KOEL ${v.label}`}
                     fill
-                    className="object-contain"
+                    className="object-contain scale-[1.2] sm:scale-100 origin-center"
                     sizes="(max-width: 768px) 100vw, 1200px"
                     priority
                   />
