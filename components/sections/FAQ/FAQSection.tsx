@@ -28,9 +28,8 @@ export default function FAQSection() {
           <h2 className="text-3xl md:text-4xl font-bold text-koel-teal mb-4 font-display leading-tight">
             ¿Tienes dudas?
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-koel-neutral-600 font-heading leading-relaxed flex items-center justify-center gap-2 flex-wrap">
-            Aquí respondemos las preguntas más comunes sobre
-            <Image src="/logos/logo-teal.svg" alt="KOEL" width={60} height={20} className="inline-block h-5 w-auto" />
+          <p className="text-base sm:text-lg md:text-xl text-koel-neutral-600 font-heading leading-relaxed">
+            Aquí respondemos las preguntas más comunes sobre KOEL
           </p>
         </motion.div>
 

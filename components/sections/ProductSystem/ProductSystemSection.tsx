@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import Image from 'next/image';
 import { Sparkles, Shield, Leaf, Gem, CalendarRange, RotateCw, Flower2, ChevronDown } from 'lucide-react';
 import Container from '@/components/ui/Container';
 import ProductCard from './ProductCard';
@@ -44,8 +45,9 @@ export default function ProductSystemSection() {
           <p className="text-base tracking-[0.3em] uppercase text-koel-neutral-500 mb-4 font-light">
             Nuestro sistema
           </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-koel-teal mb-4 font-display">
-            EL SISTEMA KOEL
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-koel-teal mb-4 font-display flex items-center justify-center gap-3 flex-wrap">
+            EL SISTEMA
+            <Image src="/logos/logo-teal.svg" alt="KOEL" width={120} height={40} className="h-8 md:h-10 lg:h-12 w-auto inline-block" />
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-koel-neutral-600 max-w-3xl mx-auto leading-relaxed font-heading">
             Cada pieza tiene un propósito. Juntas crean un ritual de cuidado personal consciente y sostenible.
