@@ -56,7 +56,7 @@ export default function SubscriptionSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.25 }}
-            className="mb-8 md:mb-10 relative -mx-4 sm:-mx-8 md:-mx-20 lg:-mx-40 h-[320px] sm:h-[400px] md:h-[520px] rounded-xl md:rounded-2xl overflow-hidden cursor-pointer bg-koel-teal"
+            className="mb-8 md:mb-10 relative -mx-4 sm:-mx-8 md:-mx-20 lg:-mx-40 h-[320px] sm:h-[400px] md:h-[520px] rounded-xl md:rounded-2xl overflow-hidden cursor-pointer bg-koel-aqua"
             onMouseEnter={() => setActiveIndex(1)}
             onMouseLeave={() => setActiveIndex(0)}
           >
@@ -74,7 +74,7 @@ export default function SubscriptionSection() {
                     src={v.src}
                     alt={`KOEL ${v.label}`}
                     fill
-                    className="object-contain p-8"
+                    className="object-contain p-2"
                     sizes="(max-width: 768px) 100vw, 1200px"
                     priority
                   />
