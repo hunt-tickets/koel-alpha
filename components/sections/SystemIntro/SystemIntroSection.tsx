@@ -10,12 +10,12 @@ export default function SystemIntroSection() {
 
   // Color combinations
   const colorSchemes = [
-    { bg: 'bg-koel-olive',  text: 'text-koel-yellow', divider: 'bg-koel-yellow' },
-    { bg: 'bg-koel-coral',  text: 'text-koel-teal',   divider: 'bg-koel-teal'   },
-    { bg: 'bg-koel-aqua',   text: 'text-koel-teal',   divider: 'bg-koel-teal'   },
-    { bg: 'bg-koel-teal',   text: 'text-koel-aqua',   divider: 'bg-koel-aqua'   },
-    { bg: 'bg-koel-pink',   text: 'text-white',        divider: 'bg-white'       },
-    { bg: 'bg-koel-yellow', text: 'text-koel-olive',  divider: 'bg-koel-olive'  },
+    { bg: 'bg-koel-olive',  text: 'text-koel-yellow', divider: 'bg-koel-yellow', border: 'border-koel-yellow' },
+    { bg: 'bg-koel-coral',  text: 'text-koel-teal',   divider: 'bg-koel-teal',   border: 'border-koel-teal'   },
+    { bg: 'bg-koel-aqua',   text: 'text-koel-teal',   divider: 'bg-koel-teal',   border: 'border-koel-teal'   },
+    { bg: 'bg-koel-teal',   text: 'text-koel-aqua',   divider: 'bg-koel-aqua',   border: 'border-koel-aqua'   },
+    { bg: 'bg-koel-pink',   text: 'text-white',        divider: 'bg-white',       border: 'border-white'       },
+    { bg: 'bg-koel-yellow', text: 'text-koel-olive',  divider: 'bg-koel-olive',  border: 'border-koel-olive'  },
   ];
 
   const currentScheme = activeColor !== null ? colorSchemes[activeColor] : null;
@@ -152,7 +152,7 @@ export default function SystemIntroSection() {
                 onHoverEnd={() => setActiveColor(null)}
                 onClick={() => setActiveColor(activeColor === index ? null : index)}
                 className={`w-4 h-4 md:w-5 md:h-5 rounded-full ${scheme.bg} cursor-pointer border-2 ${
-                  activeColor === index ? 'border-white' : 'border-white/30'
+                  activeColor === index ? scheme.border : 'border-transparent'
                 } transition-all duration-300`}
               />
             ))}
