@@ -57,8 +57,6 @@ export default function SubscriptionSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.25 }}
             className="mb-8 md:mb-10 relative z-0 -mx-4 sm:-mx-8 md:-mx-20 lg:-mx-40 h-[200px] sm:h-[240px] md:h-[280px] rounded-xl md:rounded-2xl cursor-pointer bg-[#E8DDD0]"
-            onMouseEnter={() => setActiveIndex(1)}
-            onMouseLeave={() => setActiveIndex(0)}
           >
             {VARIANTS.map((v, i) => (
               <div
@@ -92,7 +90,7 @@ export default function SubscriptionSection() {
                     ? 'bg-koel-teal text-white opacity-100'
                     : 'bg-koel-teal/20 text-koel-teal opacity-70'
                 }`}
-                onMouseEnter={() => setActiveIndex(i)}
+                onClick={() => setActiveIndex(i)}
               >
                 {v.label}
               </span>
