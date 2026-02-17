@@ -218,8 +218,8 @@ export default function Header({ forceScrolled = false }: HeaderProps) {
             {NAV_LINKS.map((link, index) => (
               <motion.button
                 key={link.href}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isMobileMenuOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                initial={{ opacity: 0 }}
+                animate={isMobileMenuOpen ? { opacity: 1 } : { opacity: 0 }}
                 transition={{ duration: 0.4, delay: 0.15 + index * 0.1 }}
                 onClick={() => handleNavClick(link.href)}
                 className="group text-left border-b border-koel-aqua/20 pb-4 hover:scale-110 active:scale-95 transition-transform duration-200"

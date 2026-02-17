@@ -177,7 +177,7 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
           <div className="space-y-8">
             {/* Title & Price */}
             <div>
-              <h1 className="text-4xl md:text-5xl font-display text-koel-teal mb-2 uppercase tracking-wide">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-display text-koel-teal mb-2 uppercase tracking-wide">
                 {product.name}
               </h1>
               <p className="text-xl text-koel-neutral-600 font-heading mb-6">
@@ -281,7 +281,7 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
       </Container>
 
       {/* Icons Grid Section */}
-      <section className="bg-koel-neutral-50 py-16 md:py-24">
+      <section className="bg-koel-neutral-50 py-16 md:py-24 overflow-x-hidden">
         <Container>
           <div className="grid grid-cols-5 sm:grid-cols-7 md:grid-cols-9 lg:grid-cols-9 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
             {[
@@ -333,8 +333,8 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
                   />
                 </div>
 
-                {/* Tooltip - Only visible on hover */}
-                <div className="absolute -top-12 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transform scale-95 group-hover:scale-100 transition-all duration-200 pointer-events-none z-10">
+                {/* Tooltip - Only visible on hover, hidden on mobile (no hover on touch) */}
+                <div className="hidden sm:block absolute -top-12 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transform scale-95 group-hover:scale-100 transition-all duration-200 pointer-events-none z-10">
                   <div className="bg-koel-teal text-white px-3 py-2 rounded-lg shadow-lg relative">
                     <p className="text-xs font-medium whitespace-nowrap uppercase tracking-wide">
                       {point.title}
