@@ -4,8 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
 import Container from '@/components/ui/Container';
-import { TUTORIAL_STEPS } from '@/lib/constants';
-import { ICON_FILTERS } from '@/lib/constants';
+import { TUTORIAL_STEPS, ICON_FILTERS } from '@/lib/constants';
 
 const STEP_DURATION = 6; // seconds (Framer Motion uses seconds)
 

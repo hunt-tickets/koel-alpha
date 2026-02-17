@@ -7,7 +7,17 @@ import Image from 'next/image';
 import { useRef, useState, useEffect } from 'react';
 import { LoadingScreen, DecryptText } from '@/components/ui';
 import Button from '@/components/ui/Button';
-import { LOADER_REVEAL_DELAY } from '@/lib/constants';
+import { LOADER_REVEAL_DELAY, ICON_FILTERS } from '@/lib/constants';
+
+// Maps a currentScheme.text class to the corresponding SVG filter string.
+// Returns undefined when no tinting is needed (null/olive/yellow schemes use custom assets).
+function getSchemeFilter(text: string): string {
+  if (text === 'text-koel-yellow') return ICON_FILTERS.yellow;
+  if (text === 'text-koel-teal')   return ICON_FILTERS.teal;
+  if (text === 'text-koel-aqua')   return ICON_FILTERS.aqua;
+  if (text === 'text-koel-olive')  return ICON_FILTERS.olive;
+  return ICON_FILTERS.cream;
+}
 
 interface ValueItem {
   icon: LucideIcon;
@@ -340,15 +350,7 @@ export default function ManifiestoPage() {
                   className="w-24 h-24 md:w-32 md:h-32 lg:w-40 lg:h-40 transition-all duration-500"
                   style={{
                     filter: currentScheme && activeColor !== 0 && activeColor !== 5
-                      ? currentScheme.text === 'text-koel-yellow'
-                        ? 'brightness(0) saturate(100%) invert(85%) sepia(16%) saturate(1449%) hue-rotate(358deg) brightness(102%) contrast(101%)'
-                        : currentScheme.text === 'text-koel-teal'
-                        ? 'brightness(0) saturate(100%) invert(13%) sepia(25%) saturate(3194%) hue-rotate(147deg) brightness(95%) contrast(95%)'
-                        : currentScheme.text === 'text-koel-aqua'
-                        ? 'brightness(0) saturate(100%) invert(73%) sepia(11%) saturate(1590%) hue-rotate(128deg) brightness(91%) contrast(87%)'
-                        : currentScheme.text === 'text-koel-olive'
-                        ? 'brightness(0) saturate(100%) invert(38%) sepia(13%) saturate(1066%) hue-rotate(74deg) brightness(94%) contrast(88%)'
-                        : 'brightness(0) saturate(100%) invert(98%) sepia(2%) saturate(1157%) hue-rotate(318deg) brightness(102%) contrast(96%)'
+                      ? getSchemeFilter(currentScheme.text)
                       : undefined
                   }}
                 />
@@ -403,15 +405,7 @@ export default function ManifiestoPage() {
                   className="w-16 md:w-20 lg:w-24 h-auto transition-all duration-500"
                   style={{
                     filter: currentScheme && activeColor !== 0 && activeColor !== 5
-                      ? currentScheme.text === 'text-koel-yellow'
-                        ? 'brightness(0) saturate(100%) invert(85%) sepia(16%) saturate(1449%) hue-rotate(358deg) brightness(102%) contrast(101%)'
-                        : currentScheme.text === 'text-koel-teal'
-                        ? 'brightness(0) saturate(100%) invert(13%) sepia(25%) saturate(3194%) hue-rotate(147deg) brightness(95%) contrast(95%)'
-                        : currentScheme.text === 'text-koel-aqua'
-                        ? 'brightness(0) saturate(100%) invert(73%) sepia(11%) saturate(1590%) hue-rotate(128deg) brightness(91%) contrast(87%)'
-                        : currentScheme.text === 'text-koel-olive'
-                        ? 'brightness(0) saturate(100%) invert(38%) sepia(13%) saturate(1066%) hue-rotate(74deg) brightness(94%) contrast(88%)'
-                        : 'brightness(0) saturate(100%) invert(98%) sepia(2%) saturate(1157%) hue-rotate(318deg) brightness(102%) contrast(96%)'
+                      ? getSchemeFilter(currentScheme.text)
                       : undefined
                   }}
                 />
@@ -527,7 +521,7 @@ export default function ManifiestoPage() {
               height={200}
               className="w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56"
               style={{
-                filter: 'brightness(0) saturate(100%) invert(13%) sepia(25%) saturate(3194%) hue-rotate(147deg) brightness(95%) contrast(95%)'
+                filter: ICON_FILTERS.teal
               }}
             />
             <div className="h-[1px] flex-1 bg-koel-teal/30" />
@@ -679,9 +673,7 @@ export default function ManifiestoPage() {
                     width={40}
                     height={40}
                     className="w-6 h-6 md:w-8 md:h-8"
-                    style={{
-                      filter: 'brightness(0) saturate(100%) invert(13%) sepia(25%) saturate(3194%) hue-rotate(147deg) brightness(95%) contrast(95%)'
-                    }}
+                    style={{ filter: ICON_FILTERS.teal }}
                   />
                   <Image
                     src="/icons/5-estrellas.svg"
@@ -689,9 +681,7 @@ export default function ManifiestoPage() {
                     width={40}
                     height={40}
                     className="w-6 h-6 md:w-8 md:h-8"
-                    style={{
-                      filter: 'brightness(0) saturate(100%) invert(13%) sepia(25%) saturate(3194%) hue-rotate(147deg) brightness(95%) contrast(95%)'
-                    }}
+                    style={{ filter: ICON_FILTERS.teal }}
                   />
                   <Image
                     src="/icons/24-hour.svg"
@@ -699,9 +689,7 @@ export default function ManifiestoPage() {
                     width={40}
                     height={40}
                     className="w-6 h-6 md:w-8 md:h-8"
-                    style={{
-                      filter: 'brightness(0) saturate(100%) invert(13%) sepia(25%) saturate(3194%) hue-rotate(147deg) brightness(95%) contrast(95%)'
-                    }}
+                    style={{ filter: ICON_FILTERS.teal }}
                   />
                 </motion.div>
               </motion.div>
