@@ -270,7 +270,7 @@ export default function Header({ forceScrolled = false }: HeaderProps) {
               />
               <div className="w-12 h-[1px] bg-koel-aqua/30" />
             </div>
-            <p className="text-xs tracking-[0.3em] uppercase text-koel-aqua/80">
+            <p className="text-xs tracking-[0.3em] uppercase text-koel-aqua opacity-80">
               A NEW WAY TO CARE
             </p>
           </motion.div>
