@@ -130,7 +130,7 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
       />
       <div className="min-h-screen bg-koel-neutral-50">
       {/* Header Navigation */}
-      <Container className="py-6">
+      <Container className="pt-20 md:pt-24 pb-6">
         <button
           onClick={() => router.push('/')}
           className="flex items-center gap-2 text-koel-neutral-600 hover:text-koel-teal transition-colors"
