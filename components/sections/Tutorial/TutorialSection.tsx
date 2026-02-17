@@ -6,7 +6,7 @@ import { useState, useEffect, useRef } from 'react';
 import Container from '@/components/ui/Container';
 import { TUTORIAL_STEPS } from '@/lib/constants';
 
-const STEP_DURATION = 3000; // ms per step
+const STEP_DURATION = 6000; // ms per step
 
 export default function TutorialSection() {
   const [currentStep, setCurrentStep] = useState(0);
