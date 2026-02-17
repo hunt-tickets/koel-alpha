@@ -10,12 +10,12 @@ export default function SystemIntroSection() {
 
   // Color combinations
   const colorSchemes = [
-    { bg: 'bg-koel-olive', text: 'text-koel-yellow' },
-    { bg: 'bg-koel-coral', text: 'text-koel-teal' },
-    { bg: 'bg-koel-aqua', text: 'text-koel-teal' },
-    { bg: 'bg-koel-teal', text: 'text-koel-aqua' },
-    { bg: 'bg-koel-pink', text: 'text-white' },
-    { bg: 'bg-koel-yellow', text: 'text-koel-olive' },
+    { bg: 'bg-koel-olive',  text: 'text-koel-yellow', divider: 'bg-koel-yellow' },
+    { bg: 'bg-koel-coral',  text: 'text-koel-teal',   divider: 'bg-koel-teal'   },
+    { bg: 'bg-koel-aqua',   text: 'text-koel-teal',   divider: 'bg-koel-teal'   },
+    { bg: 'bg-koel-teal',   text: 'text-koel-aqua',   divider: 'bg-koel-aqua'   },
+    { bg: 'bg-koel-pink',   text: 'text-white',        divider: 'bg-white'       },
+    { bg: 'bg-koel-yellow', text: 'text-koel-olive',  divider: 'bg-koel-olive'  },
   ];
 
   const currentScheme = activeColor !== null ? colorSchemes[activeColor] : null;
@@ -117,12 +117,31 @@ export default function SystemIntroSection() {
             KOEL ES UN SISTEMA DE DESODORANTE RECARGABLE: APLICADOR REUTILIZABLE Y RECARGAS BIODEGRADABLES, DISEÑADOS PARA EL USO DIARIO.
           </motion.p>
 
+          {/* Decorative Lines */}
+          <motion.div
+            initial={{ opacity: 0, scaleX: 0 }}
+            whileInView={{ opacity: 1, scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mt-6 md:mt-8 flex items-center justify-center gap-3"
+          >
+            <div className={`w-12 md:w-20 h-[1px] transition-colors duration-500 opacity-40 ${
+              currentScheme ? currentScheme.divider : 'bg-koel-teal'
+            }`} />
+            <div className={`w-1.5 h-1.5 rounded-full transition-colors duration-500 ${
+              currentScheme ? currentScheme.divider : 'bg-koel-teal'
+            }`} />
+            <div className={`w-12 md:w-20 h-[1px] transition-colors duration-500 opacity-40 ${
+              currentScheme ? currentScheme.divider : 'bg-koel-teal'
+            }`} />
+          </motion.div>
+
           {/* Color Circles */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
             className="mt-6 md:mt-8 flex items-center justify-center gap-3"
           >
             {colorSchemes.map((scheme, index) => (
@@ -137,25 +156,6 @@ export default function SystemIntroSection() {
                 } transition-all duration-300`}
               />
             ))}
-          </motion.div>
-
-          {/* Decorative Lines */}
-          <motion.div
-            initial={{ opacity: 0, scaleX: 0 }}
-            whileInView={{ opacity: 1, scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="mt-6 md:mt-8 flex items-center justify-center gap-3"
-          >
-            <div className={`w-12 md:w-20 h-[1px] transition-colors duration-500 ${
-              currentScheme ? `${currentScheme.text.replace('text-', 'bg-')}/40` : 'bg-koel-teal/40'
-            }`} />
-            <div className={`w-1.5 h-1.5 rounded-full transition-colors duration-500 ${
-              currentScheme ? currentScheme.text.replace('text-', 'bg-') : 'bg-koel-teal'
-            }`} />
-            <div className={`w-12 md:w-20 h-[1px] transition-colors duration-500 ${
-              currentScheme ? `${currentScheme.text.replace('text-', 'bg-')}/40` : 'bg-koel-teal/40'
-            }`} />
           </motion.div>
         </motion.div>
       </Container>
