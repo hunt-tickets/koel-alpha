@@ -164,12 +164,12 @@ export default function TutorialSection() {
                         key={index}
                         onClick={() => goToStep(index)}
                         aria-label={`Go to step ${index + 1}`}
-                        className="relative w-16 h-8 rounded-full overflow-hidden border-2 border-koel-teal"
+                        className="relative w-16 h-8 rounded-full overflow-hidden border-2 border-koel-aqua"
                         style={{ background: 'transparent' }}
                       >
                         {/* Fill layer */}
                         <div
-                          className="absolute inset-0 bg-koel-teal origin-left"
+                          className="absolute inset-0 bg-koel-aqua origin-left"
                           style={{
                             transform: `scaleX(${isDone ? 1 : isActive ? progress / 100 : 0})`,
                             transformOrigin: 'left',
@@ -179,7 +179,7 @@ export default function TutorialSection() {
                         {/* Number */}
                         <span
                           className="relative z-10 text-xs font-heading font-bold"
-                          style={{ color: isDone || isActive ? '#FCF7EE' : '#153439' }}
+                          style={{ color: isDone || isActive ? '#153439' : '#153439' }}
                         >
                           {String(index + 1).padStart(2, '0')}
                         </span>
