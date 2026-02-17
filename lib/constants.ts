@@ -63,34 +63,6 @@ export const PRODUCTS = [
   },
 ] as const;
 
-// Fragrances
-export const FRAGRANCES = [
-  {
-    id: 'bamboo-whisper',
-    name: 'Bamboo Whisper',
-    description: 'Fresco y natural. Notas de bambú y té verde.',
-    notes: {
-      top: ['Bambú', 'Té verde'],
-      mid: ['Jazmín', 'Lirio'],
-      base: ['Almizcle blanco', 'Cedro'],
-    },
-    color: 'koel-olive',
-    icon: '/images/fragrances/bamboo-whisper.svg',
-  },
-  {
-    id: 'ginger-grape',
-    name: 'Ginger Grape',
-    description: 'Vibrante y energizante. Notas de jengibre y toronja.',
-    notes: {
-      top: ['Jengibre', 'Toronja'],
-      mid: ['Cardamomo', 'Pimienta rosa'],
-      base: ['Ámbar', 'Vetiver'],
-    },
-    color: 'koel-coral',
-    icon: '/images/fragrances/ginger-grape.svg',
-  },
-] as const;
-
 // Tutorial Steps
 export const TUTORIAL_STEPS = [
   {
@@ -110,30 +82,6 @@ export const TUTORIAL_STEPS = [
     title: 'Empuja',
     description: 'Empuja desde la base del POD hasta que quede completamente encajado.',
     image: '/images/tutorial/step-3.jpg',
-  },
-] as const;
-
-// Value Propositions
-export const VALUE_PROPS = [
-  {
-    title: 'Sostenible',
-    description: 'Reduce tu huella de plástico hasta un 80% con nuestro sistema recargable.',
-    icon: '🌱',
-  },
-  {
-    title: 'Premium',
-    description: 'Diseño minimalista en aluminio de alta calidad que dura años.',
-    icon: '✨',
-  },
-  {
-    title: 'Efectivo',
-    description: 'Fórmula de larga duración sin aluminio, parabenos ni crueldad animal.',
-    icon: '💪',
-  },
-  {
-    title: 'Versátil',
-    description: 'Cambia de fragancia cuando quieras. Tu estilo, tu elección.',
-    icon: '🎨',
   },
 ] as const;
 

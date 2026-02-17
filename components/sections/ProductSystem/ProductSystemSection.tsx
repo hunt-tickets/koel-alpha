@@ -1,9 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState } from 'react';
 import Image from 'next/image';
-import { Sparkles, Shield, Leaf, Gem, CalendarRange, RotateCw, Flower2, ChevronDown } from 'lucide-react';
+import { Sparkles, Shield, Leaf, Gem, CalendarRange, RotateCw, Flower2 } from 'lucide-react';
 import Container from '@/components/ui/Container';
 import ProductCard from './ProductCard';
 import { PRODUCTS } from '@/lib/constants';
@@ -20,8 +19,6 @@ const iconMap = {
 };
 
 export default function ProductSystemSection() {
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
-
   // Map products with icon components
   const productsWithIcons = PRODUCTS.map(product => ({
     ...product,
@@ -69,11 +66,7 @@ export default function ProductSystemSection() {
                 delay: index * 0.12,
               }}
             >
-              <ProductCard
-                {...product}
-                isExpanded={expandedIndex === index}
-                onToggleExpand={() => setExpandedIndex(expandedIndex === index ? null : index)}
-              />
+              <ProductCard {...product} />
             </motion.div>
           ))}
         </div>

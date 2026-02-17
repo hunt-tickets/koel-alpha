@@ -98,17 +98,6 @@ export default function ManifiestoPage() {
     },
   ];
 
-  const manifestoText = `Hay una nueva forma de cuidar que no se impone, se siente.
-Se revela en los detalles, en lo que dejamos atrás y en lo que elegimos volver esencial.
-No responde a tendencias ni promesas. Responde a una necesidad silenciosa de pensar distinto.
-Somos un universo que respira claridad.
-Fusionamos lo natural con lo inteligente, transformando lo cotidiano en una experiencia suave, minimal y consciente.
-El diseño nos permite simplificar, resolver y elevar.
-Los hábitos se vuelven rituales más claros, más propios, más pensados.
-Cuidar no es un acto de consumo.
-Es coherencia en movimiento.
-El futuro del cuidado comienza aquí.`;
-
   return (
     <>
       <LoadingScreen

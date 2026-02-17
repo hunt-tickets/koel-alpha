@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, AnimatePresence, useAnimationFrame } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
 import { Gravity, MatterBody } from '@/components/ui/gravity';

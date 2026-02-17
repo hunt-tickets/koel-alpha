@@ -3,7 +3,6 @@
 import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useState, useRef } from 'react';
 import Image from 'next/image';
-import { ChevronDown } from 'lucide-react';
 import { formatPrice } from '@/lib/utils';
 import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
@@ -24,8 +23,6 @@ interface ProductCardProps {
   accentColor: string;
   image: string;
   slug: string;
-  isExpanded?: boolean;
-  onToggleExpand?: () => void;
 }
 
 export default function ProductCard({
@@ -37,8 +34,6 @@ export default function ProductCard({
   accentColor,
   image,
   slug,
-  isExpanded = false,
-  onToggleExpand,
 }: ProductCardProps) {
   const router = useRouter();
   const [isHovered, setIsHovered] = useState(false);

@@ -51,17 +51,3 @@ export function debounce<T extends (...args: unknown[]) => unknown>(
     timeoutId = setTimeout(() => fn(...args), delay);
   };
 }
-
-/**
- * Get random item from array
- */
-export function randomItem<T>(array: readonly T[]): T {
-  return array[Math.floor(Math.random() * array.length)];
-}
-
-/**
- * Clamp number between min and max
- */
-export function clamp(value: number, min: number, max: number): number {
-  return Math.min(Math.max(value, min), max);
-}

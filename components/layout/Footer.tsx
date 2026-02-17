@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { Mail, CheckCircle2 } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 import { BRAND, SOCIAL_LINKS, NAV_LINKS } from '@/lib/constants';
 import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
