@@ -32,7 +32,7 @@ export default function SubscriptionSection() {
   const imageY = useTransform(
     scrollYProgress,
     [0, 1],
-    isMobile ? ['-4%', '4%'] : ['-10%', '10%']
+    isMobile ? ['-2%', '2%'] : ['-10%', '10%']
   );
 
   return (
