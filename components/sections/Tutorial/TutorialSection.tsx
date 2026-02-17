@@ -167,12 +167,12 @@ export default function TutorialSection() {
                         key={index}
                         onClick={() => goToStep(index)}
                         aria-label={`Go to step ${index + 1}`}
-                        className="relative w-16 h-8 rounded-full overflow-hidden border-2 border-koel-aqua"
+                        className="relative w-16 h-8 rounded-full overflow-hidden border-2 border-koel-teal"
                         style={{ background: 'transparent' }}
                       >
                         {/* Fill layer */}
                         <div
-                          className="absolute inset-0 bg-koel-aqua origin-left"
+                          className="absolute inset-0 bg-koel-teal origin-left"
                           style={{
                             transform: `scaleX(${isDone ? 1 : isActive ? progress / 100 : 0})`,
                             transformOrigin: 'left',
