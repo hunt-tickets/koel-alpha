@@ -68,7 +68,7 @@ export default function SubscriptionSection() {
               >
                 <motion.div
                   style={{ y: imageY }}
-                  className="relative w-full h-[120%] -top-[25%]"
+                  className="relative w-full h-[120%] -top-[15%]"
                 >
                   <Image
                     src={v.src}
