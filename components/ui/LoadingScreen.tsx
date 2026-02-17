@@ -25,7 +25,7 @@ const KOEL_LOGOS = [
 
 export default function LoadingScreen({
   onLoadingComplete,
-  minDuration = 2000,
+  minDuration = 1200,
   bgColor = 'bg-koel-aqua',
   textColor = 'text-koel-teal',
 }: LoadingScreenProps) {

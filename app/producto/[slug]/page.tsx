@@ -123,7 +123,7 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
   return (
     <>
       <LoadingScreen
-        minDuration={2000}
+        minDuration={1200}
         onLoadingComplete={() => setIsLoading(false)}
         bgColor="bg-koel-aqua"
         textColor="text-koel-teal"

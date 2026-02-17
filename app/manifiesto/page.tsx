@@ -18,11 +18,11 @@ export default function ManifiestoPage() {
     offset: ['start start', 'end start'],
   });
 
-  // Show hero after loader (2.5s loader + 0.8s exit animation)
+  // Show hero after loader (1.2s loader + 0.8s exit animation)
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);
-    }, 3300);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -112,7 +112,7 @@ El futuro del cuidado comienza aquí.`;
   return (
     <>
       <LoadingScreen
-        minDuration={2500}
+        minDuration={1200}
         onLoadingComplete={() => setIsLoading(false)}
         bgColor="bg-koel-yellow"
         textColor="text-koel-olive"
