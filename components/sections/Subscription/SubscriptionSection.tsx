@@ -7,8 +7,8 @@ import Container from '@/components/ui/Container';
 import Button from '@/components/ui/Button';
 
 const VARIANTS = [
-  { src: '/images/koel-bamboo.png', label: 'Bamboo', key: 'bamboo' },
-  { src: '/images/koel-grape.png',  label: 'Ginger Grape', key: 'grape'  },
+  { src: '/images/koel-bamboo.png', shot: '/images/productshot-bamboo.png', label: 'Bamboo', key: 'bamboo' },
+  { src: '/images/koel-grape.png',  shot: '/images/productshot-grape.png',  label: 'Ginger Grape', key: 'grape'  },
 ];
 
 export default function SubscriptionSection() {
@@ -49,39 +49,65 @@ export default function SubscriptionSection() {
             Elige tu aroma, define la frecuencia y recibe tus recargas automáticamente. Tu ritual, siempre listo. Sin pensarlo.
           </motion.p>
 
-          {/* Product Image with hover variant switch */}
+          {/* Product Images - Two Column Layout */}
           <motion.div
             ref={imageRef}
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.25 }}
-            className="mb-8 md:mb-10 relative -mx-4 sm:-mx-8 md:-mx-20 lg:-mx-40 h-[200px] sm:h-[240px] md:h-[280px] rounded-xl md:rounded-2xl cursor-pointer bg-koel-aqua"
+            className="mb-8 md:mb-10 relative -mx-4 sm:-mx-8 md:-mx-20 lg:-mx-40 h-[200px] sm:h-[240px] md:h-[280px] rounded-xl md:rounded-2xl cursor-pointer bg-koel-aqua grid"
+            style={{ gridTemplateColumns: '70% 30%' }}
             onMouseEnter={() => setActiveIndex(1)}
             onMouseLeave={() => setActiveIndex(0)}
           >
-
-            {VARIANTS.map((v, i) => (
-              <div
-                key={v.key}
-                className={`absolute inset-0 ${i === activeIndex ? 'block' : 'hidden'}`}
-              >
-                <motion.div
-                  style={{ y: imageY }}
-                  className="absolute inset-x-0 h-[360px] sm:h-[420px] md:h-[480px] -top-[80px]"
+            {/* Column 1: Product + Case image */}
+            <div className="relative">
+              {VARIANTS.map((v, i) => (
+                <div
+                  key={v.key}
+                  className={`absolute inset-0 ${i === activeIndex ? 'block' : 'hidden'}`}
                 >
-                  <Image
-                    src={v.src}
-                    alt={`KOEL ${v.label}`}
-                    fill
-                    className="object-contain"
-                    sizes="(max-width: 768px) 100vw, 1200px"
-                    priority
-                  />
-                </motion.div>
-              </div>
-            ))}
+                  <motion.div
+                    style={{ y: imageY }}
+                    className="absolute inset-x-0 h-[360px] sm:h-[420px] md:h-[480px] -top-[80px]"
+                  >
+                    <Image
+                      src={v.src}
+                      alt={`KOEL ${v.label}`}
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 768px) 50vw, 600px"
+                      priority
+                    />
+                  </motion.div>
+                </div>
+              ))}
+            </div>
 
+            {/* Column 2: Product shot image */}
+            <div className="relative overflow-visible">
+              {VARIANTS.map((v, i) => (
+                <div
+                  key={v.key}
+                  className={`absolute inset-0 overflow-visible ${i === activeIndex ? 'block' : 'hidden'}`}
+                >
+                  <motion.div
+                    style={{ y: imageY }}
+                    className="absolute h-[560px] sm:h-[640px] md:h-[720px] w-[380px] sm:w-[460px] md:w-[540px] -top-[140px] left-1/2 -translate-x-1/2"
+                  >
+                    <Image
+                      src={v.shot}
+                      alt={`KOEL ${v.label} Product Shot`}
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 768px) 50vw, 600px"
+                      priority
+                    />
+                  </motion.div>
+                </div>
+              ))}
+            </div>
           </motion.div>
 
           {/* Variant label */}
