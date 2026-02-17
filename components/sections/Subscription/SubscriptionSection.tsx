@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import { useRef, useState } from 'react';
 import Container from '@/components/ui/Container';
@@ -60,25 +60,21 @@ export default function SubscriptionSection() {
             onMouseEnter={() => setActiveIndex(1)}
             onMouseLeave={() => setActiveIndex(0)}
           >
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={VARIANTS[activeIndex].key}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
-                className="absolute inset-0"
+            {VARIANTS.map((v, i) => (
+              <div
+                key={v.key}
+                className={`absolute inset-0 ${i === activeIndex ? 'block' : 'hidden'}`}
               >
                 <Image
-                  src={VARIANTS[activeIndex].src}
-                  alt={`KOEL ${VARIANTS[activeIndex].label}`}
+                  src={v.src}
+                  alt={`KOEL ${v.label}`}
                   fill
                   className="object-contain p-8"
                   sizes="(max-width: 768px) 100vw, 1200px"
                   priority
                 />
-              </motion.div>
-            </AnimatePresence>
+              </div>
+            ))}
 
             {/* Variant label */}
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
