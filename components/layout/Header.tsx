@@ -192,14 +192,14 @@ export default function Header({ forceScrolled = false }: HeaderProps) {
         animate={isMobileMenuOpen ? { y: 0 } : { y: '-100%' }}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
         className={cn(
-          'fixed top-0 left-0 right-0 bottom-0 bg-[#1C4A4A] z-[100] md:hidden',
+          'fixed top-0 left-0 right-0 bottom-0 bg-koel-teal z-[100] md:hidden',
           isMobileMenuOpen ? 'pointer-events-auto' : 'pointer-events-none'
         )}
         style={{ position: 'fixed', width: '100vw', height: '100vh', paddingTop: 'env(safe-area-inset-top)' }}
       >
         <div className="flex flex-col h-full px-8 py-6">
           {/* Header with logo and close button */}
-          <div className="flex items-center justify-between pb-8 border-b border-[#2C5A5A]/50">
+          <div className="flex items-center justify-between pb-8 border-b border-koel-aqua/30">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={isMobileMenuOpen ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
@@ -212,7 +212,7 @@ export default function Header({ forceScrolled = false }: HeaderProps) {
                 height={32}
                 className="w-16 md:w-20 h-auto"
                 style={{
-                  filter: 'brightness(0) saturate(100%) invert(61%) sepia(35%) saturate(826%) hue-rotate(126deg) brightness(95%) contrast(92%)'
+                  filter: 'brightness(0) saturate(100%) invert(73%) sepia(11%) saturate(1590%) hue-rotate(128deg) brightness(91%) contrast(87%)'
                 }}
               />
             </motion.div>
@@ -222,8 +222,8 @@ export default function Header({ forceScrolled = false }: HeaderProps) {
               aria-label="Cerrar menú"
             >
               <div className="w-6 h-6 flex items-center justify-center relative">
-                <span className="w-5 h-0.5 bg-[#4FB3A9] rotate-45 absolute rounded-full" />
-                <span className="w-5 h-0.5 bg-[#4FB3A9] -rotate-45 absolute rounded-full" />
+                <span className="w-5 h-0.5 bg-koel-aqua rotate-45 absolute rounded-full" />
+                <span className="w-5 h-0.5 bg-koel-aqua -rotate-45 absolute rounded-full" />
               </div>
             </button>
           </div>
@@ -237,11 +237,11 @@ export default function Header({ forceScrolled = false }: HeaderProps) {
                 animate={isMobileMenuOpen ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.4, delay: 0.15 + index * 0.1 }}
                 onClick={() => handleNavClick(link.href)}
-                className="group text-left border-b border-[#2C5A5A]/30 pb-4 hover:scale-110 active:scale-95 transition-transform duration-200"
+                className="group text-left border-b border-koel-aqua/20 pb-4 hover:scale-110 active:scale-95 transition-transform duration-200"
               >
                 <div className="flex items-center gap-3 group-hover:scale-[0.909] group-active:scale-[1.053] transition-transform duration-200">
-                  <span className="w-2 h-2 rounded-full bg-[#4FB3A9]" />
-                  <span className="text-[#4FB3A9] font-heading font-normal text-lg uppercase tracking-wider">
+                  <span className="w-2 h-2 rounded-full bg-koel-aqua" />
+                  <span className="text-koel-aqua font-heading font-normal text-lg uppercase tracking-wider">
                     {link.label}
                   </span>
                 </div>
@@ -257,7 +257,7 @@ export default function Header({ forceScrolled = false }: HeaderProps) {
             className="flex flex-col items-center gap-6 pb-8"
           >
             <div className="flex items-center gap-4">
-              <div className="w-12 h-[1px] bg-[#4FB3A9]/30" />
+              <div className="w-12 h-[1px] bg-koel-aqua/30" />
               <Image
                 src="/icons/isotipo-koel.svg"
                 alt="KOEL"
@@ -265,12 +265,12 @@ export default function Header({ forceScrolled = false }: HeaderProps) {
                 height={24}
                 className="w-6 h-6"
                 style={{
-                  filter: 'brightness(0) saturate(100%) invert(61%) sepia(35%) saturate(826%) hue-rotate(126deg) brightness(95%) contrast(92%)'
+                  filter: 'brightness(0) saturate(100%) invert(73%) sepia(11%) saturate(1590%) hue-rotate(128deg) brightness(91%) contrast(87%)'
                 }}
               />
-              <div className="w-12 h-[1px] bg-[#4FB3A9]/30" />
+              <div className="w-12 h-[1px] bg-koel-aqua/30" />
             </div>
-            <p className="text-xs tracking-[0.3em] uppercase text-[#4FB3A9]/80">
+            <p className="text-xs tracking-[0.3em] uppercase text-koel-aqua/80">
               A NEW WAY TO CARE
             </p>
           </motion.div>
