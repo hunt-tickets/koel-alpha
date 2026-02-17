@@ -56,7 +56,7 @@ export default function SubscriptionSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.25 }}
-            className="mb-8 md:mb-10 relative -mx-4 sm:-mx-8 md:-mx-20 lg:-mx-40 h-[280px] sm:h-[340px] md:h-[400px] rounded-xl md:rounded-2xl cursor-pointer bg-koel-aqua"
+            className="mb-8 md:mb-10 relative -mx-4 sm:-mx-8 md:-mx-20 lg:-mx-40 h-[200px] sm:h-[240px] md:h-[280px] rounded-xl md:rounded-2xl cursor-pointer bg-koel-aqua"
             onMouseEnter={() => setActiveIndex(1)}
             onMouseLeave={() => setActiveIndex(0)}
           >
@@ -68,7 +68,7 @@ export default function SubscriptionSection() {
               >
                 <motion.div
                   style={{ y: imageY }}
-                  className="relative w-full h-[120%] -top-[15%]"
+                  className="absolute inset-x-0 h-[500px] sm:h-[560px] md:h-[620px] -top-[120px]"
                 >
                   <Image
                     src={v.src}
