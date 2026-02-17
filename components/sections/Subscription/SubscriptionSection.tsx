@@ -82,22 +82,24 @@ export default function SubscriptionSection() {
               </div>
             ))}
 
-            {/* Variant label */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-              {VARIANTS.map((v, i) => (
-                <span
-                  key={v.key}
-                  className={`px-6 py-2 rounded-full text-xs font-heading font-bold uppercase tracking-widest transition-all duration-300 ${
-                    i === activeIndex
-                      ? 'bg-koel-teal text-white opacity-100'
-                      : 'bg-white/60 text-koel-teal opacity-70'
-                  }`}
-                >
-                  {v.label}
-                </span>
-              ))}
-            </div>
           </motion.div>
+
+          {/* Variant label */}
+          <div className="flex justify-center gap-2 mb-10">
+            {VARIANTS.map((v, i) => (
+              <span
+                key={v.key}
+                className={`px-6 py-2 rounded-full text-xs font-heading font-bold uppercase tracking-widest transition-all duration-300 cursor-pointer ${
+                  i === activeIndex
+                    ? 'bg-koel-teal text-white opacity-100'
+                    : 'bg-koel-teal/20 text-koel-teal opacity-70'
+                }`}
+                onMouseEnter={() => setActiveIndex(i)}
+              >
+                {v.label}
+              </span>
+            ))}
+          </div>
 
           {/* Features Grid */}
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12 mb-12 md:mb-14">
