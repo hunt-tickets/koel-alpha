@@ -319,7 +319,7 @@ El futuro del cuidado comienza aquí.`;
       </section>
 
       {/* Values Section */}
-      <section id="valores" className="relative z-10 section-container bg-[#FCF7EE]">
+      <section id="valores" className="relative z-10 bg-[#FCF7EE] pt-16 pb-6 md:pt-24 md:pb-8 lg:pt-32 lg:pb-10">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {values.map((value, index) => {
