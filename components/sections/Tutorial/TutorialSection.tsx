@@ -83,7 +83,7 @@ export default function TutorialSection() {
               {/* Steps - Mobile Swiper / Desktop Grid */}
               {/* Mobile: Swipeable Carousel */}
               <div className="md:hidden relative overflow-hidden">
-                <div className="relative h-[480px] flex items-center justify-center">
+                <div className="relative h-[400px] flex items-center justify-center">
                   <AnimatePresence mode="wait" initial={false}>
                     <motion.div
                       key={currentStep}
