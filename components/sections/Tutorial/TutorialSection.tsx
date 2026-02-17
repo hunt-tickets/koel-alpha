@@ -182,7 +182,7 @@ export default function TutorialSection() {
                         {/* Number */}
                         <span
                           className="relative z-10 text-xs font-heading font-bold"
-                          style={{ color: isDone || isActive ? '#153439' : '#153439' }}
+                          style={{ color: isDone ? '#FCF7EE' : '#153439' }}
                         >
                           {String(index + 1).padStart(2, '0')}
                         </span>
