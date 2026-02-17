@@ -129,7 +129,7 @@ export default function SubscriptionSection() {
                 }}
               />
               <h3 className="text-sm sm:text-base font-heading font-bold text-koel-teal uppercase tracking-wide">Subscribe & Save</h3>
-              <p className="text-sm sm:text-base text-koel-neutral-600 max-w-[220px] leading-relaxed">Ahorra en cada recarga al suscribirte.</p>
+              <p className="text-base text-koel-neutral-600 max-w-[220px] leading-relaxed">Ahorra en cada recarga al suscribirte.</p>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -149,7 +149,7 @@ export default function SubscriptionSection() {
                 }}
               />
               <h3 className="text-sm sm:text-base font-heading font-bold text-koel-teal uppercase tracking-wide">Envío automático</h3>
-              <p className="text-sm sm:text-base text-koel-neutral-600 max-w-[220px] leading-relaxed">Recibe tus PODs cuando los necesitas. Nada más.</p>
+              <p className="text-base text-koel-neutral-600 max-w-[220px] leading-relaxed">Recibe tus PODs cuando los necesitas. Nada más.</p>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -169,7 +169,7 @@ export default function SubscriptionSection() {
                 }}
               />
               <h3 className="text-sm sm:text-base font-heading font-bold text-koel-teal uppercase tracking-wide">Control total</h3>
-              <p className="text-sm sm:text-base text-koel-neutral-600 max-w-[220px] leading-relaxed">Cambia, pausa o cancela cuando quieras.</p>
+              <p className="text-base text-koel-neutral-600 max-w-[220px] leading-relaxed">Cambia, pausa o cancela cuando quieras.</p>
             </motion.div>
           </div>
 
@@ -184,7 +184,7 @@ export default function SubscriptionSection() {
             <Button variant="primary" size="lg" className="uppercase">
               Comenzar suscripción
             </Button>
-            <p className="text-sm sm:text-base text-koel-neutral-500">
+            <p className="text-base text-koel-neutral-500">
               Sin compromisos. Sin cargos ocultos.
             </p>
           </motion.div>
