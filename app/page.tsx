@@ -32,7 +32,7 @@ export default function HomePage() {
   return (
     <>
       <LoadingScreen
-        minDuration={1200}
+        minDuration={1750}
         onLoadingComplete={() => setIsLoading(false)}
         bgColor="bg-koel-neutral-100"
         textColor="text-koel-teal"

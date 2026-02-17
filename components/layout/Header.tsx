@@ -20,10 +20,10 @@ export default function Header({ forceScrolled = false }: HeaderProps) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Show header after loader (1.2s loader + 0.8s exit animation)
+    // Show header after loader (1.75s loader + 0.8s exit animation)
     const timer = setTimeout(() => {
       setIsVisible(true);
-    }, 2000);
+    }, 2550);
 
     return () => clearTimeout(timer);
   }, []);
