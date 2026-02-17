@@ -17,7 +17,7 @@ export default function Button({
   disabled,
   ...props
 }: ButtonProps) {
-  const baseStyles = 'inline-flex items-center justify-center font-heading rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-110 active:scale-95';
+  const baseStyles = 'inline-flex items-center justify-center font-heading rounded-full transition-all duration-200 focus:outline-none focus:ring-0 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-110 active:scale-95';
 
   const variants = {
     primary: 'bg-koel-teal text-white focus:ring-koel-teal',

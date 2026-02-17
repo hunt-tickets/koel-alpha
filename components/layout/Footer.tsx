@@ -34,7 +34,7 @@ export default function Footer() {
     <footer className="bg-koel-teal text-[#FCF7EE]">
       <Container className="py-16 md:py-20">
         {/* Newsletter Bar */}
-        <div className="mb-16 pb-12 border-b border-[#FCF7EE]/20">
+        <div className="mb-16 pb-12 border-b border-[#FCF7EE]/20 overflow-hidden">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="text-center md:text-left">
               <h3 className="text-base md:text-lg font-bold font-display tracking-wide uppercase mb-1 text-[#FCF7EE]">
@@ -53,7 +53,7 @@ export default function Footer() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="tu@email.com"
                   required
-                  className="px-6 py-3 rounded-full bg-[#FCF7EE]/10 border-2 border-[#FCF7EE]/20 text-[#FCF7EE] placeholder:text-[#FCF7EE]/50 focus:outline-none focus:border-[#FCF7EE]/20 transition-all text-base md:w-64 font-heading tracking-wide backdrop-blur-sm"
+                  className="px-6 py-3 rounded-full bg-[#FCF7EE]/10 border-2 border-[#FCF7EE]/20 text-[#FCF7EE] placeholder:text-[#FCF7EE]/50 focus:outline-none focus:ring-0 focus:shadow-none focus:border-[#FCF7EE]/40 transition-all text-base md:w-64 font-heading tracking-wide backdrop-blur-sm"
                 />
                 <Button
                   type="submit"
