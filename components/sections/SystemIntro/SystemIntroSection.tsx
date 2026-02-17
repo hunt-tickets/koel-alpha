@@ -36,7 +36,7 @@ export default function SystemIntroSection() {
       case 4: // pink/white
         return '/icons/isotipo-koel.svg';
       case 5: // yellow/olive
-        return '/icons/isotipo-yellow.svg';
+        return '/icons/isotipo-koel.svg';
       default:
         return '/icons/isotipo-teal.svg';
     }
@@ -76,6 +76,13 @@ export default function SystemIntroSection() {
                   width={48}
                   height={48}
                   className="w-10 h-10 md:w-12 md:h-12"
+                  style={{
+                    filter: activeColor === 4
+                      ? 'brightness(0) invert(98%) sepia(8%) saturate(524%) hue-rotate(329deg) brightness(103%) contrast(97%)'
+                      : activeColor === 5
+                      ? 'brightness(0) saturate(100%) invert(35%) sepia(14%) saturate(1272%) hue-rotate(45deg) brightness(93%) contrast(89%)'
+                      : undefined
+                  }}
                 />
               </motion.div>
             </AnimatePresence>
