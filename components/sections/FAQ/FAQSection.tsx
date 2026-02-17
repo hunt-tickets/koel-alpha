@@ -19,15 +19,15 @@ export default function FAQSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="max-w-2xl mb-12 md:mb-16 px-4"
+          className="max-w-2xl mb-12 md:mb-16 px-4 text-center mx-auto"
         >
-          <p className="text-base tracking-[0.3em] uppercase text-koel-neutral-500 mb-3 font-light">
+          <p className="text-base tracking-[0.3em] uppercase text-koel-neutral-500 mb-3 font-display font-bold">
             FAQ
           </p>
           <h2 className="text-3xl md:text-4xl font-bold text-koel-teal mb-4 font-display leading-tight">
             ¿Tienes dudas?
           </h2>
-          <p className="text-xl text-koel-neutral-600 uppercase">
+          <p className="text-xl text-koel-neutral-600 uppercase font-light tracking-[0.15em]">
             Aquí respondemos las preguntas más comunes sobre KOEL
           </p>
         </motion.div>
