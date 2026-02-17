@@ -74,7 +74,7 @@ export default function SubscriptionSection() {
                     src={v.src}
                     alt={`KOEL ${v.label}`}
                     fill
-                    className="object-contain p-2"
+                    className="object-contain"
                     sizes="(max-width: 768px) 100vw, 1200px"
                     priority
                   />
