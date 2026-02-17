@@ -2,12 +2,203 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Container from '@/components/ui/Container';
-import { Leaf, Heart, Sparkles, Users, Target, Lightbulb } from 'lucide-react';
+import { Leaf, Heart, Sparkles, Users, Target, Lightbulb, LucideIcon } from 'lucide-react';
 import Image from 'next/image';
 import { useRef, useState, useEffect } from 'react';
 import { LoadingScreen, DecryptText } from '@/components/ui';
 import Button from '@/components/ui/Button';
 import { LOADER_REVEAL_DELAY } from '@/lib/constants';
+
+interface ValueItem {
+  icon: LucideIcon;
+  title: string;
+  subtitle: string;
+  description: string;
+  bgColor: string;
+  textColor: string;
+}
+
+function FlipCard({ value, index }: { value: ValueItem; index: number }) {
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      className="relative min-h-[400px] sm:min-h-[440px] md:min-h-[520px] cursor-pointer select-none"
+      style={{ perspective: '1500px', WebkitUserSelect: 'none', userSelect: 'none' }}
+      onHoverStart={() => setIsFlipped(true)}
+      onHoverEnd={() => setIsFlipped(false)}
+      onTouchStart={() => setIsFlipped(true)}
+      onTouchEnd={() => setIsFlipped(false)}
+    >
+      <motion.div
+        animate={{ rotateY: isFlipped ? 180 : 0 }}
+        transition={{ duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
+        style={{ transformStyle: 'preserve-3d', position: 'relative', width: '100%', height: '100%' }}
+        className="min-h-[400px] sm:min-h-[440px] md:min-h-[520px]"
+      >
+        {/* Front Side */}
+        <div
+          style={{ backfaceVisibility: 'hidden', position: 'absolute', width: '100%', height: '100%' }}
+          className={`p-6 sm:p-8 md:p-10 rounded-2xl md:rounded-3xl ${value.bgColor} shadow-lg flex flex-col relative`}
+        >
+          {/* Mobile Touch Indicator */}
+          <div className="absolute top-4 right-4 md:hidden">
+            <motion.div
+              animate={{ opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <svg className={`w-5 h-5 ${value.textColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
+              </svg>
+            </motion.div>
+          </div>
+
+          <div className="flex flex-col items-center text-center mb-auto">
+            <p className={`text-[10px] sm:text-xs md:text-sm tracking-[0.25em] md:tracking-[0.3em] uppercase ${value.textColor} mb-4 sm:mb-6 font-medium opacity-90`}>
+              100% NATURAL
+            </p>
+            <div className="mb-6 sm:mb-8">
+              <Image
+                src={
+                  value.title === 'Sostenibilidad' ? '/icons/isotipo-yellow.svg' :
+                  value.title === 'Bienestar' ? '/icons/isotipo-teal.svg' :
+                  value.title === 'Diseño' ? '/icons/isotipo-teal.svg' :
+                  value.title === 'Innovación' ? '/icons/isotipo-aqua.svg' :
+                  '/icons/isotipo-koel.svg'
+                }
+                alt="Isotipo KOEL"
+                width={64}
+                height={64}
+                className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16"
+                style={(value.title === 'Sostenibilidad' || value.title === 'Bienestar' || value.title === 'Diseño' || value.title === 'Innovación') ? {} : {
+                  filter: value.textColor.includes('white')
+                    ? 'brightness(0) invert(1)'
+                    : value.textColor.includes('yellow')
+                    ? 'brightness(0) saturate(100%) invert(93%) sepia(93%) saturate(1352%) hue-rotate(360deg) brightness(99%) contrast(96%)'
+                    : value.textColor.includes('aqua')
+                    ? 'brightness(0) saturate(100%) invert(60%) sepia(98%) saturate(476%) hue-rotate(134deg) brightness(96%) contrast(89%)'
+                    : value.textColor.includes('#FCF7EE')
+                    ? 'brightness(0) invert(98%) sepia(8%) saturate(524%) hue-rotate(329deg) brightness(103%) contrast(97%)'
+                    : value.textColor.includes('olive')
+                    ? 'brightness(0) saturate(100%) invert(35%) sepia(14%) saturate(1272%) hue-rotate(45deg) brightness(93%) contrast(89%)'
+                    : 'none'
+                }}
+              />
+            </div>
+            <h3 className={`text-xl sm:text-2xl md:text-3xl font-bold ${value.textColor} mb-2 font-display tracking-tight uppercase`}>
+              {value.title}
+            </h3>
+            <p className={`text-sm sm:text-base md:text-lg tracking-[0.15em] sm:tracking-[0.2em] uppercase ${value.textColor} mb-4 sm:mb-6 opacity-80`}>
+              {value.subtitle}
+            </p>
+            <div className={`w-12 sm:w-16 h-[1px] ${value.textColor.replace('text-', 'bg-')} opacity-40 mb-6 sm:mb-8`} />
+          </div>
+
+          <div className="mt-auto">
+            <p className={`text-[11px] sm:text-xs md:text-sm text-center ${value.textColor} leading-relaxed opacity-75 mb-6 sm:mb-8`}>
+              {value.description}
+            </p>
+            <div className="flex items-center justify-center">
+              <Image
+                src={
+                  value.title === 'Sostenibilidad' ? '/logos/logo-yellow-full.svg' :
+                  value.title === 'Innovación' ? '/logos/logo-aqua-full.svg' :
+                  '/logos/logo-teal.svg'
+                }
+                alt="KOEL"
+                width={60}
+                height={24}
+                className="w-auto h-5 sm:h-4 opacity-70"
+                style={(value.title === 'Sostenibilidad' || value.title === 'Innovación') ? {} : {
+                  filter: value.textColor.includes('white')
+                    ? 'brightness(0) invert(1)'
+                    : value.textColor.includes('yellow')
+                    ? 'brightness(0) saturate(100%) invert(93%) sepia(93%) saturate(1352%) hue-rotate(360deg) brightness(99%) contrast(96%)'
+                    : value.textColor.includes('aqua')
+                    ? 'brightness(0) saturate(100%) invert(60%) sepia(98%) saturate(476%) hue-rotate(134deg) brightness(96%) contrast(89%)'
+                    : value.textColor.includes('#FCF7EE')
+                    ? 'brightness(0) invert(98%) sepia(8%) saturate(524%) hue-rotate(329deg) brightness(103%) contrast(97%)'
+                    : value.textColor.includes('olive')
+                    ? 'brightness(0) saturate(100%) invert(35%) sepia(14%) saturate(1272%) hue-rotate(45deg) brightness(93%) contrast(89%)'
+                    : 'none'
+                }}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Back Side */}
+        <div
+          style={{ backfaceVisibility: 'hidden', position: 'absolute', width: '100%', height: '100%', transform: 'rotateY(180deg)' }}
+          className={`px-6 sm:px-8 md:px-10 pb-6 sm:pb-8 md:pb-10 rounded-2xl md:rounded-3xl ${value.bgColor} shadow-lg flex flex-col items-center justify-start text-center`}
+        >
+          <div className="mb-4 sm:mb-6 -mt-2">
+            <Image
+              src={
+                value.title === 'Sostenibilidad' ? '/icons/sello-yellow.svg' :
+                value.title === 'Innovación' ? '/icons/sello-aqua.svg' :
+                '/icons/sello-02.svg'
+              }
+              alt="Sello KOEL"
+              width={160}
+              height={160}
+              className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 mx-auto"
+              style={(value.title === 'Sostenibilidad' || value.title === 'Innovación') ? {} : {
+                filter: value.textColor.includes('white')
+                  ? 'brightness(0) invert(1)'
+                  : value.textColor.includes('yellow')
+                  ? 'brightness(0) saturate(100%) invert(88%) sepia(42%) saturate(1352%) hue-rotate(360deg) brightness(104%) contrast(96%)'
+                  : value.textColor.includes('aqua')
+                  ? 'brightness(0) saturate(100%) invert(60%) sepia(98%) saturate(476%) hue-rotate(134deg) brightness(96%) contrast(89%)'
+                  : value.textColor.includes('#FCF7EE')
+                  ? 'brightness(0) invert(98%) sepia(8%) saturate(524%) hue-rotate(329deg) brightness(103%) contrast(97%)'
+                  : value.textColor.includes('olive')
+                  ? 'brightness(0) saturate(100%) invert(35%) sepia(14%) saturate(1272%) hue-rotate(45deg) brightness(93%) contrast(89%)'
+                  : 'none'
+              }}
+            />
+          </div>
+          <h4 className={`text-lg sm:text-xl md:text-2xl font-bold ${value.textColor} mb-3 sm:mb-4 font-display uppercase`}>
+            {value.subtitle}
+          </h4>
+          <p className={`text-sm sm:text-base md:text-lg ${value.textColor} leading-relaxed opacity-80 max-w-xs`}>
+            {value.description}
+          </p>
+          <div className="mt-auto pt-6 sm:pt-8">
+            <Image
+              src={
+                value.title === 'Sostenibilidad' ? '/logos/logo-yellow-full.svg' :
+                value.title === 'Innovación' ? '/logos/logo-aqua-full.svg' :
+                '/logos/logo-teal.svg'
+              }
+              alt="KOEL"
+              width={60}
+              height={24}
+              className="w-auto h-5 sm:h-4 opacity-70 mx-auto"
+              style={(value.title === 'Sostenibilidad' || value.title === 'Innovación') ? {} : {
+                filter: value.textColor.includes('white')
+                  ? 'brightness(0) invert(1)'
+                  : value.textColor.includes('yellow')
+                  ? 'brightness(0) saturate(100%) invert(88%) sepia(42%) saturate(1352%) hue-rotate(360deg) brightness(104%) contrast(96%)'
+                  : value.textColor.includes('aqua')
+                  ? 'brightness(0) saturate(100%) invert(60%) sepia(98%) saturate(476%) hue-rotate(134deg) brightness(96%) contrast(89%)'
+                  : value.textColor.includes('#FCF7EE')
+                  ? 'brightness(0) invert(98%) sepia(8%) saturate(524%) hue-rotate(329deg) brightness(103%) contrast(97%)'
+                  : value.textColor.includes('olive')
+                  ? 'brightness(0) saturate(100%) invert(35%) sepia(14%) saturate(1272%) hue-rotate(45deg) brightness(93%) contrast(89%)'
+                  : 'none'
+              }}
+            />
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
 
 export default function ManifiestoPage() {
   const [isLoading, setIsLoading] = useState(true);
@@ -312,235 +503,9 @@ export default function ManifiestoPage() {
       <section id="valores" className="relative z-10 bg-[#FCF7EE] pt-16 pb-6 md:pt-24 md:pb-8 lg:pt-32 lg:pb-10">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-            {values.map((value, index) => {
-              const [isFlipped, setIsFlipped] = useState(false);
-
-              return (
-                <motion.div
-                  key={value.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="relative min-h-[400px] sm:min-h-[440px] md:min-h-[520px] cursor-pointer select-none"
-                  style={{ perspective: '1500px', WebkitUserSelect: 'none', userSelect: 'none' }}
-                  onHoverStart={() => setIsFlipped(true)}
-                  onHoverEnd={() => setIsFlipped(false)}
-                  onTouchStart={() => setIsFlipped(true)}
-                  onTouchEnd={() => setIsFlipped(false)}
-                >
-                  <motion.div
-                    animate={{ rotateY: isFlipped ? 180 : 0 }}
-                    transition={{
-                      duration: 0.5,
-                      ease: [0.34, 1.56, 0.64, 1]
-                    }}
-                    style={{
-                      transformStyle: 'preserve-3d',
-                      position: 'relative',
-                      width: '100%',
-                      height: '100%'
-                    }}
-                    className="min-h-[400px] sm:min-h-[440px] md:min-h-[520px]"
-                  >
-                    {/* Front Side */}
-                    <div
-                      style={{
-                        backfaceVisibility: 'hidden',
-                        position: 'absolute',
-                        width: '100%',
-                        height: '100%'
-                      }}
-                      className={`p-6 sm:p-8 md:p-10 rounded-2xl md:rounded-3xl ${value.bgColor} shadow-lg flex flex-col relative`}
-                    >
-                      {/* Mobile Touch Indicator - Only visible on mobile */}
-                      <div className="absolute top-4 right-4 md:hidden">
-                        <motion.div
-                          animate={{
-                            opacity: [0.5, 1, 0.5],
-                          }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                          }}
-                        >
-                          <svg
-                            className={`w-5 h-5 ${value.textColor}`}
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"
-                            />
-                          </svg>
-                        </motion.div>
-                      </div>
-
-                {/* Top Section */}
-                <div className="flex flex-col items-center text-center mb-auto">
-                  <p className={`text-[10px] sm:text-xs md:text-sm tracking-[0.25em] md:tracking-[0.3em] uppercase ${value.textColor} mb-4 sm:mb-6 font-medium opacity-90`}>
-                    100% NATURAL
-                  </p>
-
-                  {/* Isotipo KOEL */}
-                  <div className="mb-6 sm:mb-8">
-                    <Image
-                      src={
-                        value.title === 'Sostenibilidad' ? '/icons/isotipo-yellow.svg' :
-                        value.title === 'Bienestar' ? '/icons/isotipo-teal.svg' :
-                        value.title === 'Diseño' ? '/icons/isotipo-teal.svg' :
-                        value.title === 'Innovación' ? '/icons/isotipo-aqua.svg' :
-                        '/icons/isotipo-koel.svg'
-                      }
-                      alt="Isotipo KOEL"
-                      width={64}
-                      height={64}
-                      className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16"
-                      style={(value.title === 'Sostenibilidad' || value.title === 'Bienestar' || value.title === 'Diseño' || value.title === 'Innovación') ? {} : {
-                        filter: value.textColor.includes('white')
-                          ? 'brightness(0) invert(1)'
-                          : value.textColor.includes('yellow')
-                          ? 'brightness(0) saturate(100%) invert(93%) sepia(93%) saturate(1352%) hue-rotate(360deg) brightness(99%) contrast(96%)'
-                          : value.textColor.includes('aqua')
-                          ? 'brightness(0) saturate(100%) invert(60%) sepia(98%) saturate(476%) hue-rotate(134deg) brightness(96%) contrast(89%)'
-                          : value.textColor.includes('#FCF7EE')
-                          ? 'brightness(0) invert(98%) sepia(8%) saturate(524%) hue-rotate(329deg) brightness(103%) contrast(97%)'
-                          : value.textColor.includes('olive')
-                          ? 'brightness(0) saturate(100%) invert(35%) sepia(14%) saturate(1272%) hue-rotate(45deg) brightness(93%) contrast(89%)'
-                          : 'none'
-                      }}
-                    />
-                  </div>
-
-                  {/* Title */}
-                  <h3 className={`text-xl sm:text-2xl md:text-3xl font-bold ${value.textColor} mb-2 font-display tracking-tight uppercase`}>
-                    {value.title}
-                  </h3>
-
-                  {/* Subtitle */}
-                  <p className={`text-sm sm:text-base md:text-lg tracking-[0.15em] sm:tracking-[0.2em] uppercase ${value.textColor} mb-4 sm:mb-6 opacity-80`}>
-                    {value.subtitle}
-                  </p>
-
-                  {/* Divider Line */}
-                  <div className={`w-12 sm:w-16 h-[1px] ${value.textColor.replace('text-', 'bg-')} opacity-40 mb-6 sm:mb-8`} />
-                </div>
-
-                {/* Description */}
-                <div className="mt-auto">
-                  <p className={`text-[11px] sm:text-xs md:text-sm text-center ${value.textColor} leading-relaxed opacity-75 mb-6 sm:mb-8`}>
-                    {value.description}
-                  </p>
-
-                  {/* Bottom Logo */}
-                  <div className="flex items-center justify-center">
-                    <Image
-                      src={
-                        value.title === 'Sostenibilidad' ? '/logos/logo-yellow-full.svg' :
-                        value.title === 'Innovación' ? '/logos/logo-aqua-full.svg' :
-                        '/logos/logo-teal.svg'
-                      }
-                      alt="KOEL"
-                      width={60}
-                      height={24}
-                      className="w-auto h-5 sm:h-4 opacity-70"
-                      style={(value.title === 'Sostenibilidad' || value.title === 'Innovación') ? {} : {
-                        filter: value.textColor.includes('white')
-                          ? 'brightness(0) invert(1)'
-                          : value.textColor.includes('yellow')
-                          ? 'brightness(0) saturate(100%) invert(93%) sepia(93%) saturate(1352%) hue-rotate(360deg) brightness(99%) contrast(96%)'
-                          : value.textColor.includes('aqua')
-                          ? 'brightness(0) saturate(100%) invert(60%) sepia(98%) saturate(476%) hue-rotate(134deg) brightness(96%) contrast(89%)'
-                          : value.textColor.includes('#FCF7EE')
-                          ? 'brightness(0) invert(98%) sepia(8%) saturate(524%) hue-rotate(329deg) brightness(103%) contrast(97%)'
-                          : value.textColor.includes('olive')
-                          ? 'brightness(0) saturate(100%) invert(35%) sepia(14%) saturate(1272%) hue-rotate(45deg) brightness(93%) contrast(89%)'
-                          : 'none'
-                      }}
-                    />
-                  </div>
-                </div>
-                    </div>
-
-                    {/* Back Side */}
-                    <div
-                      style={{
-                        backfaceVisibility: 'hidden',
-                        position: 'absolute',
-                        width: '100%',
-                        height: '100%',
-                        transform: 'rotateY(180deg)'
-                      }}
-                      className={`px-6 sm:px-8 md:px-10 pb-6 sm:pb-8 md:pb-10 rounded-2xl md:rounded-3xl ${value.bgColor} shadow-lg flex flex-col items-center justify-start text-center`}
-                    >
-                      <div className="mb-4 sm:mb-6 -mt-2">
-                        <Image
-                          src={
-                            value.title === 'Sostenibilidad' ? '/icons/sello-yellow.svg' :
-                            value.title === 'Innovación' ? '/icons/sello-aqua.svg' :
-                            '/icons/sello-02.svg'
-                          }
-                          alt="Sello KOEL"
-                          width={160}
-                          height={160}
-                          className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 mx-auto"
-                          style={(value.title === 'Sostenibilidad' || value.title === 'Innovación') ? {} : {
-                            filter: value.textColor.includes('white')
-                              ? 'brightness(0) invert(1)'
-                              : value.textColor.includes('yellow')
-                              ? 'brightness(0) saturate(100%) invert(88%) sepia(42%) saturate(1352%) hue-rotate(360deg) brightness(104%) contrast(96%)'
-                              : value.textColor.includes('aqua')
-                              ? 'brightness(0) saturate(100%) invert(60%) sepia(98%) saturate(476%) hue-rotate(134deg) brightness(96%) contrast(89%)'
-                              : value.textColor.includes('#FCF7EE')
-                              ? 'brightness(0) invert(98%) sepia(8%) saturate(524%) hue-rotate(329deg) brightness(103%) contrast(97%)'
-                              : value.textColor.includes('olive')
-                              ? 'brightness(0) saturate(100%) invert(35%) sepia(14%) saturate(1272%) hue-rotate(45deg) brightness(93%) contrast(89%)'
-                              : 'none'
-                          }}
-                        />
-                      </div>
-                      <h4 className={`text-lg sm:text-xl md:text-2xl font-bold ${value.textColor} mb-3 sm:mb-4 font-display uppercase`}>
-                        {value.subtitle}
-                      </h4>
-                      <p className={`text-sm sm:text-base md:text-lg ${value.textColor} leading-relaxed opacity-80 max-w-xs`}>
-                        {value.description}
-                      </p>
-                      <div className="mt-auto pt-6 sm:pt-8">
-                        <Image
-                          src={
-                            value.title === 'Sostenibilidad' ? '/logos/logo-yellow-full.svg' :
-                            value.title === 'Innovación' ? '/logos/logo-aqua-full.svg' :
-                            '/logos/logo-teal.svg'
-                          }
-                          alt="KOEL"
-                          width={60}
-                          height={24}
-                          className="w-auto h-5 sm:h-4 opacity-70 mx-auto"
-                          style={(value.title === 'Sostenibilidad' || value.title === 'Innovación') ? {} : {
-                            filter: value.textColor.includes('white')
-                              ? 'brightness(0) invert(1)'
-                              : value.textColor.includes('yellow')
-                              ? 'brightness(0) saturate(100%) invert(88%) sepia(42%) saturate(1352%) hue-rotate(360deg) brightness(104%) contrast(96%)'
-                              : value.textColor.includes('aqua')
-                              ? 'brightness(0) saturate(100%) invert(60%) sepia(98%) saturate(476%) hue-rotate(134deg) brightness(96%) contrast(89%)'
-                              : value.textColor.includes('#FCF7EE')
-                              ? 'brightness(0) invert(98%) sepia(8%) saturate(524%) hue-rotate(329deg) brightness(103%) contrast(97%)'
-                              : value.textColor.includes('olive')
-                              ? 'brightness(0) saturate(100%) invert(35%) sepia(14%) saturate(1272%) hue-rotate(45deg) brightness(93%) contrast(89%)'
-                              : 'none'
-                          }}
-                        />
-                      </div>
-                    </div>
-                  </motion.div>
-                </motion.div>
-              );
-            })}
+            {values.map((value, index) => (
+              <FlipCard key={value.title} value={value} index={index} />
+            ))}
           </div>
         </Container>
       </section>

@@ -9,12 +9,14 @@ import Container from '@/components/ui/Container';
 import { ShoppingCart, User } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useCart } from '@/contexts/CartContext';
+import { useRouter } from 'next/navigation';
 
 interface HeaderProps {
   forceScrolled?: boolean;
 }
 
 export default function Header({ forceScrolled = false }: HeaderProps) {
+  const router = useRouter();
   const { toggleCart, itemCount } = useCart();
   const [isScrolled, setIsScrolled] = useState(forceScrolled);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -48,22 +50,17 @@ export default function Header({ forceScrolled = false }: HeaderProps) {
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
 
-    // Check if it's an anchor link or a page link
     if (href.startsWith('#')) {
-      // Check if we're on the home page
       if (window.location.pathname === '/') {
-        // We're on home page, scroll to anchor
         const element = document.querySelector(href);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
         }
       } else {
-        // We're on another page, navigate to home with anchor
-        window.location.href = '/' + href;
+        router.push('/' + href);
       }
     } else {
-      // It's a page link, navigate normally
-      window.location.href = href;
+      router.push(href);
     }
   };
 
